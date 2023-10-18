@@ -69,6 +69,11 @@
       name="naver-site-verification"
       content="a6fa221f401d72258fe210fc6adde8f0fc7e53d1"
     />
+
+    <!-- <link
+      rel="stylesheet"
+      href="https://code.highcharts.com/css/highcharts.css"
+    /> -->
   </head>
 
   <body class="en">
@@ -621,13 +626,13 @@
           </div>
         </div>
         <div class="row">
-          <!-- Disclosure Disini Cuy -->
+          <!-- Card Allocation -->
           <div class="d-flex p-relative justify-content-center card-disclosure">
             <div class="full-card">
               <div class="content-intro-wrap">
                 <div class="desc-card-body">
-                  <h3 class="f-desc" style="color: white">Allocation</h3>
-                  <h2 class="fw-bold text-white text-center">3,000,000</h2>
+                  <h3 class="f-desc mb-2" style="color: white">Allocation</h3>
+                  <h2 class="fw-bold text-white">3,000,000</h2>
                 </div>
               </div>
             </div>
@@ -635,7 +640,69 @@
               <div class="content-intro-wrap">
                 <div class="desc-card-body">
                   <h3 class="f-desc mb-2" style="color: white">XRUN Swap</h3>
-                  <h2 class="fw-bold text-white text-center">500,000</h2>
+                  <h2 class="fw-bold text-white">500,000</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart -->
+          <div class="chart-box mb-2">
+            <div id="cmcChart"></div>
+          </div>
+
+          <!-- Chart Detail -->
+          <div class="d-flex chart-detail-wrapper">
+            <div
+              class="d-flex flex-column justify-content-center card-detail desc-card-body"
+            >
+              <h2 class="fw-bold text-white">5,240</h2>
+              <div class="d-flex mt-4">
+                <p class="mb-0 f-desc text-white">All Day Ratio</p>
+                <div class="d-flex">
+                  <img
+                    src="./assets/images/icon_smallArrow.png"
+                    class="arrow-chart"
+                  />
+                  <p class="mb-0 f-desc fw-semibold text-white">20</p>
+                </div>
+                <div class="v-separator"></div>
+                <span class="d-flex">
+                  <p class="mb-0 f-desc fw-semibold text-white">-</p>
+                  <p class="mb-0 f-desc fw-semibold text-white">0.38</p>
+                  <p class="mb-0 f-desc fw-semibold text-white">%</p>
+                </span>
+              </div>
+            </div>
+            <!-- Card Detail -->
+            <div class="card-detail-table text-white desc-card-body">
+              <div class="row d-flex">
+                <div class="col-md-4">
+                  <p class="f-desc">Previous Day</p>
+                  <p class="f-desc fw-semibold">5,260</p>
+                </div>
+                <div class="col-md-4">
+                  <p class="f-desc">High Price</p>
+                  <p class="f-desc">5,570 (High Price 6,380)</p>
+                </div>
+                <div class="col-md-4">
+                  <p class="f-desc">Trading Volume</p>
+                  <p class="f-desc fw-semibold">18,860,745</p>
+                </div>
+              </div>
+              <hr class="my-2" />
+              <div class="row d-flex">
+                <div class="col-md-4">
+                  <p class="f-desc">Market Price &nbsp;</p>
+                  <p class="f-desc fw-semibold">5,450</p>
+                </div>
+                <div class="col-md-4">
+                  <p class="f-desc">Low Price</p>
+                  <p class="f-desc">5,570 (Lower Price 3,690)</p>
+                </div>
+                <div class="col-md-4">
+                  <p class="f-desc">Transaction Fee</p>
+                  <p class="f-desc fw-semibold">18,860,745</p>
                 </div>
               </div>
             </div>
@@ -1188,11 +1255,75 @@
     <!-- <script src="./jquery-latest.js"></script> -->
     <!-- <script src="./jquery.easing.min.js"></script> -->
     <!-- <script src="./assets/scripts/jquery.1.11.1.js"></script> -->
+
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="./assets/scripts/bootstrap.min.js"></script>
     <script src="./assets/scripts/owl.carousel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
     <!-- <script src="assets/scripts/light.js"></script> -->
+    <!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/accessibility.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        (async () => {
+          const data = await fetch(
+            "https://demo-live-data.highcharts.com/aapl-c.json"
+          ).then((response) => response.json());
+
+          // Create the chart
+          Highcharts.stockChart("cmcChart", {
+            rangeSelector: {
+              selected: 1,
+            },
+
+            title: {
+              text: "XRUN Price",
+              style: {
+                fontSize: "16px",
+                fontFamily: "poppinsRegular",
+              },
+            },
+
+            plotOptions: {
+              series: {
+                lineWidth: 2, // Ketebalan garis
+                lineColor: "blue", // Warna garis
+                // marker: {
+                //   enabled: true, // Aktifkan penanda
+                //   radius: 6, // Ukuran penanda
+                //   fillColor: "white", // Warna penanda
+                //   lineColor: "blue", // Warna pinggiran penanda
+                //   lineWidth: 2, // Ketebalan pinggiran penanda
+                // },
+              },
+            },
+
+            tooltip: {
+              valueDecimals: 2,
+              style: {
+                fontSize: "12px",
+                fontFamily: "poppinsRegular",
+              },
+            },
+
+            series: [
+              {
+                name: "Price",
+                data: data,
+                tooltip: {
+                  valueDecimals: 2,
+                },
+              },
+            ],
+          });
+        })();
+      });
+    </script>
+
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const modal = document.getElementById("modal");
