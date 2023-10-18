@@ -3105,6 +3105,21 @@ justify-content: center;
 	margin-bottom: 45px;
 }
 
+/* Disclosure */
+.card-disclosure .full-card {
+	border-radius: 10px;
+	box-shadow: 5px 5px 10px rgba(88, 88, 88, 0.19);
+	padding: 0px;
+	background: hsla(192, 73%, 47%, 1);
+	background: linear-gradient(225deg, hsla(192, 73%, 47%, 1) 0%, hsla(279, 29%, 50%, 1) 100%);
+	background: -moz-linear-gradient(225deg, hsla(192, 73%, 47%, 1) 0%, hsla(279, 29%, 50%, 1) 100%);
+	background: -webkit-linear-gradient(225deg, hsla(192, 73%, 47%, 1) 0%, hsla(279, 29%, 50%, 1) 100%);
+	transition: 0.5s;
+	overflow: hidden;
+	margin: 10px 10px;
+	max-width: 265px;
+}
+
 /* Card Intro Wrapper Section Start */
 .card-intro-wrapper {
 	margin-bottom: 50px;
