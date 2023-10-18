@@ -1,0 +1,9 @@
+.ck.ck-toolbar {
+    border: 0 !important;
+}
+
+.ck.ck-content {
+    border: 0 !important;
+    font-family: 'Noto Sans KR';
+    font-weight: normal !important;
+}
