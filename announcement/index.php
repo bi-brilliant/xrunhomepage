@@ -62,7 +62,8 @@ SQL;
 
     foreach ($numberFilesArr as $numberFile) {
       $file = intval($numberFile);
-      $conn = new mysqli("localhost", "root", "root", "xrun");
+      $conn = new mysqli("database-80-xrun.cluster-ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
+
       $sql = <<<SQL
           SELECT `attachments` as `file` FROM `Files` WHERE file = $file
           SQL;
