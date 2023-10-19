@@ -38,20 +38,16 @@
 
   <script src="./assets/scripts/swiper.min.js"></script>
 
-  <<<<<<< HEAD <!-- Fa Icon Kit Awesome -->
-    <script src="https://kit.fontawesome.com/f8206e5b51.js" crossorigin="anonymous"></script>
-    <meta name="naver-site-verification" content="a6fa221f401d72258fe210fc6adde8f0fc7e53d1" />
-    =======
-    <!-- Fa Icon Kit Awesome -->
-    <script src="https://kit.fontawesome.com/f8206e5b51.js" crossorigin="anonymous"></script>
-    <meta name="naver-site-verification" content="a6fa221f401d72258fe210fc6adde8f0fc7e53d1" />
+  <meta name="naver-site-verification" content="a6fa221f401d72258fe210fc6adde8f0fc7e53d1" />
+  <!-- Fa Icon Kit Awesome -->
+  <script src="https://kit.fontawesome.com/f8206e5b51.js" crossorigin="anonymous"></script>
+  <meta name="naver-site-verification" content="a6fa221f401d72258fe210fc6adde8f0fc7e53d1" />
 
-    <!-- <link
+  <!-- <link
       rel="stylesheet"
       href="https://code.highcharts.com/css/highcharts.css"
     /> -->
 </head>
->>>>>>> 7f8710d2776316dd9cd71eec88177243fa7ebeca
 
 <!-- Datatables CSS -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
@@ -641,23 +637,11 @@
                 <th>Date</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a href="#" class="title-disclosure">XRUN Coin Up</a>
-                </td>
-                <td>
-                  <p class="information-disclosure">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel cumque
-                    ratione quidem molestiae odio
-                    tempora esse exercitationem, harum omnis. Assumenda ducimus vel, deleniti corporis neque itaque
-                    error dolorum? Laboriosam, nesciunt?
-                  </p>
-                </td>
-                <td class="date-disclosure">2023-10-20</td>
-              </tr>
+            <tbody id="news-announcement">
+              <!-- Data dari javascript fn_announcement -->
             </tbody>
           </table>
+
         </div>
 
         <div class="parent-table-disclosure">
@@ -2005,113 +1989,114 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     <script>
       $(document).ready(function () {
-        $('.table-disclosure').DataTable({
-          "dom": 'rtip',
-          ordering: false,
-          pageLength: 10,
-        });
-      });
-
-      const partners = [
-        {
-          name: 'Coinbase',
-          link: 'https://www.coinbase.com/how-to-buy/xrun',
-          image: './assets/images/partner2/COINBASE.png',
-        },
-        {
-          name: 'CoinMarketCap',
-          link: 'https://coinmarketcap.com/currencies/xrun/',
-          image: './assets/images/partner2/COINMARKETCAP.png',
-        },
-        {
-          name: 'CoinGecko',
-          link: 'https://www.coingecko.com/en/coins/xrun',
-          image: './assets/images/partner2/COIN_GECKO.png',
-        },
-        {
-          name: 'Binance',
-          link: 'https://www.binance.com/en/price/xrun',
-          image: './assets/images/partner2/BINANCE.png',
-        },
-        {
-          name: 'Crypto',
-          link: 'https://crypto.com/price/xrun',
-          image: './assets/images/partner2/CRYPTOCOM.png',
-        },
-        {
-          name: 'Finance Yahoo',
-          link: 'https://finance.yahoo.com/quote/XRUN-USD/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvLmtyLw&guce_referrer_sig=AQAAAN0jebaip-tWCMUpXNVD251btAA5lSHNu95tElhihoehiUOF88K10lf_dSVnTVirRUaWMoeVK85kiDRohSwEqJXXB9LC7dmznfAjq7QyKuRp1mnAXc3T7w_uOP40ObUMhDjZ8l1-zCcPMJAZvUTMgJRLTu50CAigdia3JyNPk1rP',
-          image: './assets/images/partner2/YAHOO_FINANCE.png',
-        },
-        {
-          name: 'Cobak',
-          link: 'https://cobak.co.kr/exchange/coin-xrun',
-          image: './assets/images/partner2/COBAK.png',
-        },
-        {
-          name: 'BTCC',
-          link: 'https://www.btcc.com/ko-KR/markets/XRUN/2022-08-13/0.37079858',
-          image: './assets/images/partner2/BTCC.png',
-        },
-        {
-          name: 'COINDATAFLOW',
-          link: 'https://coindataflow.com/ko/%EC%95%94%ED%98%B8%ED%99%94%ED%8F%90/xrun',
-          image: './assets/images/partner2/COINTD_DATA_FLOW.png',
-        },
-        {
-          name: 'COINCOST',
-          link: 'https://coincost.net/ko/currency/xrun',
-          image: './assets/images/partner2/COIN_COST.png',
-        },
-        {
-          name: 'Xangle',
-          link: 'https://xangle.io/project/XRUN/key-info',
-          image: './assets/images/partner2/XANGLE.png',
-        },
-        {
-          name: 'CoinMarketCal',
-          link: 'https://coinmarketcal.com/ko/coin/xrun',
-          image: './assets/images/partner2/COIN_MARKET_CAL.png',
-        },
-        {
-          name: 'Nomics',
-          link: 'https://nomics.com/assets/xrun-xrun',
-          image: './assets/images/partner2/NOMICS.png',
-        },
-        {
-          name: 'COINAD BANK',
-          link: 'https://coinadbank.com/ko/currencies/xrun',
-          image: './assets/images/partner2/COINADBANK.png',
-        },
-        {
-          name: 'WorldCoinIndex',
-          link: 'https://www.worldcoinindex.com/hu/erme/xrun',
-          image: './assets/images/partner2/WORLD_COIN_INDEX.png',
-        },
-        {
-          name: '528BTC',
-          link: 'https://www.528btc.com/coin/23568.html',
-          image: './assets/images/partner2/528_BTC.png',
-        },
-        {
-          name: 'PricePrediction',
-          link: 'https://priceprediction.net/en/price-prediction/xrun',
-          image: './assets/images/partner2/PRICEPREDICTION.png',
-        },
-      ];
-
-      const partnersDisclosure = document.querySelector('.partners-disclosure');
-      let defaultShowPartners = 10;
-
-      const showPartners = (loadPartners = 0) => {
-        let tempPartnersDisclosure = '';
-
-        if (loadPartners) {
-          defaultShowPartners = defaultShowPartners + loadPartners;
+        function initDatatables() {
+          $('.table-disclosure').DataTable({
+            "dom": 'rtip',
+            ordering: false,
+            pageLength: 10,
+          });
         }
 
-        for (let index = 0; index < defaultShowPartners; index++) {
-          tempPartnersDisclosure += `<a href="${partners[index].link}" target = "_blank" class="partners-item">
+        const partners = [
+          {
+            name: 'Coinbase',
+            link: 'https://www.coinbase.com/how-to-buy/xrun',
+            image: './assets/images/partner2/COINBASE.png',
+          },
+          {
+            name: 'CoinMarketCap',
+            link: 'https://coinmarketcap.com/currencies/xrun/',
+            image: './assets/images/partner2/COINMARKETCAP.png',
+          },
+          {
+            name: 'CoinGecko',
+            link: 'https://www.coingecko.com/en/coins/xrun',
+            image: './assets/images/partner2/COIN_GECKO.png',
+          },
+          {
+            name: 'Binance',
+            link: 'https://www.binance.com/en/price/xrun',
+            image: './assets/images/partner2/BINANCE.png',
+          },
+          {
+            name: 'Crypto',
+            link: 'https://crypto.com/price/xrun',
+            image: './assets/images/partner2/CRYPTOCOM.png',
+          },
+          {
+            name: 'Finance Yahoo',
+            link: 'https://finance.yahoo.com/quote/XRUN-USD/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvLmtyLw&guce_referrer_sig=AQAAAN0jebaip-tWCMUpXNVD251btAA5lSHNu95tElhihoehiUOF88K10lf_dSVnTVirRUaWMoeVK85kiDRohSwEqJXXB9LC7dmznfAjq7QyKuRp1mnAXc3T7w_uOP40ObUMhDjZ8l1-zCcPMJAZvUTMgJRLTu50CAigdia3JyNPk1rP',
+            image: './assets/images/partner2/YAHOO_FINANCE.png',
+          },
+          {
+            name: 'Cobak',
+            link: 'https://cobak.co.kr/exchange/coin-xrun',
+            image: './assets/images/partner2/COBAK.png',
+          },
+          {
+            name: 'BTCC',
+            link: 'https://www.btcc.com/ko-KR/markets/XRUN/2022-08-13/0.37079858',
+            image: './assets/images/partner2/BTCC.png',
+          },
+          {
+            name: 'COINDATAFLOW',
+            link: 'https://coindataflow.com/ko/%EC%95%94%ED%98%B8%ED%99%94%ED%8F%90/xrun',
+            image: './assets/images/partner2/COINTD_DATA_FLOW.png',
+          },
+          {
+            name: 'COINCOST',
+            link: 'https://coincost.net/ko/currency/xrun',
+            image: './assets/images/partner2/COIN_COST.png',
+          },
+          {
+            name: 'Xangle',
+            link: 'https://xangle.io/project/XRUN/key-info',
+            image: './assets/images/partner2/XANGLE.png',
+          },
+          {
+            name: 'CoinMarketCal',
+            link: 'https://coinmarketcal.com/ko/coin/xrun',
+            image: './assets/images/partner2/COIN_MARKET_CAL.png',
+          },
+          {
+            name: 'Nomics',
+            link: 'https://nomics.com/assets/xrun-xrun',
+            image: './assets/images/partner2/NOMICS.png',
+          },
+          {
+            name: 'COINAD BANK',
+            link: 'https://coinadbank.com/ko/currencies/xrun',
+            image: './assets/images/partner2/COINADBANK.png',
+          },
+          {
+            name: 'WorldCoinIndex',
+            link: 'https://www.worldcoinindex.com/hu/erme/xrun',
+            image: './assets/images/partner2/WORLD_COIN_INDEX.png',
+          },
+          {
+            name: '528BTC',
+            link: 'https://www.528btc.com/coin/23568.html',
+            image: './assets/images/partner2/528_BTC.png',
+          },
+          {
+            name: 'PricePrediction',
+            link: 'https://priceprediction.net/en/price-prediction/xrun',
+            image: './assets/images/partner2/PRICEPREDICTION.png',
+          },
+        ];
+
+        const partnersDisclosure = document.querySelector('.partners-disclosure');
+        let defaultShowPartners = 10;
+
+        const showPartners = (loadPartners = 0) => {
+          let tempPartnersDisclosure = '';
+
+          if (loadPartners) {
+            defaultShowPartners = defaultShowPartners + loadPartners;
+          }
+
+          for (let index = 0; index < defaultShowPartners; index++) {
+            tempPartnersDisclosure += `<a href="${partners[index].link}" target = "_blank" class="partners-item">
           <div class="partners-part-top">
             <p class="partners-name">${partners[index].name}</p>
             <div class="icon-partners-part-top">
@@ -2125,20 +2110,60 @@
             <img src="${partners[index].image}" alt="${partners[index].name}" class="image-partners">
           </div>
         </a>`
+          }
+
+          partnersDisclosure.innerHTML = tempPartnersDisclosure;
         }
 
-        partnersDisclosure.innerHTML = tempPartnersDisclosure;
-      }
-
-      showPartners();
+        showPartners();
 
 
-      const onLoadMorePartners = ({ target }) => {
-        const morePartners = partners.length - defaultShowPartners;
-        showPartners(morePartners);
+        const onLoadMorePartners = ({ target }) => {
+          const morePartners = partners.length - defaultShowPartners;
+          showPartners(morePartners);
 
-        target.parentElement.remove();
-      }
+          target.parentElement.remove();
+        }
+
+        const newsAnnouncement = document.getElementById('news-announcement');
+
+        function fn_announcement(typeNum) {
+          $.ajax({
+            url: './controller/getAnnouncementList.php',
+            type: 'GET',
+            data: { boardType: typeNum },
+            success: function (response) {
+              response = $.parseJSON(response);
+              let tempAnnouncement = '';
+
+              response.forEach(response => {
+                tempAnnouncement += `
+                <tr>
+                  <td>
+                    <a href="announcement/index.php/${response['announcement']}" class="title-disclosure">${response['title']}</a>
+                  </td>
+                  <td>
+                    <p class="information-disclosure">
+                      ${response['content']}
+                    </p>
+                  </td>
+                  <td class="date-disclosure">${response['regDate']}</td>
+                </tr>`
+              });
+
+              newsAnnouncement.innerHTML = tempAnnouncement;
+
+              initDatatables();
+            }
+          })
+
+
+        }
+
+        fn_announcement(9301);
+
+
+      });
     </script>
 </body>
 
