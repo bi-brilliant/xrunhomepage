@@ -3311,14 +3311,19 @@ table.dataTable.table-disclosure tbody td {
 	border-radius: 5px;
 }
 
+hr {
+	border-top: 1px solid #cfc9c9 !important;
+}
+
 .card-disclosure .full-card {
-	border-radius: 10px;
-	box-shadow: 5px 5px 10px rgba(88, 88, 88, 0.19);
+	border-radius: 5px;
+	/* box-shadow: 5px 5px 10px rgba(88, 88, 88, 0.19); */
 	padding: 0px;
-	background: hsla(192, 73%, 47%, 1);
+	/* background: hsla(192, 73%, 47%, 1);
 	background: linear-gradient(225deg, hsla(192, 73%, 47%, 1) 0%, hsla(279, 29%, 50%, 1) 100%);
 	background: -moz-linear-gradient(225deg, hsla(192, 73%, 47%, 1) 0%, hsla(279, 29%, 50%, 1) 100%);
-	background: -webkit-linear-gradient(225deg, hsla(192, 73%, 47%, 1) 0%, hsla(279, 29%, 50%, 1) 100%);
+	background: -webkit-linear-gradient(225deg, hsla(192, 73%, 47%, 1) 0%, hsla(279, 29%, 50%, 1) 100%); */
+	background: #ebebeb;
 	transition: 0.5s;
 	overflow: hidden;
 	margin: 10px 10px;
@@ -3327,12 +3332,13 @@ table.dataTable.table-disclosure tbody td {
 }
 
 #disclosure .card-detail {
-	border-radius: 10px;
-	box-shadow: 5px 5px 10px rgba(88, 88, 88, 0.19);
-	background: hsla(192, 73%, 47%, 1);
+	border-radius: 5px;
+	/* box-shadow: 5px 5px 10px rgba(88, 88, 88, 0.19); */
+	/* background: hsla(192, 73%, 47%, 1);
 	background: linear-gradient(225deg, hsla(192, 73%, 47%, 1) 0%, hsla(279, 29%, 50%, 1) 100%);
 	background: -moz-linear-gradient(225deg, hsla(192, 73%, 47%, 1) 0%, hsla(279, 29%, 50%, 1) 100%);
-	background: -webkit-linear-gradient(225deg, hsla(192, 73%, 47%, 1) 0%, hsla(279, 29%, 50%, 1) 100%);
+	background: -webkit-linear-gradient(225deg, hsla(192, 73%, 47%, 1) 0%, hsla(279, 29%, 50%, 1) 100%); */
+	background: #ebebeb;
 	transition: 0.5s;
 	overflow: hidden;
 	margin: 10px 10px;
@@ -3345,12 +3351,13 @@ table.dataTable.table-disclosure tbody td {
 }
 
 #disclosure .card-detail-table {
-	border-radius: 10px;
-	box-shadow: 5px 5px 10px rgba(88, 88, 88, 0.19);
-	background: hsla(192, 73%, 47%, 1);
+	border-radius: 5px;
+	/* box-shadow: 5px 5px 10px rgba(88, 88, 88, 0.19); */
+	/* background: hsla(192, 73%, 47%, 1);
 	background: linear-gradient(225deg, hsla(192, 73%, 47%, 1) 0%, hsla(279, 29%, 50%, 1) 100%);
 	background: -moz-linear-gradient(225deg, hsla(192, 73%, 47%, 1) 0%, hsla(279, 29%, 50%, 1) 100%);
-	background: -webkit-linear-gradient(225deg, hsla(192, 73%, 47%, 1) 0%, hsla(279, 29%, 50%, 1) 100%);
+	background: -webkit-linear-gradient(225deg, hsla(192, 73%, 47%, 1) 0%, hsla(279, 29%, 50%, 1) 100%); */
+	background: #ebebeb;
 	transition: 0.5s;
 	overflow: hidden;
 	margin: 10px 10px;
@@ -6253,6 +6260,10 @@ section.dark-bg.section-common .section-title h2 span {
 	.tet-synch-wrapper p:nth-of-type(4) {
 		margin-top: 50px;
 		margin-left: 50px;
+	}
+
+	#economy .economy-img-box img {
+		height: 345px;
 	}
 
 }
