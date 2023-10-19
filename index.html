@@ -1502,6 +1502,7 @@
             url: "./controller/cmcListener.php",
             type: "GET",
             success: function (res) {
+              console.log(res);
               var jsonData = JSON.parse(res);
 
               if (jsonData) {
@@ -2183,7 +2184,7 @@
                 tempAnnouncement += `
                 <tr>
                   <td>
-                    <a href="announcement/index.php/${response['announcement']}" class="title-disclosure">${response['title']}</a>
+                    <a href="announcement/index.php?news=${response['announcement']}" class="title-disclosure">${response['title']}</a>
                   </td>
                   <td>
                     <p class="information-disclosure">
