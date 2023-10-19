@@ -574,17 +574,12 @@
 
         <!-- Chart Detail -->
         <div class="d-flex chart-detail-wrapper">
-          <div
-            class="d-flex flex-column justify-content-center card-detail desc-card-body"
-          >
+          <div class="d-flex flex-column justify-content-center card-detail desc-card-body">
             <h2 class="fw-bold">5,240</h2>
             <div class="d-flex mt-4">
               <p class="mb-0 f-desc">All Day Ratio</p>
               <div class="d-flex">
-                <img
-                  src="./assets/images/icon_smallArrow.png"
-                  class="arrow-chart"
-                />
+                <img src="./assets/images/icon_smallArrow.png" class="arrow-chart" />
                 <p class="mb-0 f-desc fw-semibold">20</p>
               </div>
               <div class="v-separator"></div>
@@ -1606,7 +1601,6 @@
             data: { boardType: typeNum },
             success: function (data) {
               data = $.parseJSON(data);
-              console.log(data);
               let $list = "";
 
               // 데이터가 없을때 - If there is no data
