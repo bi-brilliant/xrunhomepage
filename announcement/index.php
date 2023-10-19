@@ -1,16 +1,11 @@
 <?php
 
-if (!isset($_SERVER['PATH_INFO'])) {
-  header('Location: ../');
-}
-
 $pageNotFound = false;
 $existFiles = false;
 
-$pathAnnouncementID = $_SERVER['PATH_INFO'];
-$announcementID = preg_replace('/\D/', '', $pathAnnouncementID);
-if ($_SERVER['PATH_INFO'] === '/' || $announcementID === '') {
-  $pageNotFound = true;
+$announcementID = $_GET['news'];
+if (!isset($_GET['news'])) {
+  header('Location: ../');
 } else {
   $conn = new mysqli("database-80-xrun.cluster-ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
   $sql = <<<SQL
@@ -52,33 +47,35 @@ SQL;
 
   if (count($response) === 0) {
     $pageNotFound = true;
-  }
+  } else {
+    if ($response[0]['file'] !== '') {
+      $files = [];
 
-  if ($response[0]['file'] !== NULL) {
-    $files = [];
+      $numberFiles = $response[0]['file'];
+      $numberFilesArr = explode(',', $numberFiles);
 
-    $numberFiles = $response[0]['file'];
-    $numberFilesArr = explode(',', $numberFiles);
+      foreach ($numberFilesArr as $numberFile) {
+        $file = intval($numberFile);
+        $conn = new mysqli("database-80-xrun.cluster-ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
 
-    foreach ($numberFilesArr as $numberFile) {
-      $file = intval($numberFile);
-      $conn = new mysqli("database-80-xrun.cluster-ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
-
-      $sql = <<<SQL
+        $sql = <<<SQL
           SELECT `attachments` as `file` FROM `Files` WHERE file = $file
           SQL;
 
-      $result = $conn->query($sql);
+        $result = $conn->query($sql);
 
-      while ($data = mysqli_fetch_assoc($result)) {
-        $files[] = array(
-          "file" => base64_encode($data["file"]),
-        );
+        while ($data = mysqli_fetch_assoc($result)) {
+          $files[] = array(
+            "file" => base64_encode($data["file"]),
+          );
+        }
       }
-    }
 
-    $existFiles = true;
+      $existFiles = true;
+    }
   }
+
+
 }
 
 ?>
@@ -97,22 +94,22 @@ SQL;
   <meta name="author" content="Jenn, ThemeForces.com" />
   <!-- 캐시를 바로 만료시킴. 
   <meta http-equiv="Expires" content="-1" />-->
-  <link href="../../assets/images/logo_visual_black.png" rel="shortcut icon" />
+  <link href="../assets/images/logo_visual_black.png" rel="shortcut icon" />
 
 
 
   <!-- Stylesheets -->
   <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css" />
-  <link rel="stylesheet" href="../../assets/css-bak/bootstrap_n.css" />
-  <link rel="stylesheet" href="../../assets/css-bak/font-awesome.css" />
-  <link rel="stylesheet" href="../../assets/css-bak/owl.carousel.css" />
-  <link rel="stylesheet" href="../../assets/css-bak/owl.theme.default.min.css" />
-  <link rel="stylesheet" href="../../assets/css-bak/animate.css" />
-  <link rel="stylesheet" href="../../assets/css-bak/swiper.css" />
-  <!-- <link rel="stylesheet" href="../../assets/css-bak/xrun_n.css" /> -->
-  <link rel="stylesheet" href="../../assets/css-bak/xrun_nLagi.css" />
-  <link rel="stylesheet" href="../../assets/css-bak/editor.css" />
+  <link rel="stylesheet" href="../assets/css-bak/bootstrap_n.css" />
+  <link rel="stylesheet" href="../assets/css-bak/font-awesome.css" />
+  <link rel="stylesheet" href="../assets/css-bak/owl.carousel.css" />
+  <link rel="stylesheet" href="../assets/css-bak/owl.theme.default.min.css" />
+  <link rel="stylesheet" href="../assets/css-bak/animate.css" />
+  <link rel="stylesheet" href="../assets/css-bak/swiper.css" />
+  <!-- <link rel="stylesheet" href="../assets/css-bak/xrun_n.css" /> -->
+  <link rel="stylesheet" href="../assets/css-bak/xrun_nLagi.css" />
+  <link rel="stylesheet" href="../assets/css-bak/editor.css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
     integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
 
@@ -125,7 +122,7 @@ SQL;
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <!-- Datatables CSS -->
@@ -153,7 +150,7 @@ SQL;
           <i class="fas fa fa-bars"></i>
         </button>
         <a class="navbar-brand page-scroll" href="/">
-          <img src="../../assets/images/logo-xrun-w-new.png" alt="logo-xrun" height="28" />
+          <img src="../assets/images/logo-xrun-w-new.png" alt="logo-xrun" height="28" />
         </a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -162,31 +159,31 @@ SQL;
             <a href="#page-top"></a>
           </li>
           <li>
-            <a class="page-scroll" id="navAbout" href="../../#introduction">About XRUN</a>
+            <a class="page-scroll" id="navAbout" href="../#introduction">About XRUN</a>
           </li>
           <!-- <li>
-              <a class="page-scroll" href="../../#our-products">Products</a>
+              <a class="page-scroll" href="../#our-products">Products</a>
             </li> -->
           <li>
-            <a class="page-scroll" id="navClubx" href="../../#clubx">CLUBX</a>
+            <a class="page-scroll" id="navClubx" href="../#clubx">CLUBX</a>
           </li>
           <li>
-            <a class="page-scroll" id="navWallet" href="../../#dapp">Wallet</a>
+            <a class="page-scroll" id="navWallet" href="../#dapp">Wallet</a>
           </li>
           <li>
-            <a class="page-scroll" id="navToken" href="../../#economy">Token Economy</a>
+            <a class="page-scroll" id="navToken" href="../#economy">Token Economy</a>
           </li>
           <li>
-            <a class="page-scroll" id="navToken" href="../../#disclosure">Disclosure</a>
+            <a class="page-scroll" id="navToken" href="../#disclosure">Disclosure</a>
           </li>
           <li>
-            <a class="page-scroll" id="navRoadmap" href="../../#roadmap">Roadmap</a>
+            <a class="page-scroll" id="navRoadmap" href="../#roadmap">Roadmap</a>
           </li>
           <li>
-            <a class="page-scroll" id="navNotice" href="../../#notice">Notice/Event</a>
+            <a class="page-scroll" id="navNotice" href="../#notice">Notice/Event</a>
           </li>
           <li>
-            <a class="page-scroll beforeNone" id="navContact" href="../../#contact">Contact Us</a>
+            <a class="page-scroll beforeNone" id="navContact" href="../#contact">Contact Us</a>
           </li>
         </ul>
       </div>
@@ -262,10 +259,10 @@ SQL;
     </div>
     <!-- <div class="scrollToTop scroll-visible"> -->
     <div class="paper-container">
-      <a href="../../clubx_homepage/assets/files/XRUN_whitepaperv2023.pdf" download class="download-paper-wrapper">
+      <a href="../clubx_homepage/assets/files/XRUN_whitepaperv2023.pdf" download class="download-paper-wrapper">
         WP
       </a>
-      <a href="../../clubx_homepage/assets/files/XRUN IR 2023.pdf" download class="download-paper-wrapper">
+      <a href="../clubx_homepage/assets/files/XRUN IR 2023.pdf" download class="download-paper-wrapper">
         IR
       </a>
     </div>
@@ -273,5 +270,5 @@ SQL;
   <!-- End footer -->
 
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-  <script src="../../assets/scripts/bootstrap.min.js"></script>
+  <script src="../assets/scripts/bootstrap.min.js"></script>
 </body>
