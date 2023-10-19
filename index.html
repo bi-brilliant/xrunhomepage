@@ -38,10 +38,9 @@
 
   <script src="./assets/scripts/swiper.min.js"></script>
 
-  <<<<<<< HEAD <!-- Fa Icon Kit Awesome -->
+   <!-- Fa Icon Kit Awesome -->
     <script src="https://kit.fontawesome.com/f8206e5b51.js" crossorigin="anonymous"></script>
     <meta name="naver-site-verification" content="a6fa221f401d72258fe210fc6adde8f0fc7e53d1" />
-    =======
     <!-- Fa Icon Kit Awesome -->
     <script src="https://kit.fontawesome.com/f8206e5b51.js" crossorigin="anonymous"></script>
     <meta name="naver-site-verification" content="a6fa221f401d72258fe210fc6adde8f0fc7e53d1" />
@@ -51,7 +50,6 @@
       href="https://code.highcharts.com/css/highcharts.css"
     /> -->
 </head>
->>>>>>> 7f8710d2776316dd9cd71eec88177243fa7ebeca
 
 <!-- Datatables CSS -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
@@ -557,7 +555,7 @@
             <div class="content-intro-wrap">
               <div class="desc-card-body">
                 <h3 class="f-desc mb-2" style="color: black">Allocation</h3>
-                <h2 class="fw-bold">3,000,000</h2>
+                <h2 class="fw-bold" id="valAllocation">-</h2>
               </div>
             </div>
           </div>
@@ -565,7 +563,7 @@
             <div class="content-intro-wrap">
               <div class="desc-card-body">
                 <h3 class="f-desc mb-2" style="color: black">XRUN Swap</h3>
-                <h2 class="fw-bold">500,000</h2>
+                <h2 class="fw-bold" id="valSwap">-</h2>
               </div>
             </div>
           </div>
@@ -581,7 +579,7 @@
           <div
             class="d-flex flex-column justify-content-center card-detail desc-card-body"
           >
-            <h2 class="fw-bold">5,240</h2>
+            <h2 class="fw-bold" id="priceCurrent">-</h2>
             <div class="d-flex mt-4">
               <p class="mb-0 f-desc">All Day Ratio</p>
               <div class="d-flex">
@@ -589,13 +587,11 @@
                   src="./assets/images/icon_smallArrow.png"
                   class="arrow-chart"
                 />
-                <p class="mb-0 f-desc fw-semibold">20</p>
+                <p class="mb-0 f-desc fw-semibold d-flex align-items-center" id="priceDiff">-</p>
               </div>
               <div class="v-separator"></div>
               <span class="d-flex">
-                <p class="mb-0 f-desc fw-semibold">-</p>
-                <p class="mb-0 f-desc fw-semibold">0.38</p>
-                <p class="mb-0 f-desc fw-semibold">%</p>
+                <p class="mb-0 f-desc fw-semibold d-flex align-items-center" id="priceDiffPercentage">-</p>
               </span>
             </div>
           </div>
@@ -604,30 +600,30 @@
             <div class="row d-flex">
               <div class="col-md-4">
                 <p class="f-desc">Previous Day</p>
-                <p class="f-desc fw-semibold">5,260</p>
+                <p class="f-desc fw-semibold" id="priceYesterday">-</p>
               </div>
               <div class="col-md-4">
                 <p class="f-desc">High Price</p>
-                <p class="f-desc">5,570 (High Price 6,380)</p>
+                <p class="f-desc fw-semibold" id="priceHighest">-</p>
               </div>
               <div class="col-md-4">
                 <p class="f-desc">Trading Volume</p>
-                <p class="f-desc fw-semibold">18,860,745</p>
+                <p class="f-desc fw-semibold" id="priceTrading">-</p>
               </div>
             </div>
             <hr class="my-2" />
             <div class="row d-flex">
               <div class="col-md-4">
                 <p class="f-desc">Market Price &nbsp;</p>
-                <p class="f-desc fw-semibold">5,450</p>
+                <p class="f-desc fw-semibold" id="priceMarket">-</p>
               </div>
               <div class="col-md-4">
                 <p class="f-desc">Low Price</p>
-                <p class="f-desc">5,570 (Lower Price 3,690)</p>
+                <p class="f-desc fw-semibold" id="priceLowest">-</p>
               </div>
               <div class="col-md-4">
                 <p class="f-desc">Transaction Fee</p>
-                <p class="f-desc fw-semibold">18,860,745</p>
+                <p class="f-desc fw-semibold" id="priceFee">(18,860,745temp)</p>
               </div>
             </div>
           </div>
@@ -1455,58 +1451,233 @@
 
     <script>
       $(document).ready(function () {
-        (async () => {
-          const data = await fetch(
-            "https://demo-live-data.highcharts.com/aapl-c.json"
-          ).then((response) => response.json());
+        // Formatting Timestamp
+        function formatTimestamp(timestamp) {
+          const date = new Date(timestamp);
+          const year = date.getFullYear();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Tambah 1 karena bulan dimulai dari 0
+          const day = date.getDate().toString().padStart(2, '0');
+          const hours = date.getUTCHours().toString().padStart(2, '0');
+          const minutes = date.getUTCMinutes().toString().padStart(2, '0');
+          const seconds = date.getUTCSeconds().toString().padStart(2, '0');
+          return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+        }
 
-          // Create the chart
-          Highcharts.stockChart("cmcChart", {
-            rangeSelector: {
-              selected: 1,
+        // Fungsi untuk mengubah format price
+        function formatPrice(price) {
+          return parseFloat(price).toFixed(2);
+        }
+
+        // Float Rounder
+        function floatRounder(float){
+          const roundedNumber = Math.ceil(float * 10000) / 10000;
+          return roundedNumber.toFixed(4);
+        }
+
+        function numDigitSeparator(str) {
+          // Ubah string menjadi bilangan bulat (integer).
+          let num = parseInt(str);
+
+          // Mengecek apakah num adalah bilangan bulat dan bukan NaN.
+          if (!isNaN(num)) {
+            // Menggunakan metode toLocaleString() untuk menambahkan separator ribuan.
+            return num.toLocaleString();
+          } else {
+            // Jika num bukan bilangan bulat, kembalikan string asli.
+            return str;
+          }
+        }
+
+        // Get CoinMarketCap
+        function getCmcData() {
+          $.ajax({
+            url: "./controller/cmcListener.php",
+            type: "GET",
+            success: function (res) {
+              var jsonData = JSON.parse(res);
+
+              if(jsonData) {
+                // Get All Coin Data
+                $.ajax({
+                  url: "./connection.php",
+                  type: "GET",
+                  data: {
+                    action: 'getCMCData'
+                  },
+                  success: function (r) {
+                    // Count Price All Data
+                    const priceTotal = r.reduce((acc, item) => {
+                      const price = parseFloat(item.price.replace(/,/g, ''));
+                      return acc + price;
+                    }, 0);
+
+                    // Average Price
+                    const avgPrice = priceTotal / r.length;
+
+                    // Current Price
+                    var priceCurrent = floatRounder(jsonData['data']['19787']['quote']['USD']['price']);
+                    // var priceCurrent = 0.100;
+
+                    // Count Diff
+                    const priceDiff = priceCurrent - avgPrice;
+
+                    // Count Diff Percentage
+                    const priceDiffPercentage = ((priceDiff / avgPrice) * 100).toFixed(2);
+
+                    // Element references
+                    const $diffPricePercent = $("#priceDiffPercentage");
+                    const $diffPrice = $("#priceDiff");
+                    const $arrowChart = $(".arrow-chart");
+
+                    // Check if the current price is higher than the average price
+                    if (priceCurrent > avgPrice) {
+                      $diffPrice.addClass("text-success");
+                      $diffPricePercent.addClass("text-success").text("+"+priceDiffPercentage+"%");
+                      $arrowChart.css("transform", "rotate(180deg)");
+                      $arrowChart.css("color", "green");
+                    } else if (priceCurrent < avgPrice) {
+                      $diffPrice.addClass("text-danger");
+                      $diffPricePercent.addClass("text-danger").text(priceDiffPercentage+"%");
+                      $arrowChart.css("transform", "rotate(0deg)");
+                      $arrowChart.css("color", "red");
+                    }
+
+                    $("#priceCurrent, #priceMarket").text("$" + priceCurrent);
+                    $diffPrice.text(floatRounder(priceDiff));
+                  },
+                });
+              }
+
+              
             },
+          });
+        }
 
-            title: {
-              text: "XRUN Price",
-              style: {
-                fontSize: "16px",
-                fontFamily: "poppinsRegular",
-              },
-            },
+        getCmcData();
 
-            plotOptions: {
-              series: {
-                lineWidth: 2, // Ketebalan garis
-                lineColor: "blue", // Warna garis
-                // marker: {
-                //   enabled: true, // Aktifkan penanda
-                //   radius: 6, // Ukuran penanda
-                //   fillColor: "white", // Warna penanda
-                //   lineColor: "blue", // Warna pinggiran penanda
-                //   lineWidth: 2, // Ketebalan pinggiran penanda
-                // },
-              },
-            },
+        // Call Coin Market Cap Every 1 Minutes
+        // setInterval(getCmcData, 60000);
 
-            tooltip: {
-              valueDecimals: 2,
-              style: {
-                fontSize: "12px",
-                fontFamily: "poppinsRegular",
-              },
-            },
+        // Yesterday Data
+        $.ajax({
+          url: "./connection.php",
+          type: "GET",
+          data: {
+            action: 'getYesterdayData'
+          },
+          success: function (res) {
+            let totalPrice = 0;
 
-            series: [
-              {
-                name: "Price",
-                data: data,
+            for(let key in res){
+              if(!isNaN(parseFloat(res[key].price))){
+                totalPrice += parseFloat(res[key].price);
+              }
+            }
+
+            let yesAvgPrice = totalPrice / Object.keys(res).length;
+
+            $("#priceYesterday").text("$" + floatRounder(yesAvgPrice));
+          },
+        });
+
+        // Disclosure Data
+        $.ajax({
+          url: "./connection.php",
+          type: "GET",
+          data: {
+            action: 'getDisclosureData'
+          },
+          success: function (res) {
+            var getAllocation = res[0].value;
+            var getSwap = res[1].value;
+
+            $("#valAllocation").text(numDigitSeparator(getAllocation));
+            $("#valSwap").text(numDigitSeparator(getSwap));
+          },
+        });
+
+        // Highest / Lowest Price Data
+        $.ajax({
+          url: "./connection.php",
+          type: "GET",
+          data: {
+            action: 'getCMCData'
+          },
+          success: function (res) {
+            // Get Latest ID
+            const latestId = Math.max(...res.map(item => parseInt(item.id)));
+
+            // Get All Price Data and Save to Array
+            const prices = res.map(item => parseFloat(item.price));
+
+            // Get Object from Latest ID
+            const objLatestId = res.find(item => parseInt(item.id) === latestId);
+
+            // Get Volume 24h
+            const volume24h = Math.floor(objLatestId.volume_24h);
+            const priceTrading = volume24h.toLocaleString();
+
+            const priceHighest = Math.max(...prices);
+            const priceLowest = Math.min(...prices);
+
+            $("#priceHighest").text("$" + floatRounder(priceHighest));
+            $("#priceLowest").text("$" + floatRounder(priceLowest));
+            $("#priceTrading").text(priceTrading);
+
+            // Chart
+            // (async () => {
+              // const data = await fetch(
+              //   "https://demo-live-data.highcharts.com/aapl-c.json"
+              // ).then((response) => response.json());
+
+              // Chart Data
+              const data = res.map(item => [
+                new Date(item.timestamp).getTime(),
+                parseFloat(item.price),
+              ]);
+
+              // Create the chart
+              Highcharts.stockChart("cmcChart", {
+                rangeSelector: {
+                  selected: 1,
+                },
+
+                title: {
+                  text: "XRUN Price",
+                  style: {
+                    fontSize: "16px",
+                    fontFamily: "poppinsRegular",
+                  },
+                },
+
+                plotOptions: {
+                  series: {
+                    lineWidth: 2, // Ketebalan garis
+                    lineColor: "blue", // Warna garis
+                  },
+                },
+
                 tooltip: {
                   valueDecimals: 2,
+                  style: {
+                    fontSize: "12px",
+                    fontFamily: "poppinsRegular",
+                  },
                 },
-              },
-            ],
-          });
-        })();
+
+                series: [
+                  {
+                    name: "Price",
+                    data: data,
+                    tooltip: {
+                      valueDecimals: 2,
+                    },
+                  },
+                ],
+              });
+            // })();
+          },
+        });
       });
     </script>
 
@@ -1592,29 +1763,6 @@
           $(this).addClass("active");
         });
 
-        // // Tes Ajax
-        // $.ajax({
-        //   url: "./controller/getBoardList_n.php",
-        //   type: "GET",
-        //   data: {
-        //     boardType: 9301,
-        //   },
-        //   success: function (res) {
-        //     var jsonData = JSON.parse(res);
-
-        //     $.each(jsonData, function (key, val) {
-        //       console.log(val.title);
-        //       $("#imageWrapper").append(
-        //         `
-        //         <img src="data:image/jpeg;base64,` +
-        //           val.file +
-        //           `" alt="Image">
-        //       `
-        //       );
-        //     });
-        //   },
-        // });
-
         function fn_notice(typeNum) {
           $.ajax({
             url: "./controller/getBoardList_n.php",
@@ -1622,7 +1770,6 @@
             data: { boardType: typeNum },
             success: function (data) {
               data = $.parseJSON(data);
-              console.log(data);
               let $list = "";
 
               // 데이터가 없을때 - If there is no data
@@ -1716,8 +1863,6 @@
                     popupCard.previousElementSibling.querySelector(
                       ".nm-description"
                     );
-
-                  console.log(cardTitle.textContent);
 
                   // Modal
                   const modalImg = modal.querySelector("#modal-image");
@@ -1982,7 +2127,6 @@
             contentModal.clientHeight >= 700
               ? (contentModal.style.cssText = "height: 576px;")
               : "";
-            console.log("ok");
           } else if (
             window.innerWidth <= 400 &&
             contentModal.clientHeight >= 700
