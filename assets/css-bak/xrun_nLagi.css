@@ -2165,6 +2165,156 @@ justify-content: center;
 		color: rgb(33, 37, 41);
 }
 
+/* Disclosure */
+.parent-datatables {
+	display: grid;
+	gap: 64px;
+	margin-top: 100px;
+}
+
+.parent-table-disclosure {
+	display: grid;
+	gap: 10px;
+	grid-template-columns: 1fr;
+}
+
+.title-parent-table {
+	font-size: 20px;
+	font-weight: 600;
+	font-family: poppinsRegular;
+}
+
+.table-disclosure th {
+	background-color: #f2f2f2;
+	font-weight: 500 !important;
+	font-family: poppinsRegular;
+}
+
+.table-disclosure th,
+.table-disclosure td {
+	border-bottom: 1px solid #ddd !important;
+	font-family: poppinsRegular;
+}
+
+.table-disclosure td a,
+.table-disclosure td p,
+.table-disclosure td,
+.dataTables_info,
+.dataTables_paginate {
+	font-family: poppinsRegular;
+	font-size: 16px;
+}
+
+.table-disclosure.dataTable.no-footer {
+	border-bottom: none;
+}
+
+.title-disclosure {
+	min-width: 150px;
+	text-decoration: underline;
+}
+
+.information-disclosure,
+.title-disclosure  {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+	margin-bottom: 0;
+}
+
+.date-disclosure {
+	min-width: 72px;
+	white-space: nowrap;
+}
+
+/* Partners */
+.partners-disclosure {
+	display: grid;
+	margin: 100px auto 0;
+	gap: 12px;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.partners-item {
+	height: auto;
+	max-height: 252px;
+	padding: 10px 27px 60px;
+	min-height: 224px;
+	grid-column-gap: 0px;
+	grid-row-gap: 32px;
+	background-color: #f6f6f6;
+	grid-template-rows: auto auto;
+	grid-template-columns: 1fr;
+	grid-auto-columns: 1fr;
+	transition: all .2s ease-in-out;
+	display: grid;
+}
+
+.partners-item:hover {
+		background-image: url("https://assets-global.website-files.com/62d96b0e9ea60fd1c96a1b50/62d96b0e9ea60f82426a1be3_Screen%20Shot%202022-05-24%20at%2014.59.40.webp"), linear-gradient(135deg, rgb(1, 129, 220), #16c0d6);
+    background-position: 50%, 0 0;
+    background-repeat: no-repeat, repeat;
+    background-size: 98% 98%, auto;
+}
+
+.partners-part-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+}
+
+.icon-partners-part-top {
+	transform: translate3d(0px, 150%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+	transform-style: preserve-3d;
+	transition: all .2s ease-in-out;
+	opacity: 0;
+}
+
+.icon-partners-part-top svg {
+	color: rgb(32, 31, 33);
+}
+
+.partners-item:hover .icon-partners-part-top {
+	transform: translate3d(0px, 0%, 0px) scale3d(1,1,1) rotate(0deg) skew(0deg, 0deg);
+	opacity: 1;
+}
+
+.partners-name {
+	margin-bottom: 0;
+	color: rgb(32, 31, 33);
+	font-size: 16px;
+	font-family: poppinsRegular;
+}
+
+.image-partners {
+	width: 148px;
+	height: 80px;
+	object-fit: contain;
+}
+
+.wrapper-btn-partners {
+	display: flex;
+	justify-content: center;
+}
+
+.btn-view-more-partners {
+	margin-top: 100px;
+	font-family: poppinsRegular;
+	background-color: transparent;
+	border: 1px solid #23A1C1;
+	color: #23A1C1;
+	padding: 16px 56px;
+	font-size: 16px;
+	border-radius: 40px;
+	transition: 100ms ease-in-out;
+}
+
+.btn-view-more-partners:hover {
+	background-color: #23A1C1;
+	color: #fff;
+}
 /* End */
 
 /* Responsive Duplicate */
@@ -3661,6 +3811,13 @@ a.disabled {
 	}
 }
 
+@media (min-width: 1024px) {
+	.parent-table-disclosure {
+		gap: 40px;
+		grid-template-columns: 0.3fr 1.2fr;
+	}
+}
+
 @media (max-width: 1280px) {
 	#video .video-next,
 	#video .video-prev {
@@ -3944,7 +4101,6 @@ a.disabled {
 		left: 50%;
 		margin-left: -1px;
 	}
-
 }
 
 .roadmap-box {
@@ -4581,7 +4737,20 @@ a.disabled {
 		height: auto;
 	}
 
+	.parent-datatables {
+		display: block;
+	}
 
+	.parent-table-disclosure {
+		padding-left: 28px;
+		overflow: auto;
+		padding-bottom: 24px;
+		margin-top: 56px;
+	}
+
+	.partners-disclosure {
+		padding-left: 28px;
+	}
 }
 
 #summary table {
@@ -6080,6 +6249,10 @@ section.dark-bg.section-common .section-title h2 span {
 		margin-left: 50px;
 	}
 
+	#economy .economy-img-box img {
+		height: 345px;
+	}
+
 }
 
 @media (max-width: 400px) {
@@ -6327,6 +6500,7 @@ section.dark-bg.section-common .section-title h2 span {
 
 }
 
+
 @media (min-width: 767px) {
 	.wrapper-our-products {
 		max-width: 720px;
@@ -6360,6 +6534,14 @@ section.dark-bg.section-common .section-title h2 span {
 	
 	.btn-app-download {
 		margin-top: 460px;
+	}
+
+	.partners-disclosure {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	.partners-item {
+		max-width: 252px;
 	}
 }
 
@@ -6400,6 +6582,11 @@ section.dark-bg.section-common .section-title h2 span {
 
 	#economy .economy-img-box {
 		margin-bottom: 0;
+	}
+
+	.partners-disclosure {
+		grid-template-columns: repeat(5, 1fr);
+		max-width: 1300px;
 	}
 }
 
