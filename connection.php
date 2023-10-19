@@ -1,8 +1,8 @@
 <?php
 
-// $connection = mysqli_connect("db-main-master.ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
+$xrunConn = mysqli_connect("db-main-master.ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
+// $xrunConn = mysqli_connect("localhost", "root", "", "xrun", 3307);
 $connection = mysqli_connect("localhost", "root", "", "tempxscan", 3307);
-$xrunConn = mysqli_connect("localhost", "root", "", "xrun", 3307);
 
 if ($connection->connect_error) {
     die("Connection failed: " . $conn->connect_error);
