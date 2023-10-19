@@ -1306,10 +1306,81 @@
           });
         }
 
-        getCmcData();
+        // Get CoinMarketCap
+        function getTempCmcData() {
+          $.ajax({
+            url: "./connection.php",
+            type: "GET",
+            data: {
+              action: 'getLatestCMC'
+            },
+            success: function (jsonData) {
+              console.log(jsonData)
+              // var jsonData = JSON.parse(res);
+
+
+              if (jsonData) {
+                // Get All Coin Data
+                $.ajax({
+                  url: "./connection.php",
+                  type: "GET",
+                  data: {
+                    action: 'getCMCData'
+                  },
+                  success: function (r) {
+                    // Count Price All Data
+                    const priceTotal = r.reduce((acc, item) => {
+                      const price = parseFloat(item.price.replace(/,/g, ''));
+                      return acc + price;
+                    }, 0);
+
+                    // Average Price
+                    const avgPrice = priceTotal / r.length;
+
+                    // Current Price
+                    var priceCurrent = floatRounder(jsonData[0].price);
+                    // var priceCurrent = 0.100;
+
+                    // Count Diff
+                    const priceDiff = priceCurrent - avgPrice;
+
+                    // Count Diff Percentage
+                    const priceDiffPercentage = ((priceDiff / avgPrice) * 100).toFixed(2);
+
+                    // Element references
+                    const $diffPricePercent = $("#priceDiffPercentage");
+                    const $diffPrice = $("#priceDiff");
+                    const $arrowChart = $(".arrow-chart");
+
+                    // Check if the current price is higher than the average price
+                    if (priceCurrent > avgPrice) {
+                      $diffPrice.addClass("text-success");
+                      $diffPricePercent.addClass("text-success").text("+" + priceDiffPercentage + "%");
+                      $arrowChart.css("transform", "rotate(180deg)");
+                      $arrowChart.css("color", "green");
+                    } else if (priceCurrent < avgPrice) {
+                      $diffPrice.addClass("text-danger");
+                      $diffPricePercent.addClass("text-danger").text(priceDiffPercentage + "%");
+                      $arrowChart.css("transform", "rotate(0deg)");
+                      $arrowChart.css("color", "red");
+                    }
+
+                    $("#priceCurrent, #priceMarket").text("$" + priceCurrent);
+                    $diffPrice.text(floatRounder(priceDiff));
+                  },
+                });
+              }
+
+
+            },
+          });
+        }
+
+        // getCmcData();
+        getTempCmcData()
 
         // Call Coin Market Cap Every 1 Minutes
-        setInterval(getCmcData, 60000);
+        // setInterval(getCmcData, 60000);
 
         // Yesterday Data
         $.ajax({
