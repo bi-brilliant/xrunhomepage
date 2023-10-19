@@ -2168,31 +2168,35 @@ justify-content: center;
 /* Disclosure */
 .parent-datatables {
 	display: grid;
-	gap: 64px;
-	margin-top: 100px;
+	gap: 48px;
+	margin-top: 68px;
 }
 
 .parent-table-disclosure {
-	display: grid;
-	gap: 10px;
-	grid-template-columns: 1fr;
+	background-color: #eee;
+	box-shadow: 0 20px 27px 0 rgba(0, 0, 0, 0.05);
+	border-radius: 16px;
+	padding: 24px;
 }
 
 .title-parent-table {
-	font-size: 20px;
+	font-size: 16px;
 	font-weight: 600;
 	font-family: poppinsRegular;
+	margin-bottom: 32px;
+	padding-left: 10px;
 }
 
 .table-disclosure th {
-	background-color: #f2f2f2;
-	font-weight: 500 !important;
-	font-family: poppinsRegular;
+	background-color: transparent;
+	font-family: poppinsBold ;
+	text-transform: uppercase;
+	border-bottom: 1px solid #dddddd !important;
+	color: #828282;
 }
 
-.table-disclosure th,
 .table-disclosure td {
-	border-bottom: 1px solid #ddd !important;
+	border-bottom: 1px solid #dddddd !important;
 	font-family: poppinsRegular;
 }
 
@@ -2203,6 +2207,20 @@ justify-content: center;
 .dataTables_paginate {
 	font-family: poppinsRegular;
 	font-size: 16px;
+}
+
+table.dataTable.table-disclosure tbody td {
+	padding: 16px 8px;
+}
+
+
+.dataTables_info {
+	display: none;
+}
+
+.dataTables_paginate {
+	font-size: 12px;
+	margin-top: 12px;
 }
 
 .table-disclosure.dataTable.no-footer {
@@ -2228,10 +2246,10 @@ justify-content: center;
 	white-space: nowrap;
 }
 
-/* Partners */
+/* Partners disclosure */
 .partners-disclosure {
 	display: grid;
-	margin: 100px auto 0;
+	margin: 140px auto 0;
 	gap: 12px;
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
@@ -2300,7 +2318,7 @@ justify-content: center;
 }
 
 .btn-view-more-partners {
-	margin-top: 100px;
+	margin-top: 64px;
 	font-family: poppinsRegular;
 	background-color: transparent;
 	border: 1px solid #23A1C1;
@@ -3811,12 +3829,7 @@ a.disabled {
 	}
 }
 
-@media (min-width: 1024px) {
-	.parent-table-disclosure {
-		gap: 40px;
-		grid-template-columns: 0.3fr 1.2fr;
-	}
-}
+
 
 @media (max-width: 1280px) {
 	#video .video-next,
