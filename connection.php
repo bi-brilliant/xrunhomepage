@@ -53,6 +53,18 @@ switch ($action) {
         echo json_encode($result);
         break;
 
+        // Get Disclosure Data
+    case 'getLatestCMC':
+        $query = mysqli_query($connection, "SELECT * FROM `cmcdata`  
+        ORDER BY `cmcdata`.`cmc` DESC LIMIT 1");
+
+        while($data = mysqli_fetch_assoc($query)) {
+            $result[] = $data;
+        }
+
+        echo json_encode($result);
+        break;
+
 
         // ----- Sign Up
     case 'signup':
