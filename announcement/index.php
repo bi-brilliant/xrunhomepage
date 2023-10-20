@@ -7,7 +7,9 @@ $announcementID = $_GET['news'];
 if (!isset($_GET['news'])) {
   header('Location: ../');
 } else {
-  $conn = new mysqli("database-80-xrun.cluster-ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
+  // $conn = new mysqli("database-80-xrun.cluster-ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
+
+  $conn = mysqli_connect("localhost", "root", "root", "xrun", 3306);
   $sql = <<<SQL
 SELECT
     `publicannouncement`.`announcement` as `index`,
@@ -56,7 +58,9 @@ SQL;
 
       foreach ($numberFilesArr as $numberFile) {
         $file = intval($numberFile);
-        $conn = new mysqli("database-80-xrun.cluster-ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
+        // $conn = new mysqli("database-80-xrun.cluster-ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
+        $conn = mysqli_connect("localhost", "root", "root", "xrun", 3306);
+
 
         $sql = <<<SQL
           SELECT `attachments` as `file` FROM `Files` WHERE file = $file
