@@ -74,8 +74,6 @@ SQL;
       $existFiles = true;
     }
   }
-
-
 }
 
 ?>
@@ -212,7 +210,13 @@ SQL;
             <img src="data:image/jpeg;base64,<?= $data['thumbnail'] ?>" alt="thumbnail" class="thumbnail-article">
             <div class="main-content-article">
               <p>
-                <?= $data['content'] ?>
+                <?php
+                $url = '/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/';
+
+
+                $text = preg_replace($url, '<a href="$0" target="_blank" title="$0">$0</a>', $data['content']);
+                echo nl2br($text);
+                ?>
               </p>
 
               <?php if ($existFiles): ?>

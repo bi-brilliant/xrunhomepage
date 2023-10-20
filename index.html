@@ -140,8 +140,8 @@
           <p class="text-white text-banner-title">BEYOND REALITY</p>
           <p class="text-white text-banner-subtitle">METAVERSE CLUB</p>
           <div class="d-flex btn-wrapper-banner">
-            <a href="" download><img src="./assets/images/bannerAsssets/btnBanner_clubx.png" alt="" /></a>
-            <a href="https://www.youtube.com/watch?v=QvxISIaYwno"><img
+            <a href="./clubx_homepage/"><img src="./assets/images/bannerAsssets/btnBanner_clubx.png" alt="" /></a>
+            <a href="https://www.youtube.com/watch?v=tKVAVojVDY8"><img
                 src="./assets/images/bannerAsssets/btnBanner_youtube.png" alt="" /></a>
           </div>
         </div>
@@ -730,6 +730,7 @@
 
       <!-- Partners -->
       <div class="wrapper-parents-disclosure">
+        <h3 class="title-information-service">Information service website</h3>
         <div class="partners-disclosure">
           <!-- Partners dapet dari javascript -->
         </div>
@@ -2086,11 +2087,6 @@
           image: './assets/images/partner2/COIN_MARKET_CAL.png',
         },
         {
-          name: 'Nomics',
-          link: 'https://nomics.com/assets/xrun-xrun',
-          image: './assets/images/partner2/NOMICS.png',
-        },
-        {
           name: 'COINAD BANK',
           link: 'https://coinadbank.com/ko/currencies/xrun',
           image: './assets/images/partner2/COINADBANK.png',
@@ -2110,6 +2106,91 @@
           link: 'https://priceprediction.net/en/price-prediction/xrun',
           image: './assets/images/partner2/PRICEPREDICTION.png',
         },
+        {
+          name: 'BeinCrypto',
+          link: 'https://kr.beincrypto.com/price/xrun/',
+          image: './assets/images/partner2/BEINCRYPTO.png',
+        },
+        {
+          name: 'CoinStats',
+          link: 'https://coinstats.app/ko/coins/xrun/',
+          image: './assets/images/partner2/COINSTATS.png',
+        },
+        {
+          name: 'WalletInvestor',
+          link: 'https://walletinvestor.com/converter/xrun/first-digital-usd/10',
+          image: './assets/images/partner2/WALLETINVESTOR.png',
+        },
+        {
+          name: 'Coinpaprika',
+          link: 'https://coinpaprika.com/ko/coin/xrun-xrun/',
+          image: './assets/images/partner2/COINPAPRIKA.png',
+        },
+        {
+          name: 'Forbes',
+          link: 'https://www.forbes.com/digital-assets/assets/xrun-xrun/?sh=24f292226402',
+          image: './assets/images/partner2/FORBESDIGITALASSET.png',
+        },
+        {
+          name: 'CERTIK',
+          link: 'https://skynet.certik.com/ko/projects/xrun',
+          image: './assets/images/partner2/CERTIK.png',
+        },
+        {
+          name: 'MyToken',
+          link: 'https://www.mytokencap.com/ko/currencies/xrun/821834130/',
+          image: './assets/images/partner2/MYTOKEN.png',
+        },
+        {
+          name: 'CryptoBuyingTips',
+          link: 'https://cryptobuyingtips.com/ko/coin/xrun-xrun',
+          image: './assets/images/partner2/CRYPTOBUYINGTIPS.png',
+        },
+        {
+          name: 'Bitget',
+          link: 'https://www.bitget.com/price/xrun',
+          image: './assets/images/partner2/BITGET.png',
+        },
+        {
+          name: 'CoinCarp',
+          link: 'https://www.coincarp.com/currencies/xrun/jpy/',
+          image: './assets/images/partner2/COINCARP.png',
+        },
+        {
+          name: 'Okx',
+          link: 'https://www.okx.com/price/xrun-xrun',
+          image: './assets/images/partner2/OKK.png',
+        },
+        {
+          name: 'KUCOIN',
+          link: 'https://www.kucoin.com/ru/price/XRUN',
+          image: './assets/images/partner2/KUCOIN.png',
+        },
+        {
+          name: 'BitDegree',
+          link: 'https://www.bitdegree.org/cryptocurrency-prices/xrun-xrun-price',
+          image: './assets/images/partner2/BITDEGREE.png',
+        },
+        {
+          name: 'Coinranking',
+          link: 'https://coinranking.com/coin/szXgFOM2x+xrun-xrun',
+          image: './assets/images/partner2/COINRANKING.png',
+        },
+        {
+          name: 'ADVFN',
+          link: 'https://kr.advfn.com/crypto/XRUN-XRUN/overview',
+          image: './assets/images/partner2/ADVFN.png',
+        },
+        {
+          name: 'coinmarketfees',
+          link: 'https://coinmarketfees.com/xrun/buy',
+          image: './assets/images/partner2/COINMARKETFEES.png',
+        },
+        {
+          name: 'Arzdigital',
+          link: 'https://arzdigital.me/currencies/market/xrun/',
+          image: './assets/images/partner2/ADZDIGITAL.png',
+        },
       ];
 
       const partnersDisclosure = document.querySelector('.partners-disclosure');
@@ -2125,7 +2206,7 @@
         for (let index = 0; index < defaultShowPartners; index++) {
           tempPartnersDisclosure += `<a href="${partners[index].link}" target = "_blank" class="partners-item">
           <div class="partners-part-top">
-            <p class="partners-name">${partners[index].name}</p>
+            <p class="partners-name" style="opacity: 0;">${partners[index].name}</p>
             <div class="icon-partners-part-top">
               <svg xmlns="http://www.w3.org/2000/svg" width="9.413" height="9.413" viewBox="0 0 9.413 9.413">
                 <path id="arrow-coral-link" d="M8.713,8.42V.852m0,0H1.144m7.569,0L.58,8.984"
