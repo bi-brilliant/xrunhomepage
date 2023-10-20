@@ -107,7 +107,13 @@ switch ($action) {
             NULL,
             '$last_updated')";
 
-        mysqli_query($connection, $query);
+        $query = mysqli_query($connection, $query);
+
+        if($query) {
+            echo "success";
+        } else {
+            echo "no";
+        }
         break;
 
 

@@ -594,7 +594,7 @@
           </div>
         </div> -->
 
-        <div class="d-flex">
+        <div class="d-flex chart-main-wrapper">
           <!-- Chart -->
           <div class="chart-box mb-2">
             <div id="cmcChart"></div>
@@ -604,7 +604,7 @@
           <div class="d-block chart-detail-box mb-2 w-100">
             <div class="d-flex justify-content-between">
               <h2 class="fw-bold" id="priceCurrent">-</h2>
-              <div class="d-flex align-items-center">
+              <div class="d-flex align-items-center price-current-desc">
                 <p class="mb-0 f-desc">All Day Ratio</p>
                 <div class="d-flex">
                   <img src="./assets/images/icon_smallArrow.png" class="arrow-chart" />
@@ -718,7 +718,7 @@
       </div>
 
       <!-- Datatables -->
-      <div class="container">
+      <div class="container custom-container">
         <div class="parent-datatables">
           <div class="d-flex">
             <a href="#" class="link-report active" data-target="announcement-table">News</a>
@@ -792,7 +792,7 @@
       </div>
 
       <!-- Partners -->
-      <div class="container">
+      <div class="container custom-container">
         <div class="wrapper-partners-disclosure">
           <h3 class="title-information-service">Information service website</h3>
           <div class="partners-disclosure">
@@ -1385,9 +1385,110 @@
               }
               return response.json();
             })
-            .then(data => {
+            .then(jsonData => {
               // Lakukan sesuatu dengan data yang Anda terima
-              console.log(data);
+              console.log(jsonData);
+
+              var cmctimestamp = jsonData['status']['timestamp'];
+              var cmcid = jsonData['data']['19787']['id'];
+              var cmcname = jsonData['data']['19787']['name'];
+              var cmccmc_rank = jsonData['data']['19787']['cmc_rank'];
+              var cmcprice = jsonData['data']['19787']['quote']['USD']['price'];
+              var cmcvolume_24h = jsonData['data']['19787']['quote']['USD']['volume_24h'];
+              var cmcvolume_change_24h = jsonData['data']['19787']['quote']['USD']['volume_change_24h'];
+              var cmcpercent_change_1h = jsonData['data']['19787']['quote']['USD']['percent_change_1h'];
+              var cmcpercent_change_24h = jsonData['data']['19787']['quote']['USD']['percent_change_24h'];
+              var cmcpercent_change_7d = jsonData['data']['19787']['quote']['USD']['percent_change_7d'];
+              var cmcpercent_change_30d = jsonData['data']['19787']['quote']['USD']['percent_change_30d'];
+              var cmcpercent_change_60d = jsonData['data']['19787']['quote']['USD']['percent_change_60d'];
+              var cmcpercent_change_90d = jsonData['data']['19787']['quote']['USD']['percent_change_90d'];
+              var cmcmarket_cap_dominance = jsonData['data']['19787']['quote']['USD']['market_cap_dominance'];
+              var cmcfully_diluted_market_cap = jsonData['data']['19787']['quote']['USD']['fully_diluted_market_cap'];
+              var cmcself_reported_market_cap = jsonData['data']['19787']['self_reported_market_cap'];
+              var cmclast_updated = jsonData['data']['19787']['quote']['USD']['last_update'];
+
+
+              if (jsonData) {
+                // Get All Coin Data
+                $.ajax({
+                  url: "./connection.php",
+                  type: "GET",
+                  data: {
+                    action: 'getCMCData'
+                  },
+                  success: function (r) {
+                    // Count Price All Data
+                    const priceTotal = r.reduce((acc, item) => {
+                      const price = parseFloat(item.price.replace(/,/g, ''));
+                      return acc + price;
+                    }, 0);
+
+                    // Average Price
+                    const avgPrice = priceTotal / r.length;
+
+                    // Current Price
+                    var priceCurrent = floatRounder(jsonData['data']['19787']['quote']['USD']['price']);
+                    // var priceCurrent = 0.100;
+
+                    // Count Diff
+                    const priceDiff = priceCurrent - avgPrice;
+
+                    // Count Diff Percentage
+                    const priceDiffPercentage = ((priceDiff / avgPrice) * 100).toFixed(2);
+
+                    // Element references
+                    const $diffPricePercent = $("#priceDiffPercentage");
+                    const $diffPrice = $("#priceDiff");
+                    const $arrowChart = $(".arrow-chart");
+
+                    // Check if the current price is higher than the average price
+                    if (priceCurrent > avgPrice) {
+                      $diffPrice.addClass("text-success");
+                      $diffPricePercent.addClass("text-success").text("+" + priceDiffPercentage + "%");
+                      $arrowChart.css("transform", "rotate(180deg)");
+                      $arrowChart.css("color", "green");
+                    } else if (priceCurrent < avgPrice) {
+                      $diffPrice.addClass("text-danger");
+                      $diffPricePercent.addClass("text-danger").text(priceDiffPercentage + "%");
+                      $arrowChart.css("transform", "rotate(0deg)");
+                      $arrowChart.css("color", "red");
+                    }
+
+                    $("#priceCurrent, #priceMarket").text("$" + priceCurrent);
+                    $diffPrice.text(floatRounder(priceDiff));
+
+
+                    // Save to DB
+                    $.ajax({
+                      url: "./connection.php",
+                      type: "GET",
+                      data: {
+                        action: 'saveCMCData',
+                        timestamp: cmctimestamp,
+                        id: cmcid,
+                        name: cmcname,
+                        cmc_rank: cmccmc_rank,
+                        price: cmcprice,
+                        volume_24h: cmcvolume_24h,
+                        volume_change_24h: cmcvolume_change_24h,
+                        percent_change_1h: cmcpercent_change_1h,
+                        percent_change_24h: cmcpercent_change_24h,
+                        percent_change_7d: cmcpercent_change_7d,
+                        percent_change_30d: cmcpercent_change_30d,
+                        percent_change_60d: cmcpercent_change_60d,
+                        percent_change_90d: cmcpercent_change_90d,
+                        fully_diluted_market_cap: cmcfully_diluted_market_cap,
+                        market_cap_dominance: cmcmarket_cap_dominance,
+                        self_reported_market_cap: cmcself_reported_market_cap,
+                        last_updated: cmclast_updated,
+                      },
+                      success: function (svResponse) {
+                        console.log(svResponse)
+                      }
+                    });
+                  },
+                });
+              }
             })
             .catch(error => {
               // Tangani kesalahan
@@ -1405,7 +1506,7 @@
               action: 'getLatestCMC'
             },
             success: function (jsonData) {
-              console.log(jsonData)
+              // console.log(jsonData)
               // var jsonData = JSON.parse(res);
 
 
@@ -1466,8 +1567,8 @@
           });
         }
 
-        // getCmcData();
-        getTempCmcData()
+        getCmcData();
+        // getTempCmcData()
 
         // Call Coin Market Cap Every 1 Minutes
         setInterval(getCmcData, 60000);
@@ -1538,12 +1639,6 @@
             $("#priceLowest").text("$" + floatRounder(priceLowest));
             $("#priceTrading").text(priceTrading);
 
-            // Chart
-            // (async () => {
-            // const data = await fetch(
-            //   "https://demo-live-data.highcharts.com/aapl-c.json"
-            // ).then((response) => response.json());
-
             // Chart Data
             const data = res.map(item => [
               new Date(item.timestamp).getTime(),
@@ -1556,21 +1651,6 @@
                 selected: 1,
               },
 
-              // title: {
-              //   text: "XRUN Price",
-              //   style: {
-              //     fontSize: "16px",
-              //     fontFamily: "poppinsRegular",
-              //   },
-              // },
-
-              plotOptions: {
-                series: {
-                  lineWidth: 2, // Ketebalan garis
-                  lineColor: "blue", // Warna garis
-                },
-              },
-
               tooltip: {
                 valueDecimals: 2,
                 style: {
@@ -1579,17 +1659,28 @@
                 },
               },
 
-              series: [
-                {
-                  name: "Price",
-                  data: data,
-                  tooltip: {
-                    valueDecimals: 2,
-                  },
+              series: [{
+                name: "Price",
+                data: data,
+                type: 'areaspline',
+                threshold: null,
+                tooltip: {
+                  valueDecimals: 2
                 },
-              ],
+                fillColor: {
+                  linearGradient: {
+                    x1: 0,
+                    y1: 0,
+                    x2: 0,
+                    y2: 1
+                  },
+                  stops: [
+                    [0, Highcharts.getOptions().colors[0]],
+                    [1, Highcharts.color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                  ]
+                }
+              }]
             });
-            // })();
           },
         });
       });
