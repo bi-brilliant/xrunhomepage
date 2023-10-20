@@ -4834,6 +4834,11 @@ a.disabled {
 	.partners-disclosure {
 		padding-left: 28px;
 	}
+
+	.chart-main-wrapper {
+		max-width: 550px;
+		margin: auto;
+	}
 }
 
 #summary table {
@@ -6707,6 +6712,11 @@ section.dark-bg.section-common .section-title h2 span {
 		max-width: 28vw;
 		margin-left: -40px;
 	}
+
+	.chart-box {
+		width: 100%;
+		max-width: 50%;
+	}
 }
 
 @media (max-width: 1050px) {
@@ -6779,6 +6789,15 @@ section.dark-bg.section-common .section-title h2 span {
 
 	.card-detail-table > .row {
 		justify-content: space-around;
+	}
+
+	.chart-box {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.chart-main-wrapper {
+		flex-direction: column;
 	}
 }
 
@@ -6994,6 +7013,28 @@ section.dark-bg.section-common .section-title h2 span {
 	.main-banner-video,
 	.poster-wrapper {
 		height: 27vh !important;
+	}
+
+	.chart-content .w-100:nth-child(2) .d-block > .d-flex,
+	.chart-content .w-100:nth-child(2) .d-block > p{
+		text-align: end;
+		justify-content: end;
+	}
+
+	.chart-detail-box {
+		padding: 10px;
+	}
+
+	.price-current-desc {
+		flex-direction: column;
+	}
+
+	.price-current-desc .v-separator {
+		display: none;
+	}
+
+	.price-current-desc > .d-flex {
+		align-self: flex-end;
 	}
 
 	.poster-containt-wrapper {
