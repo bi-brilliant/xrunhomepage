@@ -3334,9 +3334,28 @@ table.dataTable.table-disclosure tbody td {
 	margin-bottom: 0 !important;
 }
 
+.w-100{
+	width: 100% !important;
+}
+
 .chart-box {
 	margin-top: 1.2em;
 	padding: 10px;
+}
+
+.chart-detail-box {
+	margin-top: 1.3em;
+	padding: 10px 30px;
+}
+
+.justify-content-between {
+	justify-content: space-between;
+}
+
+.chart-content > .w-100 {
+	gap: 30px;
+	display: flex;
+	flex-direction: column;
 }
 
 .highcharts-credits {
@@ -3351,8 +3370,19 @@ table.dataTable.table-disclosure tbody td {
 	border-radius: 5px;
 }
 
+#tooltip {
+	background: rgba(0, 0, 0, 0.751);
+	border: 1px solid rgb(155, 155, 155);
+	border-radius: 5px;
+	padding: 2px 5px;
+	font-size: 10px;
+	color: white;
+	font-family: PoppinsRegular;
+}
+
 hr {
 	border-top: 1px solid #cfc9c9 !important;
+	margin: 10px 0px !important;
 }
 
 .card-disclosure .full-card {

@@ -65,6 +65,51 @@ switch ($action) {
         echo json_encode($result);
         break;
 
+        // Get Disclosure Data
+    case 'saveCMCData':
+        $timestamp = $_GET['timestamp'];
+        $id = $_GET['id'];
+        $name = $_GET['name'];
+        $cmc_rank = $_GET['cmc_rank'];
+        $price = $_GET['price'];
+        $volume_24h = $_GET['volume_24h'];
+        $volume_change_24h = $_GET['volume_change_24h'];
+        $percent_change_1h = $_GET['percent_change_1h'];
+        $percent_change_24h = $_GET['percent_change_24h'];
+        $percent_change_7d = $_GET['percent_change_7d'];
+        $percent_change_30d = $_GET['percent_change_30d'];
+        $percent_change_60d = $_GET['percent_change_60d'];
+        $percent_change_90d = $_GET['percent_change_90d'];
+        $fully_diluted_market_cap = $_GET['fully_diluted_market_cap'];
+        $market_cap_dominance = $_GET['market_cap_dominance'];
+        $self_reported_market_cap = $_GET['self_reported_market_cap'];
+        $last_updated = $_GET['last_updated'];
+
+
+        $query = "INSERT INTO cmcdata VALUES (
+            NULL,
+            '$timestamp',
+            $id,
+            '$name',
+            $cmc_rank,
+            '$price',
+            '$volume_24h',
+            '$volume_change_24h',
+            '$percent_change_1h',
+            '$percent_change_24h',
+            '$percent_change_7d',
+            '$percent_change_30d',
+            '$percent_change_60d',
+            '$percent_change_90d',
+            '$fully_diluted_market_cap',
+            '$market_cap_dominance',
+            '$self_reported_market_cap',
+            NULL,
+            '$last_updated')";
+
+        mysqli_query($connection, $query);
+        break;
+
 
         // ----- Sign Up
     case 'signup':
