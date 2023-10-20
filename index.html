@@ -722,17 +722,17 @@
         <div class="parent-datatables">
           <div class="d-flex">
             <a href="#" class="link-report active" data-target="announcement-table">News</a>
-            <a href="#" class="link-report" data-target="xrun-coin-table">XRUN Token</a>
-            <a href="#" class="link-report" data-target="disclosure-table">Mining</a>
+            <!-- <a href="#" class="link-report" data-target="xrun-coin-table">XRUN Token</a>
+            <a href="#" class="link-report" data-target="disclosure-table">Mining</a> -->
           </div>
 
           <div class="parent-table-disclosure active" id="announcement-table">
             <table class="table-disclosure">
               <thead>
                 <tr>
-                  <th>Report</th>
-                  <th>Market Listing</th>
-                  <th>Date Field</th>
+                  <th>Title</th>
+                  <th>Writer</th>
+                  <th>Date</th>
                 </tr>
               </thead>
               <tbody id="news-announcement">
@@ -741,7 +741,7 @@
             </table>
           </div>
 
-          <div class="parent-table-disclosure" id="disclosure-table">
+          <!-- <div class="parent-table-disclosure" id="disclosure-table">
             <table class="table-disclosure">
               <thead>
                 <tr>
@@ -762,9 +762,9 @@
                 </tr>
               </tbody>
             </table>
-          </div>
+          </div> -->
 
-          <div class="parent-table-disclosure" id="xrun-coin-table">
+          <!-- <div class="parent-table-disclosure" id="xrun-coin-table">
             <table class="table-disclosure">
               <thead>
                 <tr>
@@ -787,7 +787,7 @@
                 </tr>
               </tbody>
             </table>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -2195,13 +2195,9 @@
                 tempAnnouncement += `
                 <tr>
                   <td>
-                    <p class="information-disclosure">
-                      ${response['content']}
-                    </p>
-                    </td>
-                    <td>
-                      <a href="announcement/index.php?news=${response['announcement']}" class="title-disclosure">${response['title']}</a>
+                    <a href="${response['link']}" class="title-disclosure" target="_blank" title="${response['title']}">${response['title']}</a>
                   </td>
+                  <td title="${response['writer']}">${response['writer']}</td>
                   <td class="date-disclosure">${response['regDate']}</td>
                 </tr>`
               });
@@ -2217,6 +2213,7 @@
 
         fn_announcement(9301);
 
+        // Show hide table
         const linksReport = document.querySelectorAll('.link-report');
         const reportsTable = document.querySelectorAll('.parent-table-disclosure');
 
