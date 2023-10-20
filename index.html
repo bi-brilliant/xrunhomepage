@@ -164,60 +164,6 @@
     </div>
   </header>
 
-  <!-- <ul class="text-center bg-introduction" id="clubx">
-      <li class="bx_type_xrun">
-        <video autoplay loop muted>
-          <source src="./assets/video/bg_clubxEvent.mp4" type="video/mp4" />
-        </video>
-        <img src="./clubx_homepage/assets/images/logo_clubx.png" />
-        <div class="event-text-wrapper">
-          <p class="f-subtitle">This Metaverse Club</p>
-          <p class="f-subtitle">Once in a lifetime experience</p>
-          <p class="f-subtitle">
-            Explore deeper, try and feel the Sensation!
-          </p>
-        </div>
-        <a href="./clubx_homepage"
-          ><p class="f-subtitle clubx-text-more">more</p></a
-        >
-      </li>
-    </ul> -->
-
-  <!-- <header>
-      <div class="slider">
-        <div class="slide">
-          <video class="main-banner-video" autoplay muted loop="true">
-            <source src="./assets/video/defaultVideo.mp4" type="video/mp4" />
-          </video>
-          <div class="content">
-          </div>
-        </div>
-      </div>
-    </header> -->
-
-  <!-- <section id="our-products" class="light-bg section-common">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <div class="section-title" data-animate="fadeInUp" data-delay=".1">
-              <h2><span>PRODUCTS</span></h2>
-            </div>
-          </div>
-          <div class="col-lg-12 text-center">
-            <div class="wrapper-our-products">
-              <a href="./xrunapp_homepage/" class="wrapper-product">
-                <p class="text-product">XRUN APP</p>
-              </a>
-              <div class="line"></div>
-              <a href="./clubx_homepage/" class="wrapper-product">
-                <p class="text-product">Club X Games</p>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
   <section id="introduction" class="light-bg section-common">
     <div class="container">
       <div class="row">
@@ -226,29 +172,14 @@
             <h2><span class="fw-bold">About XRUN</span></h2>
           </div>
         </div>
-        <!-- <div class="col-lg-12 text-center">
-            <div class="section-sub" data-animate="fadeInUp" data-delay=".1">
-              XRUN is one of the most successful Pokémon Go cases<br />
-              and is a blockchain advertising platform with AR(Augmented
-              Reality) and GPS technology
-            </div>
-          </div> -->
       </div>
       <div class="row">
         <div class="col-lg-12 text-center card-intro-wrapper">
           <div class="col-lg-3 full-card">
             <div class="content-intro-wrap">
-              <!-- <div class="img-card-body">
-                  <img
-                    src="./assets/images/intro_card_wallet.png"
-                    class=""
-                    alt="Wallet"
-                  />
-                </div> -->
               <div class="desc-card-body">
                 <h3 class="f-subtitle" style="color: black">Wallet</h3>
                 <div class="line-card-body"></div>
-                <!-- <p class="card-text"> -->
                 <ol class="intro-ordered-list">
                   <li class="f-desc">
                     There is no cryptocurrency transaction fee.
@@ -259,7 +190,6 @@
                     Dapp development is easy with the built-in library.
                   </li>
                 </ol>
-                <!-- </p> -->
               </div>
             </div>
           </div>
@@ -575,217 +505,245 @@
         </div>
       </div>
 
-      <div class="container">
-        <!-- Card Allocation -->
-        <!-- <div class="d-flex p-relative justify-content-center card-disclosure">
-          <div class="full-card">
-            <div class="content-intro-wrap">
-              <div class="desc-card-body">
-                <h3 class="f-desc mb-2" style="color: black">Allocation</h3>
+      <div class="d-flex container" >
+        <div class="">
+          <div class="">
+          <!-- <div class="container"> -->
+            <div class="d-flex chart-main-wrapper">
+              <!-- Chart -->
+              <div class="chart-box mb-2">
+                <div id="cmcChart"></div>
               </div>
-            </div>
-          </div>
-          <div class="full-card">
-            <div class="content-intro-wrap">
-              <div class="desc-card-body">
-                <h3 class="f-desc mb-2" style="color: black">XRUN Swap</h3>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
-        <div class="d-flex chart-main-wrapper">
-          <!-- Chart -->
-          <div class="chart-box mb-2">
-            <div id="cmcChart"></div>
-          </div>
-
-          <!-- Chart Detail -->
-          <div class="d-block chart-detail-box mb-2 w-100">
-            <div class="d-flex justify-content-between">
-              <h2 class="fw-bold" id="priceCurrent">-</h2>
-              <div class="d-flex align-items-center price-current-desc">
-                <p class="mb-0 f-desc">All Day Ratio</p>
-                <div class="d-flex">
-                  <img src="./assets/images/icon_smallArrow.png" class="arrow-chart" />
-                  <p class="mb-0 f-desc fw-semibold d-flex align-items-center" id="priceDiff">-</p>
-                </div>
-                <div class="v-separator"></div>
-                <span class="d-flex">
-                  <p class="mb-0 f-desc fw-semibold d-flex align-items-center" id="priceDiffPercentage">-</p>
-                </span>
-              </div>
-            </div>
-            <hr class="my-5" />
-            <div class="d-flex chart-content">
-              <div class="w-100">
-                <div class="d-block">
-                  <p class="f-desc mb-0">Trading Volume</p>
-                  <p class="f-desc mb-0 fw-semibold" id="priceTrading">-</p>
-                </div>
-                <div class="d-block">
-                  <p class="f-desc mb-0">Previous Day</p>
-                  <p class="f-desc mb-0 fw-semibold" id="priceYesterday">-</p>
-                </div>
-                <div class="d-block">
-                  <div class="d-flex">
-                    <p class="f-desc mb-0">Allocation</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 32 32">
-                      <path onmousemove="showTooltip(evt, 'Allocation');" onmouseout="hideTooltip();"
-                        class="puchipuchi_een"
-                        d="M16,2C8.268,2,2,8.268,2,16s6.268,14,14,14s14-6.268,14-14S23.732,2,16,2z M16,26 c-0.552,0-1-0.448-1-1c0-0.552,0.448-1,1-1s1,0.448,1,1C17,25.552,16.552,26,16,26z M17,18.917V21c0,0.552-0.447,1-1,1s-1-0.448-1-1 v-3c0-0.552,0.447-1,1-1c2.206,0,4-1.794,4-4s-1.794-4-4-4s-4,1.794-4,4c0,0.552-0.447,1-1,1s-1-0.448-1-1c0-3.309,2.691-6,6-6 s6,2.691,6,6C22,15.968,19.834,18.439,17,18.917z">
-                      </path>
-                    </svg>
+    
+              <!-- Chart Detail -->
+              <div class="d-block chart-detail-box mb-2 w-100">
+                <div class="d-flex justify-content-between">
+                  <h2 class="fw-bold" id="priceCurrent">-</h2>
+                  <div class="d-flex align-items-center price-current-desc">
+                    <p class="mb-0 f-desc">All Day Ratio</p>
+                    <div class="d-flex">
+                      <img src="./assets/images/icon_smallArrow.png" class="arrow-chart" />
+                      <p class="mb-0 f-desc fw-semibold d-flex align-items-center" id="priceDiff">-</p>
+                    </div>
+                    <div class="v-separator"></div>
+                    <span class="d-flex">
+                      <p class="mb-0 f-desc fw-semibold d-flex align-items-center" id="priceDiffPercentage">-</p>
+                    </span>
                   </div>
-                  <p class="f-desc mb-0 fw-semibold" id="valAllocation">-</p>
+                </div>
+                <hr class="my-5" />
+                <div class="d-flex chart-content">
+                  <div class="w-100">
+                    <div class="d-block">
+                      <p class="f-desc mb-0">Trading Volume</p>
+                      <p class="f-desc mb-0 fw-semibold" id="priceTrading">-</p>
+                    </div>
+                    <div class="d-block">
+                      <p class="f-desc mb-0">Previous Day</p>
+                      <p class="f-desc mb-0 fw-semibold" id="priceYesterday">-</p>
+                    </div>
+                    <div class="d-block">
+                      <div class="d-flex">
+                        <p class="f-desc mb-0">Allocation</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 32 32">
+                          <path onmousemove="showTooltip(evt, 'Allocation');" onmouseout="hideTooltip();"
+                            class="puchipuchi_een"
+                            d="M16,2C8.268,2,2,8.268,2,16s6.268,14,14,14s14-6.268,14-14S23.732,2,16,2z M16,26 c-0.552,0-1-0.448-1-1c0-0.552,0.448-1,1-1s1,0.448,1,1C17,25.552,16.552,26,16,26z M17,18.917V21c0,0.552-0.447,1-1,1s-1-0.448-1-1 v-3c0-0.552,0.447-1,1-1c2.206,0,4-1.794,4-4s-1.794-4-4-4s-4,1.794-4,4c0,0.552-0.447,1-1,1s-1-0.448-1-1c0-3.309,2.691-6,6-6 s6,2.691,6,6C22,15.968,19.834,18.439,17,18.917z">
+                          </path>
+                        </svg>
+                      </div>
+                      <p class="f-desc mb-0 fw-semibold" id="valAllocation">-</p>
+                    </div>
+                  </div>
+                  <div class="w-100">
+                    <div class="d-block">
+                      <p class="f-desc mb-0">High Price</p>
+                      <p class="f-desc mb-0 fw-semibold" id="priceHighest">-</p>
+                    </div>
+                    <div class="d-block">
+                      <p class="f-desc mb-0">Low Price</p>
+                      <p class="f-desc mb-0 fw-semibold" id="priceLowest">-</p>
+                    </div>
+                    <div class="d-block">
+                      <div class="d-flex align-items-center">
+                        <p class="f-desc mb-0">XRUN Swap</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 32 32">
+                          <path onmousemove="showTooltip(evt, 'XRUN Swap');" onmouseout="hideTooltip();"
+                            class="puchipuchi_een"
+                            d="M16,2C8.268,2,2,8.268,2,16s6.268,14,14,14s14-6.268,14-14S23.732,2,16,2z M16,26 c-0.552,0-1-0.448-1-1c0-0.552,0.448-1,1-1s1,0.448,1,1C17,25.552,16.552,26,16,26z M17,18.917V21c0,0.552-0.447,1-1,1s-1-0.448-1-1 v-3c0-0.552,0.447-1,1-1c2.206,0,4-1.794,4-4s-1.794-4-4-4s-4,1.794-4,4c0,0.552-0.447,1-1,1s-1-0.448-1-1c0-3.309,2.691-6,6-6 s6,2.691,6,6C22,15.968,19.834,18.439,17,18.917z">
+                          </path>
+                        </svg>
+                      </div>
+                      <p class="f-desc mb-0 fw-semibold" id="valSwap">-</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="w-100">
-                <div class="d-block">
-                  <p class="f-desc mb-0">High Price</p>
-                  <p class="f-desc mb-0 fw-semibold" id="priceHighest">-</p>
-                </div>
-                <div class="d-block">
-                  <p class="f-desc mb-0">Low Price</p>
-                  <p class="f-desc mb-0 fw-semibold" id="priceLowest">-</p>
-                </div>
-                <div class="d-block">
-                  <div class="d-flex align-items-center">
-                    <p class="f-desc mb-0">XRUN Swap</p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 32 32">
-                      <path onmousemove="showTooltip(evt, 'XRUN Swap');" onmouseout="hideTooltip();"
-                        class="puchipuchi_een"
-                        d="M16,2C8.268,2,2,8.268,2,16s6.268,14,14,14s14-6.268,14-14S23.732,2,16,2z M16,26 c-0.552,0-1-0.448-1-1c0-0.552,0.448-1,1-1s1,0.448,1,1C17,25.552,16.552,26,16,26z M17,18.917V21c0,0.552-0.447,1-1,1s-1-0.448-1-1 v-3c0-0.552,0.447-1,1-1c2.206,0,4-1.794,4-4s-1.794-4-4-4s-4,1.794-4,4c0,0.552-0.447,1-1,1s-1-0.448-1-1c0-3.309,2.691-6,6-6 s6,2.691,6,6C22,15.968,19.834,18.439,17,18.917z">
-                      </path>
-                    </svg>
-                  </div>
-                  <p class="f-desc mb-0 fw-semibold" id="valSwap">-</p>
-                </div>
+    
+              <!-- Tooltip -->
+              <div id="tooltip" display="none" style="position: absolute; display: none;"></div>
+            </div>
+          </div>
+    
+          <!-- Datatables -->
+          <!-- <div class="container custom-container"> -->
+          <div class="">
+            <div class="parent-datatables">
+              <div class="d-flex">
+                <a href="#" class="link-report active" data-target="announcement-table">News</a>
+                <a href="#" class="link-report" data-target="xrun-coin-table">XRUN Token</a>
+                <a href="#" class="link-report" data-target="disclosure-table">Mining</a>
+              </div>
+    
+              <div class="parent-table-disclosure active" id="announcement-table">
+                <table class="table-disclosure">
+                  <thead>
+                    <tr>
+                      <th>Report</th>
+                      <th>Market Listing</th>
+                      <th>Date Field</th>
+                    </tr>
+                  </thead>
+                  <tbody id="news-announcement">
+                    <!-- Data dari javascript fn_announcement -->
+                  </tbody>
+                </table>
+              </div>
+    
+              <div class="parent-table-disclosure" id="disclosure-table">
+                <table class="table-disclosure">
+                  <thead>
+                    <tr>
+                      <th>Report</th>
+                      <th>Market Listing</th>
+                      <th>Date Field</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p class="information-disclosure">Test</p>
+                      </td>
+                      <td>
+                        <a href="#" class="title-disclosure">XRUN to be listed on DigiFinex</a>
+                      </td>
+                      <td class="date-disclosure">2023-10-19 13:43:17</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+    
+              <div class="parent-table-disclosure" id="xrun-coin-table">
+                <table class="table-disclosure">
+                  <thead>
+                    <tr>
+                      <th>Report</th>
+                      <th>Market Listing</th>
+                      <th>Date Field</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p class="information-disclosure">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
+                          labore consectetur sit minus consequuntur expedita repellat reiciendis iure molestiae libero
+                          repudiandae asperiores aliquid eum vel laudantium velit cum, sed earum?</p>
+                      </td>
+                      <td>
+                        <a href="#" class="title-disclosure">XRUN to be listed on DigiFinex</a>
+                      </td>
+                      <td class="date-disclosure">2023-10-19 13:43:17</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
-
-          <div id="tooltip" display="none" style="position: absolute; display: none;"></div>
-
-          <!-- <div class="d-flex chart-detail-wrapper">
-            <div class="d-flex flex-column justify-content-center card-detail desc-card-body">
-              <h2 class="fw-bold" id="priceCurrent">-</h2>
-              <div class="d-flex mt-4">
-                <p class="mb-0 f-desc">All Day Ratio</p>
-                <div class="d-flex">
-                  <img src="./assets/images/icon_smallArrow.png" class="arrow-chart" />
-                  <p class="mb-0 f-desc fw-semibold d-flex align-items-center" id="priceDiff">-</p>
-                </div>
-                <div class="v-separator"></div>
-                <span class="d-flex">
-                  <p class="mb-0 f-desc fw-semibold d-flex align-items-center" id="priceDiffPercentage">-</p>
-                </span>
-              </div>
-            </div>
-            <div class="card-detail-table desc-card-body">
-              <div class="row d-flex">
-                <div class="col-md-4">
-                  <p class="f-desc">Previous Day</p>
-                  <p class="f-desc fw-semibold" id="priceYesterday">-</p>
-                </div>
-                <div class="col-md-4">
-                  <p class="f-desc">High Price</p>
-                  <p class="f-desc fw-semibold" id="priceHighest">-</p>
-                </div>
-                <div class="col-md-4">
-                  <p class="f-desc">Trading Volume</p>
-                  <p class="f-desc fw-semibold" id="priceTrading">-</p>
-                </div>
-              </div>
-              <hr class="my-2" />
-              <div class="row d-flex">
-                <div class="col-md-4">
-                  <p class="f-desc">Market Price &nbsp;</p>
-                  <p class="f-desc fw-semibold" id="priceMarket">-</p>
-                </div>
-                <div class="col-md-4">
-                  <p class="f-desc">Low Price</p>
-                  <p class="f-desc fw-semibold" id="priceLowest">-</p>
-                </div>
-                <div class="col-md-4">
-                  <p class="f-desc">Transaction Fee</p>
-                  <p class="f-desc fw-semibold" id="priceFee">(18,860,745temp)</p>
-                </div>
-              </div>
-            </div>
-          </div> -->
         </div>
-      </div>
-
-      <!-- Datatables -->
-      <div class="container custom-container">
-        <div class="parent-datatables">
-          <div class="d-flex">
-            <a href="#" class="link-report active" data-target="announcement-table">News</a>
-            <a href="#" class="link-report" data-target="xrun-coin-table">XRUN Token</a>
-            <a href="#" class="link-report" data-target="disclosure-table">Mining</a>
+        <div class="p-relative chart-layer-detail">
+          <div class="detail-header">
+            <p class="text-center f-subtitle">Detail Page</p>
           </div>
-
-          <div class="parent-table-disclosure active" id="announcement-table">
-            <table class="table-disclosure">
-              <thead>
-                <tr>
-                  <th>Report</th>
-                  <th>Market Listing</th>
-                  <th>Date Field</th>
-                </tr>
-              </thead>
-              <tbody id="news-announcement">
-                <!-- Data dari javascript fn_announcement -->
-              </tbody>
+          
+          <!-- Market Cap -->
+          <div class="scrollable">
+            <table class="w-100">
+              <tr class="d-flex justify-content-between">
+                <td><p class="f-desc">Market Cap</p></td>
+                <td><p class="f-desc">1,633 Billion Won</p></td>
+              </tr>
+              <tr class="d-flex justify-content-between">
+                <td><p class="f-desc">Cigar</p></td>
+                <td><p class="f-desc">Cospee 667top</p></td>
+              </tr>
+              <tr class="d-flex justify-content-between">
+                <td><p class="f-desc">Listed Stocks</p></td>
+                <td><p class="f-desc">34,869,420</p></td>
+              </tr>
+              <tr class="d-flex justify-content-between">
+                <td><p class="f-desc">Face value for sale</p></td>
+                <td><p class="f-desc">500won 1 week</p></td>
+              </tr>
             </table>
-          </div>
-
-          <div class="parent-table-disclosure" id="disclosure-table">
-            <table class="table-disclosure">
-              <thead>
-                <tr>
-                  <th>Report</th>
-                  <th>Market Listing</th>
-                  <th>Date Field</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <p class="information-disclosure">Test</p>
-                  </td>
-                  <td>
-                    <a href="#" class="title-disclosure">XRUN to be listed on DigiFinex</a>
-                  </td>
-                  <td class="date-disclosure">2023-10-19 13:43:17</td>
-                </tr>
-              </tbody>
+  
+            <!-- Foreign -->
+            <table class="w-100">
+              <tr class="d-flex justify-content-between">
+                <td><p class="f-desc">Foreign Hits & Shares(A)</p></td>
+                <td><p class="f-desc">34,869,420</p></td>
+              </tr>
+              <tr class="d-flex justify-content-between">
+                <td><p class="f-desc">Foreign Holding stock(B)</p></td>
+                <td><p class="f-desc">528,562</p></td>
+              </tr>
+              <tr class="d-flex justify-content-between">
+                <td><p class="f-desc">Foreign Incident Rate(B/A)</p></td>
+                <td><p class="f-desc">1.52%</p></td>
+              </tr>
             </table>
-          </div>
-
-          <div class="parent-table-disclosure" id="xrun-coin-table">
-            <table class="table-disclosure">
-              <thead>
-                <tr>
-                  <th>Report</th>
-                  <th>Market Listing</th>
-                  <th>Date Field</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <p class="information-disclosure">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
-                      labore consectetur sit minus consequuntur expedita repellat reiciendis iure molestiae libero
-                      repudiandae asperiores aliquid eum vel laudantium velit cum, sed earum?</p>
-                  </td>
-                  <td>
-                    <a href="#" class="title-disclosure">XRUN to be listed on DigiFinex</a>
-                  </td>
-                  <td class="date-disclosure">2023-10-19 13:43:17</td>
-                </tr>
-              </tbody>
+  
+            <!-- Invest -->
+            <table class="w-100">
+              <tr class="d-flex justify-content-between">
+                <td><p class="f-desc">Invest opinion</p></td>
+                <td><p class="f-desc">N/A</p></td>
+              </tr>
+              <tr class="d-flex justify-content-between">
+                <td><p class="f-desc">52 weeks</p></td>
+                <td><p class="f-desc">5,570</p></td>
+              </tr>
+            </table>
+            
+            <!-- PER -->
+            <table class="w-100">
+              <tr class="d-flex justify-content-between">
+                <td><p class="f-desc">PER</p></td>
+                <td><p class="f-desc">10,53 ship</p></td>
+              </tr>
+              <tr class="d-flex justify-content-between">
+                <td><p class="f-desc">Estimated PER</p></td>
+                <td><p class="f-desc">N/A</p></td>
+              </tr>
+              <tr class="d-flex justify-content-between">
+                <td><p class="f-desc">PBR</p></td>
+                <td><p class="f-desc">0.79 ship</p></td>
+              </tr>
+              <tr class="d-flex justify-content-between">
+                <td><p class="f-desc">Dividend Income</p></td>
+                <td><p class="f-desc">4.30%</p></td>
+              </tr>
+            </table>
+  
+            <!-- Same Sex -->
+            <table class="w-100">
+              <tr class="d-flex justify-content-between">
+                <td><p class="f-desc">Same-sec PER</p></td>
+                <td><p class="f-desc">21.71 ship</p></td>
+              </tr>
+              <tr class="d-flex justify-content-between">
+                <td><p class="f-desc">Equation rate</p></td>
+                <td><p class="f-desc">-1.00%</p></td>
+              </tr>
             </table>
           </div>
         </div>

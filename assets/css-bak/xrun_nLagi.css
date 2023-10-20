@@ -2220,6 +2220,30 @@ justify-content: center;
 	margin-top: 20px;
 }
 
+#cmcChart {
+	height: 250px;
+}
+
+.chart-layer-detail {
+	flex-grow: 1;
+	border: 1px grey solid;
+	border-radius: 5px;
+	max-height: 270px;
+	display: flex;
+	flex-direction: column;
+}
+
+.chart-layer-detail .f-subtitle {
+	padding: 8px 0;
+}
+
+.scrollable {
+	/* background-color: #00a65a; */
+	overflow: auto;
+	height: 100%;
+	padding: 10px 10px 0;
+}
+
 .link-report,
 .link-report:focus {
 	font-family: poppinsSemibold;
