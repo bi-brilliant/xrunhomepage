@@ -168,6 +168,10 @@ div.xrun-top-line {
 	color: #fff;
 }
 
+* {
+	/* border: 1px red solid; */
+}
+
 .modal-body {
 	max-height: 70vh;
 	overflow: auto;
@@ -2217,15 +2221,19 @@ justify-content: center;
 
 /* Disclosure */
 .parent-datatables {
-	margin-top: 20px;
+	margin-top: 5px;
 	background: white;
 	box-shadow: 0 0 8px rgba(0, 0, 0, 0.20);
 	padding: 20px;
 	border-radius: 8px;
 }
 
+.svg-tooltip {
+	margin-left: 3px;
+}
+
 #cmcChart {
-	height: 250px;
+	height: 100%;
 }
 
 .chart-layer-detail {
@@ -3432,13 +3440,19 @@ table.dataTable.table-disclosure tbody td {
 }
 
 .chart-box {
-	margin-top: 1.2em;
-	padding: 10px;
+	margin-top: 2em;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.20);
+	height: 390px;
 }
 
 .chart-detail-box {
 	margin-top: 1.3em;
-	padding: 10px 30px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 15px;
 }
 
 .justify-content-between {
@@ -3455,11 +3469,24 @@ table.dataTable.table-disclosure tbody td {
 	display: none !important;
 }
 
+.highcharts-root text {
+	font-size: 15.12px !important;
+    font-family: poppinsRegular !important;
+}
+
 .v-separator {
 	height: 12px;
 	margin: auto 6px;
     width: 2px;
     background-color: #dddddd92;
+	border-radius: 5px;
+}
+
+.v-long-separator {
+	height: 40px;
+	margin: auto 6px;
+    width: 2px;
+    background-color: #c9c9c9;
 	border-radius: 5px;
 }
 
@@ -3495,15 +3522,39 @@ hr {
 }
 
 .disclosure-main-wrapper {
-	background-color: grey;
+	background-color: #ebebeb;
+	padding-bottom: 60px;
 }
+
+.disclosure-main-wrapper > .col-lg-12 {
+	margin-bottom: -25px;
+	margin-top: 50px;
+}
+
+/* .cd-card {
+	background-color: white;
+	padding: 20px 40px;
+    border-radius: 8px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.20);
+} */
 
 .cd-card {
 	background-color: white;
-}
+	padding: 20px 15px;
+	border-radius: 8px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.20);
+	display: flex; 
+	align-items: center; 
+	width: 375px;
+  }
+
+  .cd-card > .d-block {
+	width: 48%;
+  }
 
 .chart-detail-box > .justify-content-between {
 	flex-direction: column;
+	gap: 5px;
 }
 
 
@@ -4929,6 +4980,7 @@ a.disabled {
 
 	.parent-datatables {
 		display: block;
+		margin-top: 15px;
 	}
 
 	.parent-table-disclosure {
@@ -6327,6 +6379,20 @@ section.dark-bg.section-common .section-title h2 span {
 	.btn-app-download {
 		margin-top: 65px !important;
 	}
+
+	.chart-main-wrapper {
+		flex-direction: column;
+	}
+
+	.chart-detail-box {
+		padding-top: 0px;
+		padding-left: 0px;
+		margin-top: 1em;
+	}
+
+	.cd-card {
+		width: unset;
+	}
 }
 
 @media (max-width: 485px){
@@ -6735,6 +6801,12 @@ section.dark-bg.section-common .section-title h2 span {
 	}
 }
 
+@media (max-width: 1200px) {
+	.disclosure-main-wrapper {
+		padding-top: 1px;
+	}
+}
+
 @media (min-width: 1200px) {
 	.container {
 		width: 1120px;
@@ -6822,7 +6894,6 @@ section.dark-bg.section-common .section-title h2 span {
 
 	.chart-box {
 		width: 100%;
-		max-width: 50%;
 	}
 }
 
@@ -6901,11 +6972,10 @@ section.dark-bg.section-common .section-title h2 span {
 	.chart-box {
 		width: 100%;
 		max-width: 100%;
+
 	}
 
-	.chart-main-wrapper {
-		flex-direction: column;
-	}
+
 }
 
 @media (max-width: 860px) {
@@ -7129,15 +7199,7 @@ section.dark-bg.section-common .section-title h2 span {
 	}
 
 	.chart-detail-box {
-		padding: 10px;
-	}
-
-	.price-current-desc {
-		flex-direction: column;
-	}
-
-	.price-current-desc .v-separator {
-		display: none;
+		padding: 0px;
 	}
 
 	.price-current-desc > .d-flex {
