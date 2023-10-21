@@ -3407,6 +3407,10 @@ table.dataTable.table-disclosure tbody td {
 	margin-bottom: 1.2em;
 }
 
+.flex-1 {
+	flex-grow: 1;
+}
+
 .text-light-green {
 	color: #38c33a !important;
 }
@@ -3489,6 +3493,20 @@ hr {
 	width: 100%;
 	max-width: 265px;
 }
+
+.disclosure-main-wrapper {
+	background-color: grey;
+}
+
+.cd-card {
+	background-color: white;
+}
+
+.chart-detail-box > .justify-content-between {
+	flex-direction: column;
+}
+
+
 
 #disclosure .card-detail {
 	border-radius: 5px;
