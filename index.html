@@ -611,11 +611,13 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container service-main-wrapper">
       <!-- Partners -->
       <div class="container custom-container">
         <div class="wrapper-partners-disclosure">
-          <h3 class="title-information-service">Information service website</h3>
+            <div class="section-title text-center" data-animate="fadeInUp" data-delay=".1">
+              <h2><span class="fw-bold">INFORMATION SERVICE WEBSITE</span></h2>
+            </div>
           <div class="partners-disclosure">
             <!-- Partners dapet dari javascript -->
           </div>
@@ -1942,6 +1944,8 @@
           });
         }
 
+        
+
         const newsAnnouncement = document.getElementById('news-announcement');
 
         function fn_announcement(typeNum) {
@@ -1955,9 +1959,9 @@
 
               response.forEach(response => {
                 tempAnnouncement += `
-                <tr>
+                <tr class="clickable-row" data-href='${response['link']}'>
                   <td>
-                    <a href="${response['link']}" class="title-disclosure" target="_blank" title="${response['title']}">${response['title']}</a>
+                    <p class="title-disclosure" title="${response['title']}">${response['title']}</a>
                   </td>
                   <td title="${response['writer']}" class="writer-disclosure">${response['writer']}</td>
                   <td class="date-disclosure">${response['regDate']}</td>
@@ -1967,6 +1971,11 @@
               newsAnnouncement.innerHTML = tempAnnouncement;
 
               initDatatables();
+
+              $(".clickable-row").click(function() {
+                const url = $(this).data("href");
+                window.open(url, '_blank');
+              });
             }
           })
 
