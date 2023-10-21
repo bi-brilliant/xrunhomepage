@@ -39,8 +39,7 @@ FROM
     xrun.`publicannouncement`
 WHERE
     `publicannouncement`.`type` = $boardType AND `publicannouncement`.`status` = 9401
-ORDER BY `publicannouncement`.`datetime` DESC
-LIMIT 5
+ORDER BY `publicannouncement`.`announcement` DESC
 SQL;
 
 $result = $conn->query($sql);
