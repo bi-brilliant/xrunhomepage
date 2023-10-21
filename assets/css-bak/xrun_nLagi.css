@@ -2352,6 +2352,10 @@ table.dataTable.table-disclosure tbody td {
 	text-decoration: underline;
 }
 
+.writer-disclosure {
+	min-width: 120px;
+}
+
 .title-disclosure:hover,
 .title-disclosure:focus {
 	text-decoration: underline;
@@ -4987,7 +4991,6 @@ a.disabled {
 	.parent-table-disclosure {
 		overflow: auto;
 		padding-bottom: 24px;
-		margin-top: 56px;
 	}
 
 	.chart-main-wrapper, .custom-container {
