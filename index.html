@@ -588,7 +588,7 @@
           <!-- Datatables -->
           <!-- <div class="container custom-container"> -->
           <div class="">
-            <div class="parent-datatables">
+            <!-- <div class="parent-datatables">
               <div class="d-flex">
                 <a href="#" class="link-report active" data-target="announcement-table">News</a>
                 <a href="#" class="link-report" data-target="xrun-coin-table">XRUN Token</a>
@@ -605,7 +605,6 @@
                     </tr>
                   </thead>
                   <tbody id="news-announcement">
-                    <!-- Data dari javascript fn_announcement -->
                   </tbody>
                 </table>
               </div>
@@ -657,95 +656,82 @@
                   </tbody>
                 </table>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
-        <div class="p-relative chart-layer-detail">
-          <div class="detail-header">
-            <p class="text-center f-subtitle">Detail Page</p>
+      </div>
+
+      <!-- Datatables -->
+      <div class="container custom-container">
+        <div class="parent-datatables">
+          <div class="d-flex">
+            <a href="#" class="link-report active" data-target="announcement-table">News</a>
+            <!-- <a href="#" class="link-report" data-target="xrun-coin-table">XRUN Token</a>
+            <a href="#" class="link-report" data-target="disclosure-table">Mining</a> -->
           </div>
-          
-          <!-- Market Cap -->
-          <div class="scrollable">
-            <table class="w-100">
-              <tr class="d-flex justify-content-between">
-                <td><p class="f-desc">Market Cap</p></td>
-                <td><p class="f-desc">1,633 Billion Won</p></td>
-              </tr>
-              <tr class="d-flex justify-content-between">
-                <td><p class="f-desc">Cigar</p></td>
-                <td><p class="f-desc">Cospee 667top</p></td>
-              </tr>
-              <tr class="d-flex justify-content-between">
-                <td><p class="f-desc">Listed Stocks</p></td>
-                <td><p class="f-desc">34,869,420</p></td>
-              </tr>
-              <tr class="d-flex justify-content-between">
-                <td><p class="f-desc">Face value for sale</p></td>
-                <td><p class="f-desc">500won 1 week</p></td>
-              </tr>
-            </table>
-  
-            <!-- Foreign -->
-            <table class="w-100">
-              <tr class="d-flex justify-content-between">
-                <td><p class="f-desc">Foreign Hits & Shares(A)</p></td>
-                <td><p class="f-desc">34,869,420</p></td>
-              </tr>
-              <tr class="d-flex justify-content-between">
-                <td><p class="f-desc">Foreign Holding stock(B)</p></td>
-                <td><p class="f-desc">528,562</p></td>
-              </tr>
-              <tr class="d-flex justify-content-between">
-                <td><p class="f-desc">Foreign Incident Rate(B/A)</p></td>
-                <td><p class="f-desc">1.52%</p></td>
-              </tr>
-            </table>
-  
-            <!-- Invest -->
-            <table class="w-100">
-              <tr class="d-flex justify-content-between">
-                <td><p class="f-desc">Invest opinion</p></td>
-                <td><p class="f-desc">N/A</p></td>
-              </tr>
-              <tr class="d-flex justify-content-between">
-                <td><p class="f-desc">52 weeks</p></td>
-                <td><p class="f-desc">5,570</p></td>
-              </tr>
-            </table>
-            
-            <!-- PER -->
-            <table class="w-100">
-              <tr class="d-flex justify-content-between">
-                <td><p class="f-desc">PER</p></td>
-                <td><p class="f-desc">10,53 ship</p></td>
-              </tr>
-              <tr class="d-flex justify-content-between">
-                <td><p class="f-desc">Estimated PER</p></td>
-                <td><p class="f-desc">N/A</p></td>
-              </tr>
-              <tr class="d-flex justify-content-between">
-                <td><p class="f-desc">PBR</p></td>
-                <td><p class="f-desc">0.79 ship</p></td>
-              </tr>
-              <tr class="d-flex justify-content-between">
-                <td><p class="f-desc">Dividend Income</p></td>
-                <td><p class="f-desc">4.30%</p></td>
-              </tr>
-            </table>
-  
-            <!-- Same Sex -->
-            <table class="w-100">
-              <tr class="d-flex justify-content-between">
-                <td><p class="f-desc">Same-sec PER</p></td>
-                <td><p class="f-desc">21.71 ship</p></td>
-              </tr>
-              <tr class="d-flex justify-content-between">
-                <td><p class="f-desc">Equation rate</p></td>
-                <td><p class="f-desc">-1.00%</p></td>
-              </tr>
+
+          <div class="parent-table-disclosure active" id="announcement-table">
+            <table class="table-disclosure">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Writer</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody id="news-announcement">
+                <!-- Data dari javascript fn_announcement -->
+              </tbody>
             </table>
           </div>
+
+          <!-- <div class="parent-table-disclosure" id="disclosure-table">
+            <table class="table-disclosure">
+              <thead>
+                <tr>
+                  <th>Report</th>
+                  <th>Market Listing</th>
+                  <th>Date Field</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <p class="information-disclosure">Test</p>
+                  </td>
+                  <td>
+                    <a href="#" class="title-disclosure">XRUN to be listed on DigiFinex</a>
+                  </td>
+                  <td class="date-disclosure">2023-10-19 13:43:17</td>
+                </tr>
+              </tbody>
+            </table>
+          </div> -->
+
+          <!-- <div class="parent-table-disclosure" id="xrun-coin-table">
+            <table class="table-disclosure">
+              <thead>
+                <tr>
+                  <th>Report</th>
+                  <th>Market Listing</th>
+                  <th>Date Field</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <p class="information-disclosure">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
+                      labore consectetur sit minus consequuntur expedita repellat reiciendis iure molestiae libero
+                      repudiandae asperiores aliquid eum vel laudantium velit cum, sed earum?</p>
+                  </td>
+                  <td>
+                    <a href="#" class="title-disclosure">XRUN to be listed on DigiFinex</a>
+                  </td>
+                  <td class="date-disclosure">2023-10-19 13:43:17</td>
+                </tr>
+              </tbody>
+            </table>
+          </div> -->
         </div>
       </div>
 
@@ -2082,13 +2068,9 @@
                 tempAnnouncement += `
                 <tr>
                   <td>
-                    <p class="information-disclosure">
-                      ${response['content']}
-                    </p>
-                    </td>
-                    <td>
-                      <a href="announcement/index.php?news=${response['announcement']}" class="title-disclosure">${response['title']}</a>
+                    <a href="${response['link']}" class="title-disclosure" target="_blank" title="${response['title']}">${response['title']}</a>
                   </td>
+                  <td title="${response['writer']}">${response['writer']}</td>
                   <td class="date-disclosure">${response['regDate']}</td>
                 </tr>`
               });
@@ -2104,6 +2086,7 @@
 
         fn_announcement(9301);
 
+        // Show hide table
         const linksReport = document.querySelectorAll('.link-report');
         const reportsTable = document.querySelectorAll('.parent-table-disclosure');
 

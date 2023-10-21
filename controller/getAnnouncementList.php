@@ -24,6 +24,7 @@
 // exit(json_encode($data));
 
 $conn = new mysqli("database-80-xrun.cluster-ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
+// $conn = mysqli_connect("localhost", "root", "root", "xrun", 3306);
 
 $boardType = $_GET['boardType'];
 
@@ -31,16 +32,11 @@ $sql = <<<SQL
 SELECT
     `publicannouncement`.`announcement` as `announcement`,
     `publicannouncement`.`title` as `title`,
-    `publicannouncement`.`contents` as `content`,
+    `publicannouncement`.`link` as `link`,
     `publicannouncement`.`writer` as `writer`,
-    `publicannouncement`.`datetime` as `reg_date`,
-    `Files`.`attachments` as `file`
+    `publicannouncement`.`datetime` as `reg_date`
 FROM
     xrun.`publicannouncement`
-LEFT JOIN
-    xrun.`Files`
-ON
-    `publicannouncement`.`thumbnail` = `Files`.`file`
 WHERE
     `publicannouncement`.`type` = $boardType AND `publicannouncement`.`status` = 9401
 ORDER BY `publicannouncement`.`datetime` DESC
@@ -54,10 +50,9 @@ while ($data = mysqli_fetch_assoc($result)) {
     $response[] = array(
         "announcement" => $data["announcement"],
         "title" => $data["title"],
-        "content" => $data["content"],
+        "link" => $data["link"],
         "regDate" => $data["reg_date"],
         "writer" => $data["writer"],
-        "file" => base64_encode($data["file"]),
     );
 }
 
