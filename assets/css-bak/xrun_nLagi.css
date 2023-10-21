@@ -3465,6 +3465,7 @@ table.dataTable.table-disclosure tbody td {
 	flex-direction: column;
 }
 
+.highcharts-exporting-group,
 .highcharts-credits {
 	display: none !important;
 }
