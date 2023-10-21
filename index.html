@@ -1978,7 +1978,7 @@
 
         function fn_announcement(typeNum) {
           $.ajax({
-            url: './controller/getAnnouncementList.php',
+            url: './controller/getNewsList.php',
             type: 'GET',
             data: { boardType: typeNum },
             success: function (response) {
