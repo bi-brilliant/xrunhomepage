@@ -3542,7 +3542,7 @@ hr {
 }
 
 .disclosure-main-wrapper > .col-lg-12 {
-	margin-bottom: -25px;
+	margin-bottom: -30px;
 	margin-top: 50px;
 }
 
@@ -7228,6 +7228,10 @@ section.dark-bg.section-common .section-title h2 span {
 		margin-left: -7px;
 	}
 
+	.v-long-separator {
+		margin: auto 0px;
+	}
+
 	.price-current-desc {
 		flex-direction: column;
 	}
@@ -7285,11 +7289,23 @@ section.dark-bg.section-common .section-title h2 span {
 		height: 27vh !important;
 	}
 
+	.cd-card > .d-block .f-desc {
+		font-size: .98em !important;
+	}
+
+	.cd-card {
+		padding: 20px 0px;
+	}
+
 	.text-banner-title {
 		font-size: 1.6em;
 		line-height: 1em;
 		margin-bottom: 0px;
 		text-align: center;
+	}
+
+	.cd-card > .d-block {
+		width: 100%;
 	}
 	
 	.text-banner-subtitle {
