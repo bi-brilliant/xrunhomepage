@@ -2481,7 +2481,12 @@ table.dataTable.table-disclosure tbody td {
 	background-color: #23A1C1;
 	color: #fff;
 }
+
+.custom-container {
+		margin-top: -10px;
+}
 /* End */
+
 
 /* Responsive Duplicate */
 @media (max-width: 376px) {
