@@ -598,9 +598,9 @@
             <table class="table-disclosure">
               <thead>
                 <tr>
-                  <th class="text-center fw-semibold">Report</th>
-                  <th class="text-center fw-semibold">Market Listing</th>
-                  <th class="text-center fw-semibold">Date Field</th>
+                  <th>Report</th>
+                  <th>Market Listing</th>
+                  <th>Date Field</th>
                 </tr>
               </thead>
               <tbody id="news-announcement">
@@ -1132,14 +1132,102 @@
 
         // Get CoinMarketCap
         function getCmcData() {
-          $.ajax({
-            url: "./connection.php",
-            type: "GET",
-            data: {
-              action: 'getLatestCMC'
-            },
-            success: function (jsonData) {
-              console.log(jsonData)
+          // $.ajax({
+          //   url: "./controller/cmcListener.php",
+          //   type: "GET",
+          //   success: function (res) {
+          //     console.log(res);
+          //     var jsonData = JSON.parse(res);
+
+          //     if (jsonData) {
+          //       // Get All Coin Data
+          //       $.ajax({
+          //         url: "./connection.php",
+          //         type: "GET",
+          //         data: {
+          //           action: 'getCMCData'
+          //         },
+          //         success: function (r) {
+          //           // Count Price All Data
+          //           const priceTotal = r.reduce((acc, item) => {
+          //             const price = parseFloat(item.price.replace(/,/g, ''));
+          //             return acc + price;
+          //           }, 0);
+
+          //           // Average Price
+          //           const avgPrice = priceTotal / r.length;
+
+          //           // Current Price
+          //           var priceCurrent = floatRounder(jsonData['data']['19787']['quote']['USD']['price']);
+          //           // var priceCurrent = 0.100;
+
+          //           // Count Diff
+          //           const priceDiff = priceCurrent - avgPrice;
+
+          //           // Count Diff Percentage
+          //           const priceDiffPercentage = ((priceDiff / avgPrice) * 100).toFixed(2);
+
+          //           // Element references
+          //           const $diffPricePercent = $("#priceDiffPercentage");
+          //           const $diffPrice = $("#priceDiff");
+          //           const $arrowChart = $(".arrow-chart");
+
+          //           // Check if the current price is higher than the average price
+          //           if (priceCurrent > avgPrice) {
+          //             $diffPrice.addClass("text-success");
+          //             $diffPricePercent.addClass("text-success").text("+" + priceDiffPercentage + "%");
+          //             $arrowChart.css("transform", "rotate(180deg)");
+          //             $arrowChart.css("color", "green");
+          //           } else if (priceCurrent < avgPrice) {
+          //             $diffPrice.addClass("text-danger");
+          //             $diffPricePercent.addClass("text-danger").text(priceDiffPercentage + "%");
+          //             $arrowChart.css("transform", "rotate(0deg)");
+          //             $arrowChart.css("color", "red");
+          //           }
+
+          //           $("#priceCurrent, #priceMarket").text("$" + priceCurrent);
+          //           $diffPrice.text(floatRounder(priceDiff));
+          //         },
+          //       });
+          //     }
+
+
+          //   },
+          // });
+
+          const APIKey = '9b12b985-f906-4084-a942-64fcfa00720f';
+          const slug = 'xrun';
+          const url = `https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?CMC_PRO_API_KEY=${APIKey}&slug=${slug}`;
+
+          fetch(url)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(jsonData => {
+              // Lakukan sesuatu dengan data yang Anda terima
+              console.log(jsonData);
+
+              var cmctimestamp = jsonData['status']['timestamp'];
+              var cmcid = jsonData['data']['19787']['id'];
+              var cmcname = jsonData['data']['19787']['name'];
+              var cmccmc_rank = jsonData['data']['19787']['cmc_rank'];
+              var cmcprice = jsonData['data']['19787']['quote']['USD']['price'];
+              var cmcvolume_24h = jsonData['data']['19787']['quote']['USD']['volume_24h'];
+              var cmcvolume_change_24h = jsonData['data']['19787']['quote']['USD']['volume_change_24h'];
+              var cmcpercent_change_1h = jsonData['data']['19787']['quote']['USD']['percent_change_1h'];
+              var cmcpercent_change_24h = jsonData['data']['19787']['quote']['USD']['percent_change_24h'];
+              var cmcpercent_change_7d = jsonData['data']['19787']['quote']['USD']['percent_change_7d'];
+              var cmcpercent_change_30d = jsonData['data']['19787']['quote']['USD']['percent_change_30d'];
+              var cmcpercent_change_60d = jsonData['data']['19787']['quote']['USD']['percent_change_60d'];
+              var cmcpercent_change_90d = jsonData['data']['19787']['quote']['USD']['percent_change_90d'];
+              var cmcmarket_cap_dominance = jsonData['data']['19787']['quote']['USD']['market_cap_dominance'];
+              var cmcfully_diluted_market_cap = jsonData['data']['19787']['quote']['USD']['fully_diluted_market_cap'];
+              var cmcself_reported_market_cap = jsonData['data']['19787']['self_reported_market_cap'];
+              var cmclast_updated = jsonData['data']['19787']['quote']['USD']['last_update'];
+
 
               if (jsonData) {
                 // Get All Coin Data
@@ -1160,8 +1248,7 @@
                     const avgPrice = priceTotal / r.length;
 
                     // Current Price
-                    // var priceCurrent = floatRounder(jsonData['data']['19787']['quote']['USD']['price']);
-                    var priceCurrent = floatRounder(jsonData.price);
+                    var priceCurrent = floatRounder(jsonData['data']['19787']['quote']['USD']['price']);
                     // var priceCurrent = 0.100;
 
                     // Count Diff
@@ -1190,142 +1277,44 @@
 
                     $("#priceCurrent, #priceMarket").text("$" + priceCurrent);
                     $diffPrice.text(floatRounder(priceDiff));
+
+
+                    // Save to DB
+                    $.ajax({
+                      url: "./connection.php",
+                      type: "GET",
+                      data: {
+                        action: 'saveCMCData',
+                        timestamp: cmctimestamp,
+                        id: cmcid,
+                        name: cmcname,
+                        cmc_rank: cmccmc_rank,
+                        price: cmcprice,
+                        volume_24h: cmcvolume_24h,
+                        volume_change_24h: cmcvolume_change_24h,
+                        percent_change_1h: cmcpercent_change_1h,
+                        percent_change_24h: cmcpercent_change_24h,
+                        percent_change_7d: cmcpercent_change_7d,
+                        percent_change_30d: cmcpercent_change_30d,
+                        percent_change_60d: cmcpercent_change_60d,
+                        percent_change_90d: cmcpercent_change_90d,
+                        fully_diluted_market_cap: cmcfully_diluted_market_cap,
+                        market_cap_dominance: cmcmarket_cap_dominance,
+                        self_reported_market_cap: cmcself_reported_market_cap,
+                        last_updated: cmclast_updated,
+                      },
+                      success: function (svResponse) {
+                        console.log(svResponse)
+                      }
+                    });
                   },
                 });
               }
-
-            },
-          });
-
-
-
-
-
-
-          // const APIKey = '9b12b985-f906-4084-a942-64fcfa00720f';
-          // const slug = 'xrun';
-          // const url = `https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?CMC_PRO_API_KEY=${APIKey}&slug=${slug}`;
-
-          // fetch(url)
-          //   .then(response => {
-          //     if (!response.ok) {
-          //       throw new Error('Network response was not ok');
-          //     }
-          //     return response.json();
-          //   })
-          //   .then(jsonData => {
-              
-          //     // Lakukan sesuatu dengan data yang Anda terima
-          //     console.log(jsonData);
-
-          //     var cmctimestamp = jsonData['status']['timestamp'];
-          //     var cmcid = jsonData['data']['19787']['id'];
-          //     var cmcname = jsonData['data']['19787']['name'];
-          //     var cmccmc_rank = jsonData['data']['19787']['cmc_rank'];
-          //     var cmcprice = jsonData['data']['19787']['quote']['USD']['price'];
-          //     var cmcvolume_24h = jsonData['data']['19787']['quote']['USD']['volume_24h'];
-          //     var cmcvolume_change_24h = jsonData['data']['19787']['quote']['USD']['volume_change_24h'];
-          //     var cmcpercent_change_1h = jsonData['data']['19787']['quote']['USD']['percent_change_1h'];
-          //     var cmcpercent_change_24h = jsonData['data']['19787']['quote']['USD']['percent_change_24h'];
-          //     var cmcpercent_change_7d = jsonData['data']['19787']['quote']['USD']['percent_change_7d'];
-          //     var cmcpercent_change_30d = jsonData['data']['19787']['quote']['USD']['percent_change_30d'];
-          //     var cmcpercent_change_60d = jsonData['data']['19787']['quote']['USD']['percent_change_60d'];
-          //     var cmcpercent_change_90d = jsonData['data']['19787']['quote']['USD']['percent_change_90d'];
-          //     var cmcmarket_cap_dominance = jsonData['data']['19787']['quote']['USD']['market_cap_dominance'];
-          //     var cmcfully_diluted_market_cap = jsonData['data']['19787']['quote']['USD']['fully_diluted_market_cap'];
-          //     var cmcself_reported_market_cap = jsonData['data']['19787']['self_reported_market_cap'];
-          //     var cmclast_updated = jsonData['data']['19787']['quote']['USD']['last_update'];
-
-
-              // if (jsonData) {
-              //   // Get All Coin Data
-              //   $.ajax({
-              //     url: "./connection.php",
-              //     type: "GET",
-              //     data: {
-              //       action: 'getCMCData'
-              //     },
-              //     success: function (r) {
-              //       // Count Price All Data
-              //       const priceTotal = r.reduce((acc, item) => {
-              //         const price = parseFloat(item.price.replace(/,/g, ''));
-              //         return acc + price;
-              //       }, 0);
-
-              //       // Average Price
-              //       const avgPrice = priceTotal / r.length;
-
-              //       // Current Price
-              //       // var priceCurrent = floatRounder(jsonData['data']['19787']['quote']['USD']['price']);
-              //       var priceCurrent = floatRounder(jsonData['data']['19787']['quote']['USD']['price']);
-              //       // var priceCurrent = 0.100;
-
-              //       // Count Diff
-              //       const priceDiff = priceCurrent - avgPrice;
-
-              //       // Count Diff Percentage
-              //       const priceDiffPercentage = ((priceDiff / avgPrice) * 100).toFixed(2);
-
-              //       // Element references
-              //       const $diffPricePercent = $("#priceDiffPercentage");
-              //       const $diffPrice = $("#priceDiff");
-              //       const $arrowChart = $(".arrow-chart");
-
-              //       // Check if the current price is higher than the average price
-              //       if (priceCurrent > avgPrice) {
-              //         $diffPrice.addClass("text-success");
-              //         $diffPricePercent.addClass("text-success").text("+" + priceDiffPercentage + "%");
-              //         $arrowChart.css("transform", "rotate(180deg)");
-              //         $arrowChart.css("color", "green");
-              //       } else if (priceCurrent < avgPrice) {
-              //         $diffPrice.addClass("text-danger");
-              //         $diffPricePercent.addClass("text-danger").text(priceDiffPercentage + "%");
-              //         $arrowChart.css("transform", "rotate(0deg)");
-              //         $arrowChart.css("color", "red");
-              //       }
-
-              //       $("#priceCurrent, #priceMarket").text("$" + priceCurrent);
-              //       $diffPrice.text(floatRounder(priceDiff));
-
-
-              //       // Save to DB
-              //       $.ajax({
-              //         url: "./connection.php",
-              //         type: "GET",
-              //         data: {
-              //           action: 'saveCMCData',
-              //           timestamp: cmctimestamp,
-              //           id: cmcid,
-              //           name: cmcname,
-              //           cmc_rank: cmccmc_rank,
-              //           price: cmcprice,
-              //           volume_24h: cmcvolume_24h,
-              //           volume_change_24h: cmcvolume_change_24h,
-              //           percent_change_1h: cmcpercent_change_1h,
-              //           percent_change_24h: cmcpercent_change_24h,
-              //           percent_change_7d: cmcpercent_change_7d,
-              //           percent_change_30d: cmcpercent_change_30d,
-              //           percent_change_60d: cmcpercent_change_60d,
-              //           percent_change_90d: cmcpercent_change_90d,
-              //           fully_diluted_market_cap: cmcfully_diluted_market_cap,
-              //           market_cap_dominance: cmcmarket_cap_dominance,
-              //           self_reported_market_cap: cmcself_reported_market_cap,
-              //           last_updated: cmclast_updated,
-              //         },
-              //         success: function (svResponse) {
-              //           console.log(svResponse)
-              //         }
-              //       });
-              //     },
-              //   });
-              // }
-
-
-            // })
-            // .catch(error => {
-            //   // Tangani kesalahan
-            //   console.error('There was a problem with the fetch operation:', error);
-            // });
+            })
+            .catch(error => {
+              // Tangani kesalahan
+              console.error('There was a problem with the fetch operation:', error);
+            });
 
         }
 

@@ -58,11 +58,12 @@ switch ($action) {
         $query = mysqli_query($connection, "SELECT * FROM `cmcdata`  
         ORDER BY `cmcdata`.`cmc` DESC LIMIT 1");
 
-        while($data = mysqli_fetch_assoc($query)) {
-            $result[] = $data;
-        }
+        // while($data = mysqli_fetch_assoc($query)) {
+        //     $result[] = $data;
+        // }
+        $data = mysqli_fetch_assoc($query);
 
-        echo json_encode($result);
+        echo json_encode($data);
         break;
 
         // Get Disclosure Data
