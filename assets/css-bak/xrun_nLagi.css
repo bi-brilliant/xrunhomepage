@@ -2481,10 +2481,6 @@ table.dataTable.table-disclosure tbody td {
 	background-color: #23A1C1;
 	color: #fff;
 }
-
-.custom-container {
-		margin-top: -10px;
-}
 /* End */
 
 
@@ -5003,7 +4999,7 @@ a.disabled {
 
 	.parent-datatables {
 		display: block;
-		margin-top: 15px;
+		margin-top: 5px;
 	}
 
 	.parent-table-disclosure {
