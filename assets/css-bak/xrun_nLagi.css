@@ -5000,14 +5000,10 @@ a.disabled {
 
 	.parent-table-disclosure {
 		overflow: auto;
-		padding-bottom: 24px;
+		/* padding-bottom: 24px; */
 	}
 
-	.custom-container {
-		max-width: 550px;
-		margin: auto;
-	}
-
+	.custom-container,
 	.chart-main-wrapper {
 		/* max-width: 550px; */
 		max-width: unset;
@@ -6435,6 +6431,10 @@ section.dark-bg.section-common .section-title h2 span {
 		padding-left: 30px;
 		padding-right: 30px;
 	}
+
+	.custom-container {
+		padding: 0px 0px;
+	}
 	
 
 	.navbar {
@@ -6870,7 +6870,7 @@ section.dark-bg.section-common .section-title h2 span {
 	}
 
 	.parent-table-disclosure {
-		padding-bottom: 24px;
+		/* padding-bottom: 24px; */
 		margin-top: 24px;
 	}
 }
