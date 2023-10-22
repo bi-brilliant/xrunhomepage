@@ -613,21 +613,19 @@
     </div>
     <div class="container service-main-wrapper">
       <!-- Partners -->
-      <div class="container custom-container">
-        <div class="wrapper-partners-disclosure">
-            <div class="section-title text-center" data-animate="fadeInUp" data-delay=".1">
-              <h2><span class="fw-bold">INFORMATION SERVICE WEBSITE</span></h2>
-            </div>
-          <div class="partners-disclosure">
-            <!-- Partners dapet dari javascript -->
-          </div>
+      <div class="wrapper-partners-disclosure">
+        <div class="section-title text-center" data-animate="fadeInUp" data-delay=".1">
+          <h2><span class="fw-bold">INFORMATION SERVICE WEBSITE</span></h2>
+        </div>
+        <div class="partners-disclosure">
+          <!-- Partners dapet dari javascript -->
+        </div>
 
-          <div class="wrapper-btn-partners">
+        <!-- <div class="wrapper-btn-partners">
             <button type="button" class="btn-view-more-partners" onclick="onLoadMorePartners(event);"
               id="btn-view-more">View
               More</button>
-          </div>
-        </div>
+          </div> -->
       </div>
     </div>
   </section>
@@ -1944,7 +1942,7 @@
           });
         }
 
-        
+
 
         const newsAnnouncement = document.getElementById('news-announcement');
 
@@ -1972,7 +1970,7 @@
 
               initDatatables();
 
-              $(".clickable-row").click(function() {
+              $(".clickable-row").click(function () {
                 const url = $(this).data("href");
                 window.open(url, '_blank');
               });
@@ -2189,7 +2187,7 @@
           defaultShowPartners = defaultShowPartners + loadPartners;
         }
 
-        for (let index = 0; index < defaultShowPartners; index++) {
+        for (let index = 0; index < partners.length; index++) {
           tempPartnersDisclosure += `<a href="${partners[index].link}" target = "_blank" class="partners-item">
           <div class="partners-part-top">
             <p class="partners-name" style="opacity: 0;">${partners[index].name}</p>
@@ -2200,7 +2198,7 @@
               </svg>
             </div>
           </div>
-          <div style="text-align: center;">
+          <div class="wrapper-image-partners">
             <img src="${partners[index].image}" alt="${partners[index].name}" class="image-partners">
           </div>
         </a>`
@@ -2212,12 +2210,12 @@
       showPartners();
 
 
-      const onLoadMorePartners = ({ target }) => {
-        const morePartners = partners.length - defaultShowPartners;
-        showPartners(morePartners);
+      // const onLoadMorePartners = ({ target }) => {
+      //   const morePartners = partners.length - defaultShowPartners;
+      //   showPartners(morePartners);
 
-        target.parentElement.remove();
-      }
+      //   target.parentElement.remove();
+      // }
 
 
     </script>
