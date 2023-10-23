@@ -23,8 +23,8 @@
 
 // exit(json_encode($data));
 
-// $conn = new mysqli("database-80-xrun.cluster-ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
-$conn = mysqli_connect("localhost", "root", "root", "xrun", 3306);
+$conn = new mysqli("database-80-xrun.cluster-ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
+// $conn = mysqli_connect("localhost", "root", "root", "xrun", 3306);
 
 $boardType = $_GET['boardType'];
 
