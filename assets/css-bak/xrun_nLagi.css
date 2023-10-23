@@ -2285,7 +2285,7 @@ justify-content: center;
 	padding: 10px 10px 0;
 }
 
-.link-report,
+/* .link-report,
 .link-report:focus {
 	font-family: poppinsMedium;
 	font-size: 18px;
@@ -2293,20 +2293,34 @@ justify-content: center;
 	border-right: 1px solid #868686;
 	margin-right: 8px;
 	padding-right: 8px;
+} */
+
+.link-report,
+.link-report:focus {
+    font-family: poppinsMedium;
+    font-size: 18px;
+    color: #a9a9a9;
+    margin-right: 8px;
+    padding-right: 8px;
+    background-color: #eeeeee;
+    padding: 4px 10px;
+    border-radius: 5px;
 }
 
 
-.link-report:first-child {
+
+
+/* .link-report:first-child {
 	padding-left: 0;
-}
+} */
 
 .link-report:last-child {
 	border: none;
 }
 
 .link-report.active {
-	color: #000;
-	font-weight: 700;
+	color: #fff;
+    background-color: #4f4f4f;
 }
 
 .link-report:hover {
@@ -2314,7 +2328,7 @@ justify-content: center;
 }
 
 .link-report.active:hover {
-	color: #000;
+	color: #ffffff;
 }
 
 .parent-table-disclosure {
@@ -2344,7 +2358,8 @@ justify-content: center;
 	border-bottom: 1px solid #939393 !important;
 	color: #000;
 	font-size: 15px;
-	padding: 0 0 14px !important;
+	padding: 14px 0 !important;
+    background-color: #eeeeee;
 }
 
 .table-disclosure td,
@@ -6738,7 +6753,7 @@ section.dark-bg.section-common .section-title h2 span {
 	}
 
 	section#introduction.section-common .section-title {
-		margin-bottom: 35px;
+		margin-bottom: 40px;
 	}
 
 	#dapp {
