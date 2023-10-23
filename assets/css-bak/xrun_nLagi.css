@@ -2260,8 +2260,10 @@ justify-content: center;
 .link-report:focus {
 	font-family: poppinsMedium;
 	font-size: 18px;
-	color: #000;
+	color: #909090;
 	border-right: 1px solid #868686;
+	margin-right: 8px;
+	padding-right: 8px;
 }
 
 
@@ -2275,6 +2277,7 @@ justify-content: center;
 
 .link-report.active {
 	color: #000;
+	font-weight: 700;
 }
 
 .link-report:hover {
@@ -2304,7 +2307,9 @@ justify-content: center;
 	padding-left: 10px;
 }
 
-.table-disclosure th {
+.table-disclosure th,
+.table-token th,
+.table-mining th {
 	font-family: poppinsRegular;
 	font-weight: 800 !important;
 	border-bottom: 1px solid #939393 !important;
@@ -2313,11 +2318,19 @@ justify-content: center;
 	padding: 0 0 14px !important;
 }
 
-.table-disclosure td {
+.table-disclosure td,
+.table-token td,
+.table-mining td {
 	border-bottom: 1px solid #939393 !important;
 	font-family: poppinsRegular;
 }
 
+.table-token td a,
+.table-token td p,
+.table-token td,
+.table-mining td a,
+.table-mining td p,
+.table-mining td,
 .table-disclosure td a,
 .table-disclosure td p,
 .table-disclosure td,
@@ -2327,6 +2340,8 @@ justify-content: center;
 	font-size: 16px;
 }
 
+table.dataTable.table-token tbody td,
+table.dataTable.table-mining tbody td,
 table.dataTable.table-disclosure tbody td {
 	padding: 16px 0;
 }

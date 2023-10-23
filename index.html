@@ -590,10 +590,11 @@
         <div class="parent-datatables">
           <div class="d-flex">
             <a href="#" class="link-report active" data-target="announcement-table">News</a>
-            <!-- <a href="#" class="link-report" data-target="xrun-coin-table">XRUN Token</a>
-          <a href="#" class="link-report" data-target="disclosure-table">Mining</a> -->
+            <a href="#" class="link-report" data-target="xruntoken-table">XRUN Token</a>
+            <a href="#" class="link-report" data-target="xrunmining-table">Mining</a>
           </div>
 
+          <!-- News Table -->
           <div class="parent-table-disclosure active" id="announcement-table">
             <table class="table-disclosure">
               <thead>
@@ -605,6 +606,38 @@
               </thead>
               <tbody id="news-announcement">
                 <!-- Data dari javascript fn_announcement -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Token Table -->
+          <div class="parent-table-disclosure active" id="xruntoken-table">
+            <table class="table-token">
+              <thead>
+                <tr>
+                  <th class="text-center fw-semibold">Report</th>
+                  <th class="text-center fw-semibold">Market Listing</th>
+                  <th class="text-center fw-semibold">Date Field</th>
+                </tr>
+              </thead>
+              <tbody id="xrun-token">
+                <!-- Data dari javascript fn_xruntoken -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Mining Table -->
+          <div class="parent-table-disclosure active" id="xrunmining-table">
+            <table class="table-mining">
+              <thead>
+                <tr>
+                  <th class="text-center fw-semibold">Report</th>
+                  <th class="text-center fw-semibold">Market Listing</th>
+                  <th class="text-center fw-semibold">Date Field</th>
+                </tr>
+              </thead>
+              <tbody id="xrun-mining">
+                <!-- Data dari javascript fn_xrunmining -->
               </tbody>
             </table>
           </div>
@@ -1950,10 +1983,50 @@
           });
         }
 
+        function initTokenDatatables() {
+          $('.table-token').DataTable({
+            "dom": 'rtip',
+            ordering: false,
+            pageLength: 10,
+          });
+        }
+
+        function initMiningDatatables() {
+          $('.table-mining').DataTable({
+            "dom": 'rtip',
+            ordering: false,
+            pageLength: 10,
+          });
+        }
+
+        // Sembunyikan semua tabel kecuali yang pertama saat halaman dimuat
+        $(".parent-table-disclosure:not(:first)").hide();
+
+        // Tambahkan event click pada setiap tautan
+        $(".link-report").click(function (event) {
+            event.preventDefault();
+
+            // Hapus kelas active-link dari semua tautan
+            $(".link-report").removeClass("active");
+
+            // Tambahkan kelas active-link ke tautan yang diklik
+            $(this).addClass("active");
+
+            // Sembunyikan semua tabel
+            $(".parent-table-disclosure").hide();
+
+            // Tampilkan tabel yang sesuai dengan tautan yang diklik
+            var target = $(this).data("target");
+            $("#" + target).show();
+        });
+
 
 
         const newsAnnouncement = document.getElementById('news-announcement');
+        const tbXrunToken = document.getElementById('xrun-token');
+        const tbXrunMining = document.getElementById('xrun-mining');
 
+        // Table XRUN News
         function fn_announcement(typeNum) {
           $.ajax({
             url: './controller/getNewsList.php',
@@ -1984,11 +2057,78 @@
               });
             }
           })
+        }
 
 
+        // Table XRUN Mining
+        function fn_xrunmining(typeNum) {
+          $.ajax({
+            url: './controller/getMiningList.php',
+            type: 'GET',
+            data: { boardType: typeNum },
+            success: function (response) {
+              response = $.parseJSON(response);
+              let tempMining = '';
+
+              response.forEach(response => {
+                tempMining += `
+                <tr class="clickable-row" data-href='${response['link']}'>
+                  <td>
+                    <p class="title-disclosure" title="${response['title']}">${response['title']}</a>
+                  </td>
+                  <td title="${response['writer']}" class="writer-disclosure">${response['writer']}</td>
+                  <td class="date-disclosure">${response['regDate']}</td>
+                </tr>`
+              });
+
+              tbXrunMining.innerHTML = tempMining;
+
+              initMiningDatatables();
+
+              $(".clickable-row").click(function () {
+                const url = $(this).data("href");
+                window.open(url, '_blank');
+              });
+            }
+          })
+        }
+
+        // Table XRUN Token
+        function fn_xruntoken(typeNum) {
+          $.ajax({
+            url: './controller/getTokenList.php',
+            type: 'GET',
+            data: { boardType: typeNum },
+            success: function (response) {
+              response = $.parseJSON(response);
+              let tempToken = '';
+
+              response.forEach(response => {
+                tempToken += `
+                <tr class="clickable-row" data-href='${response['link']}'>
+                  <td>
+                    <p class="title-disclosure" title="${response['title']}">${response['title']}</a>
+                  </td>
+                  <td title="${response['writer']}" class="writer-disclosure">${response['writer']}</td>
+                  <td class="date-disclosure">${response['regDate']}</td>
+                </tr>`
+              });
+
+              tbXrunToken.innerHTML = tempToken;
+
+              initTokenDatatables();
+
+              $(".clickable-row").click(function () {
+                const url = $(this).data("href");
+                window.open(url, '_blank');
+              });
+            }
+          })
         }
 
         fn_announcement(9301);
+        fn_xrunmining(9301);
+        fn_xruntoken(9301);
 
         // Show hide table
         const linksReport = document.querySelectorAll('.link-report');
