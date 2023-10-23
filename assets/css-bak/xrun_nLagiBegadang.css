@@ -430,11 +430,11 @@ section.section-common.section-dark {
 }
 
 section.section-common .section-title {
-	margin-bottom: 50px;
+	margin-bottom: 45px;
 }
 
 section#introduction.section-common .section-title {
-	margin-bottom: 40px;
+	margin-bottom: 45px;
 }
 
 section#summary.section-common .section-title {
@@ -460,18 +460,6 @@ section.section-common .section-title::after {
 	width: 25px;
 	height: 2px;
 	background: #1d1d1d;
-	position: relative;
-	display: block;
-	left: 50%;
-	top: 20px;
-	transform: translateX(-50%);
-}
-
-#roadmap.section-common .section-title::after {
-	content: '';
-	width: 25px;
-	height: 2px;
-	background: #ffffff;
 	position: relative;
 	display: block;
 	left: 50%;
@@ -733,11 +721,6 @@ video[poster] {
 }
 
 #dapp {
-	padding-top: 55px;
-}
-
-.wallet-title {
-	margin-bottom: 40px !important;
 }
 
 #dapp .dapp-phone .bx_phone {
@@ -1067,10 +1050,6 @@ div.economy-text-box h4 {
 
 div.economy-text-box p {
 	color: #333;
-}
-
-#economy {
-	padding-top: 55px;
 }
 
 #economy .economy-img-box {
@@ -1443,14 +1422,6 @@ div.economy-text-box p {
 	100% {
 		transform: translateY(0px);
 	}
-}
-
-#contact {
-	padding-top: 55px;
-}
-
-.contact-title {
-	margin-bottom: 45px !important;
 }
 
 #contact form * {
@@ -2430,7 +2401,7 @@ table.dataTable.table-disclosure tbody td {
 
 /* Partners disclosure */
 .wrapper-partners-disclosure {
-	margin-top: 105px;
+	margin-top: 100px;
 }
 
 .title-information-service {
@@ -2824,7 +2795,7 @@ table.dataTable.table-disclosure tbody td {
 	}
 
 	.wallet-content {
-		margin-top: 20px;
+		margin-top: 64px;
 	}
 
 	.dapp-information-wrap {
@@ -3362,12 +3333,12 @@ table.dataTable.table-disclosure tbody td {
 
 
 #introduction.section-common {
-	padding-top: 55px;
+	padding-top: 70px;
 	padding-bottom: 0px !important;
 }
 
 #introduction > div.container {
-	padding-bottom: 5px;
+	padding-bottom: 30px;
 }
 
 #introduction .bx_type1 {
@@ -3483,10 +3454,6 @@ table.dataTable.table-disclosure tbody td {
 	margin-bottom: 1.2em;
 }
 
-#disclosure {
-	padding-bottom: 65px;
-}
-
 .flex-1 {
 	flex-grow: 1;
 }
@@ -3596,7 +3563,7 @@ hr {
 
 .disclosure-main-wrapper {
 	background-color: #ebebeb;
-	padding-bottom: 65px;
+	padding-bottom: 60px;
 	margin-top: -30px;
 }
 
@@ -3606,7 +3573,7 @@ hr {
 
 .disclosure-main-wrapper > .col-lg-12 {
 	margin-bottom: -30px;
-	margin-top: 60px;
+	margin-top: 50px;
 }
 
 /* .cd-card {
@@ -3818,12 +3785,12 @@ hr {
 	background-attachment: fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
-	padding-bottom: 15px;
+	/* pad */
 }
 
 .roadmapWrap .metaverse {
 	color: #fff;
-	padding-top: 10px;
+	padding-top: 20px;
 	/*border: solid 3px #f00;*/
 	position: relative;
 	height: 100%;
@@ -5784,12 +5751,6 @@ section.dark-bg.section-common .section-title h2 span {
 
 #notice {
 	color: #aaa;
-	padding-top: 55px;
-	padding-bottom: 55px;
-}
-
-.notice-title {
-	margin-bottom: 35px !important;
 }
 
 #notice a {
@@ -6416,10 +6377,6 @@ section.dark-bg.section-common .section-title h2 span {
 		height: auto;
 	}
 
-	#dapp {
-		padding-bottom: 55px;
-	}
-
 	.download-wrapper {
 		bottom: -30px;
 	}
@@ -6448,7 +6405,7 @@ section.dark-bg.section-common .section-title h2 span {
 	}
 
 	.btn-app-download {
-		margin-top: 60px !important;
+		margin-top: 100px !important;
 	}
 
 	/* .dapp-information-wrap .dapp-information {
@@ -6650,7 +6607,7 @@ section.dark-bg.section-common .section-title h2 span {
 @media (max-width: 415px) {
 	.en #introduction .bx_type_xrun p {
 		/* margin-bottom: 24px; */
-		font-size: 15px !important;
+		font-size: 15px;
 	}
 }
 
@@ -6701,9 +6658,13 @@ section.dark-bg.section-common .section-title h2 span {
 	}
 
 	#dapp .dapp-phone .bx_phone {
-		scale: 1;
-		margin-top: 5px !important;
+		margin-top: 0;
 		margin-bottom: -40px;
+	}
+
+	#dapp .dapp-phone .bx_phone {
+		scale: 1;
+		margin-top: 45px;
 	}
 
 	#economy .economy-img-box img {
@@ -6713,49 +6674,20 @@ section.dark-bg.section-common .section-title h2 span {
 	.clubx-text-more {
 		font-size: 1em !important;
 	}
-
-	.btn-app-download {
-		margin-top: 55px !important;
-	}
 }
 
 @media (max-width: 425px) {
 	div.roadmap-content-wrap .roadmap-content {
-		padding-left: 25px;
-		padding-right: 25px !important;
+		padding-left: 40px;
+		padding-right: 40px !important;
 	}
 
-	/* .card-intro-wrapper .full-card {
+	.card-intro-wrapper .full-card {
 		margin: 10px 25px;
-	} */
-
-	#introduction.section-common {
-		padding-top: 60px;
 	}
 
 	#contact .container {
 		padding: 0px 31px;
-	}
-
-	section#introduction.section-common .section-title {
-		margin-bottom: 35px;
-	}
-
-	#dapp {
-		padding-top: 60px;
-	}
-
-	.req-form-wrapper {
-		padding-left: 0px;
-		padding-right: 0px;
-	}
-
-	.service-main-wrapper {
-		margin-top: -45px;
-	}
-
-	#contact {
-		padding-top: 60px;
 	}
 
 	/* .bg-introduction {
@@ -6769,7 +6701,6 @@ section.dark-bg.section-common .section-title h2 span {
 
 	#introduction .bx_type_xrun > a {
 		padding: 0.2em 3em;
-		margin-top: 25px;
 	}
 
 	#roadmap .roadmap-content .bx_type {
@@ -6965,13 +6896,6 @@ section.dark-bg.section-common .section-title h2 span {
 	.disclosure-main-wrapper {
 		padding-top: 1px;
 	}
-
-	#economy .economy-text-wrapper {
-		position: relative;
-		width: 100%;
-		max-width: 550px;
-		margin-top: -50px;
-	}
 }
 
 @media (min-width: 1200px) {
@@ -7079,10 +7003,6 @@ section.dark-bg.section-common .section-title h2 span {
 		top: 50%;
 		left: 70%;
 		transform: translate(-50%, -50%);
-	}
-
-	.card-intro-wrapper {
-		row-gap: 0px;
 	}
 
 	.poster-containt-wrapper {
@@ -7361,62 +7281,6 @@ section.dark-bg.section-common .section-title h2 span {
 	.main-banner-video,
 	.poster-wrapper {
 		height: 27vh !important;
-	}
-
-	#dapp .dapp-phone .bx_phone {
-		margin-top: 50px;
-	}
-
-	.dapp-information-wrap .dapp-information {
-		margin: -5px !important;
-	}
-
-	.economy-text-wrapper {
-		padding: 0 0px;
-	}
-
-	#dapp {
-		padding-bottom: 50px;
-	}
-
-	#economy {
-		padding-top: 60px;
-		padding-bottom: 48px;
-	}
-
-	#roadmap {
-		padding-top: 50px;
-	}
-
-	#notice {
-		padding-top: 60px;
-	}
-
-	#introduction .bx_type_xrun p {
-		font-family: poppinsSemibold !important;
-	}
-
-	.contact-title {
-		margin-bottom: 40px !important;
-	}
-
-	.roadmapWrap {
-		padding-bottom: 25px;
-	}
-
-	.custom-container, .chart-main-wrapper {
-		max-width: unset;
-		margin: auto;
-		flex-direction: column;
-		padding: 0px 25px;
-	}
-
-	.partners-disclosure {
-		padding: 0 10px;
-	}
-
-	.bg-introduction {
-		padding: 65px 0 !important;
 	}
 
 	.chart-content .w-100:nth-child(2) .d-block > .d-flex,
