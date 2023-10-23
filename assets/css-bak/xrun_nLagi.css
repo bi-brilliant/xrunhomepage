@@ -2257,6 +2257,29 @@ justify-content: center;
 	border-radius: 8px;
 }
 
+.report-detail-wrapper {
+	border: 1px solid black;
+	border-radius: 5px;
+	margin: 30px 0px;
+	padding: 15px;
+	display: none;
+}	
+
+.report-title-subtitle {
+	/* gap: 10px; */
+}
+
+.report-title-subtitle p:nth-child(2)::before {
+	display: inline-block;
+    width: 4px;
+    height: 4px;
+    margin: 10px 10px 3px;
+    border-radius: 10px;
+    background-color: #4c4c5a;
+    vertical-align: top;
+    content: "";
+}
+
 .svg-tooltip {
 	margin-left: 3px;
 }

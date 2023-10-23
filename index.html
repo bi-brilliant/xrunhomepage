@@ -601,6 +601,24 @@
             <a href="#" class="f-desc link-report" data-target="xrunmining-table">Mining</a>
           </div>
 
+          <!-- Report Detail Card -->
+          <div class="p-relative report-detail-wrapper">
+            <!-- Title Detail -->
+            <div class="p-relative">
+              <p class="f-subtitle mb-0">Coorongglobal (Ltd) Determination of debt to others</p>
+              <div class="d-flex report-title-subtitle">
+                <p class="f-desc">KOSCOM</p>
+                <p class="f-desc">2023.10.05</p>
+              </div>
+            </div>
+
+            <!-- Content Detail -->
+            <div class="p-relative">
+              <p>Determination of debt guarantee for others</p>
+            </div>
+          </div>
+
+          
           <!-- News Table -->
           <div class="parent-table-disclosure active" id="announcement-table">
             <table class="table-disclosure">
@@ -2008,6 +2026,7 @@
 
         // Sembunyikan semua tabel kecuali yang pertama saat halaman dimuat
         $(".parent-table-disclosure:not(:first)").hide();
+        
 
         // Tambahkan event click pada setiap tautan
         $(".link-report").click(function (event) {
@@ -2025,6 +2044,12 @@
             // Tampilkan tabel yang sesuai dengan tautan yang diklik
             var target = $(this).data("target");
             $("#" + target).show();
+
+            if(target === "xruntoken-table" || target === "xrunmining-table"){
+              $(".report-detail-wrapper").show();
+            } else {
+              $(".report-detail-wrapper").hide();
+            }
         });
 
 
