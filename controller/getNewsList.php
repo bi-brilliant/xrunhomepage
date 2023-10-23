@@ -23,8 +23,8 @@
 
 // exit(json_encode($data));
 
-$conn = new mysqli("database-80-xrun.cluster-ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
-// $conn = mysqli_connect("localhost", "root", "root", "xrun", 3306);
+// $conn = new mysqli("database-80-xrun.cluster-ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
+$conn = mysqli_connect("localhost", "root", "root", "xrun", 3306);
 
 $boardType = $_GET['boardType'];
 
@@ -32,7 +32,7 @@ $sql = <<<SQL
 SELECT
     `publicannouncement`.`announcement` as `announcement`,
     `publicannouncement`.`title` as `title`,
-    `publicannouncement`.`link` as `link`,
+    `publicannouncement`.`contents` as `contents`,
     `publicannouncement`.`writer` as `writer`,
     `publicannouncement`.`datetime` as `reg_date`
 FROM
@@ -49,7 +49,7 @@ while ($data = mysqli_fetch_assoc($result)) {
     $response[] = array(
         "announcement" => $data["announcement"],
         "title" => $data["title"],
-        "link" => $data["link"],
+        "contents" => $data["contents"],
         "regDate" => $data["reg_date"],
         "writer" => $data["writer"],
     );

@@ -607,7 +607,7 @@
               <thead>
                 <tr>
                   <th class="text-center fw-semibold">Report</th>
-                  <th class="text-center fw-semibold">Market Listing</th>
+                  <th class="text-center fw-semibold">Writer</th>
                   <th class="text-center fw-semibold">Date Field</th>
                 </tr>
               </thead>
@@ -2011,20 +2011,20 @@
 
         // Tambahkan event click pada setiap tautan
         $(".link-report").click(function (event) {
-            event.preventDefault();
+          event.preventDefault();
 
-            // Hapus kelas active-link dari semua tautan
-            $(".link-report").removeClass("active");
+          // Hapus kelas active-link dari semua tautan
+          $(".link-report").removeClass("active");
 
-            // Tambahkan kelas active-link ke tautan yang diklik
-            $(this).addClass("active");
+          // Tambahkan kelas active-link ke tautan yang diklik
+          $(this).addClass("active");
 
-            // Sembunyikan semua tabel
-            $(".parent-table-disclosure").hide();
+          // Sembunyikan semua tabel
+          $(".parent-table-disclosure").hide();
 
-            // Tampilkan tabel yang sesuai dengan tautan yang diklik
-            var target = $(this).data("target");
-            $("#" + target).show();
+          // Tampilkan tabel yang sesuai dengan tautan yang diklik
+          var target = $(this).data("target");
+          $("#" + target).show();
         });
 
 
@@ -2045,7 +2045,7 @@
 
               response.forEach(response => {
                 tempAnnouncement += `
-                <tr class="clickable-row" data-href='${response['link']}'>
+                <tr class="clickable-row-news" data-href='announcement/?news=${response['announcement']}'>
                   <td>
                     <p class="title-disclosure" title="${response['title']}">${response['title']}</a>
                   </td>
@@ -2058,7 +2058,7 @@
 
               initDatatables();
 
-              $(".clickable-row").click(function () {
+              $(".clickable-row-news").click(function () {
                 const url = $(this).data("href");
                 window.open(url, '_blank');
               });
@@ -2079,7 +2079,7 @@
 
               response.forEach(response => {
                 tempMining += `
-                <tr class="clickable-row" data-href='${response['link']}'>
+                <tr class="clickable-row-mining" data-href='${response['link']}'>
                   <td>
                     <p class="title-disclosure" title="${response['title']}">${response['title']}</a>
                   </td>
@@ -2092,7 +2092,7 @@
 
               initMiningDatatables();
 
-              $(".clickable-row").click(function () {
+              $(".clickable-row-mining").click(function () {
                 const url = $(this).data("href");
                 window.open(url, '_blank');
               });
@@ -2112,7 +2112,7 @@
 
               response.forEach(response => {
                 tempToken += `
-                <tr class="clickable-row" data-href='${response['link']}'>
+                <tr class="clickable-row-xrun-token" data-href='${response['link']}'>
                   <td>
                     <p class="title-disclosure" title="${response['title']}">${response['title']}</a>
                   </td>
@@ -2125,7 +2125,7 @@
 
               initTokenDatatables();
 
-              $(".clickable-row").click(function () {
+              $(".clickable-row-xrun-token").click(function () {
                 const url = $(this).data("href");
                 window.open(url, '_blank');
               });

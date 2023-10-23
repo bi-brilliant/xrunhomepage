@@ -2323,6 +2323,10 @@ justify-content: center;
 	margin-top: 28px;
 }
 
+.parent-table-disclosure table {
+	border: none !important;
+}
+
 .parent-table-disclosure.active {
 	display: block;
 }
@@ -2373,6 +2377,7 @@ table.dataTable.table-token tbody td,
 table.dataTable.table-mining tbody td,
 table.dataTable.table-disclosure tbody td {
 	padding: 16px 0;
+	text-align: center;
 }
 
 .dataTables_info {
@@ -2396,7 +2401,7 @@ table.dataTable.table-disclosure tbody td {
 	/* text-decoration: underline; */
 }
 
-.clickable-row:hover {
+.parent-table-disclosure tbody tr:hover {
 	background-color: #a0dbff4f;
 	transition: .3s;
 }
