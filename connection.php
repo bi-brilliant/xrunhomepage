@@ -119,7 +119,7 @@ switch ($action) {
 
 
     case "getXrunToken":
-        $query = mysqli_query($xrunConn, "SELECT `xruntokens`.`xruntoken` as `xruntoken`, `xruntokens`.`title` as `title`, `xruntokens`.`market_listing` as `market_listing`, `xruntokens`.`datetime` as `regDate`, `xruntokens`.`file` as `file` FROM xrun.`xruntokens` LEFT JOIN xrun.`Files` ON
+        $query = mysqli_query($xrunConn, "SELECT `xruntokens`.`xruntoken` as `xruntoken`, `xruntokens`.`title` as `title`, `xruntokens`.`market_listing` as `market_listing`, `xruntokens`.`datetime` as `regDate`, `xruntokens`.`file` as `file` FROM `xrun`.`xruntokens` LEFT JOIN `xrun`.`Files` ON
     `xruntokens`.`file` = `Files`.`file` WHERE `xruntokens`.`type` = 9301 AND `xruntokens`.`status` = 9401 ORDER BY `xruntokens`.`xruntoken` DESC");
 
         while ($data = mysqli_fetch_assoc($query)) {
@@ -139,7 +139,7 @@ switch ($action) {
                     $files = explode(',', $data['file']);
 
                     foreach($files as $file) {
-                        $queryImage = mysqli_query($xrunConn, "SELECT `attachments` FROM `files` WHERE `files`.`file` = $file");
+                        $queryImage = mysqli_query($xrunConn, "SELECT `attachments` FROM `xrun`.`Files` WHERE `Files`.`file` = $file");
                         $image = mysqli_fetch_assoc($queryImage);
                         $convertBase64 = base64_encode($image['attachments']);
                         $images[] = $convertBase64;
@@ -175,7 +175,7 @@ switch ($action) {
                     $files = explode(',', $data['file']);
 
                     foreach($files as $file) {
-                        $queryImage = mysqli_query($xrunConn, "SELECT `attachments` FROM `files` WHERE `files`.`file` = $file");
+                        $queryImage = mysqli_query($xrunConn, "SELECT `attachments` FROM `xrun`.`Files` WHERE `Files`.`file` = $file");
                         $image = mysqli_fetch_assoc($queryImage);
                         $convertBase64 = base64_encode($image['attachments']);
                         $images[] = $convertBase64;
