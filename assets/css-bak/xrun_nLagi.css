@@ -2577,6 +2577,13 @@ table.dataTable.table-disclosure tbody td {
 		padding-top: 350px;
 	}
 
+	.en #roadmap .roadmap-content.text-right ul:nth-child(odd) li {
+		justify-content: flex-end;
+	}
+
+	.en #roadmap .roadmap-content.text-left ul:nth-child(odd) li {
+		justify-content: flex-start;
+	}
 }
 
 @media (min-width: 1100px) {
@@ -2683,9 +2690,9 @@ table.dataTable.table-disclosure tbody td {
 	}
 }
 
-.ml-5 {
+/* .ml-5 {
 	margin-left: -10px !important;
-}
+} */
 
 @media (max-width: 1199px) {
 	.download-wrapper {
@@ -5214,6 +5221,8 @@ a.disabled {
 
 .en #roadmap li {
 	font-size: 12px;
+	display: flex;
+	gap: 5px;
 }
 
 @media (min-width: 768px) {
