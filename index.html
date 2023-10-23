@@ -671,9 +671,7 @@
                       Established XRUN Singapore Corporation
                     </p>
                     <ul>
-                      <li class="f-desc">
-                        Established XRUN Singapore Corporation
-                      </li>
+                      <li class="f-desc">Established XRUN Singapore Corporation</li>
                       <li class="f-desc">Launched XRUN Wallet (Mining)</li>
                     </ul>
                   </div>
@@ -826,8 +824,7 @@
                         Started the carbon-neutral ecorun business
                       </li>
                       <li class="f-desc">
-                        Started development of next-generation <br />
-                        ecorun wallet advancement
+                        Started development of next-generation ecorun wallet advancement
                       </li>
                     </ul>
                   </div>
@@ -1214,7 +1211,7 @@
           //     return response.json();
           //   })
           //   .then(jsonData => {
-              
+
           //     // Lakukan sesuatu dengan data yang Anda terima
           //     console.log(jsonData);
 
@@ -1237,95 +1234,95 @@
           //     var cmclast_updated = jsonData['data']['19787']['quote']['USD']['last_update'];
 
 
-              // if (jsonData) {
-              //   // Get All Coin Data
-              //   $.ajax({
-              //     url: "./connection.php",
-              //     type: "GET",
-              //     data: {
-              //       action: 'getCMCData'
-              //     },
-              //     success: function (r) {
-              //       // Count Price All Data
-              //       const priceTotal = r.reduce((acc, item) => {
-              //         const price = parseFloat(item.price.replace(/,/g, ''));
-              //         return acc + price;
-              //       }, 0);
+          // if (jsonData) {
+          //   // Get All Coin Data
+          //   $.ajax({
+          //     url: "./connection.php",
+          //     type: "GET",
+          //     data: {
+          //       action: 'getCMCData'
+          //     },
+          //     success: function (r) {
+          //       // Count Price All Data
+          //       const priceTotal = r.reduce((acc, item) => {
+          //         const price = parseFloat(item.price.replace(/,/g, ''));
+          //         return acc + price;
+          //       }, 0);
 
-              //       // Average Price
-              //       const avgPrice = priceTotal / r.length;
+          //       // Average Price
+          //       const avgPrice = priceTotal / r.length;
 
-              //       // Current Price
-              //       // var priceCurrent = floatRounder(jsonData['data']['19787']['quote']['USD']['price']);
-              //       var priceCurrent = floatRounder(jsonData['data']['19787']['quote']['USD']['price']);
-              //       // var priceCurrent = 0.100;
+          //       // Current Price
+          //       // var priceCurrent = floatRounder(jsonData['data']['19787']['quote']['USD']['price']);
+          //       var priceCurrent = floatRounder(jsonData['data']['19787']['quote']['USD']['price']);
+          //       // var priceCurrent = 0.100;
 
-              //       // Count Diff
-              //       const priceDiff = priceCurrent - avgPrice;
+          //       // Count Diff
+          //       const priceDiff = priceCurrent - avgPrice;
 
-              //       // Count Diff Percentage
-              //       const priceDiffPercentage = ((priceDiff / avgPrice) * 100).toFixed(2);
+          //       // Count Diff Percentage
+          //       const priceDiffPercentage = ((priceDiff / avgPrice) * 100).toFixed(2);
 
-              //       // Element references
-              //       const $diffPricePercent = $("#priceDiffPercentage");
-              //       const $diffPrice = $("#priceDiff");
-              //       const $arrowChart = $(".arrow-chart");
+          //       // Element references
+          //       const $diffPricePercent = $("#priceDiffPercentage");
+          //       const $diffPrice = $("#priceDiff");
+          //       const $arrowChart = $(".arrow-chart");
 
-              //       // Check if the current price is higher than the average price
-              //       if (priceCurrent > avgPrice) {
-              //         $diffPrice.addClass("text-success");
-              //         $diffPricePercent.addClass("text-success").text("+" + priceDiffPercentage + "%");
-              //         $arrowChart.css("transform", "rotate(180deg)");
-              //         $arrowChart.css("color", "green");
-              //       } else if (priceCurrent < avgPrice) {
-              //         $diffPrice.addClass("text-danger");
-              //         $diffPricePercent.addClass("text-danger").text(priceDiffPercentage + "%");
-              //         $arrowChart.css("transform", "rotate(0deg)");
-              //         $arrowChart.css("color", "red");
-              //       }
+          //       // Check if the current price is higher than the average price
+          //       if (priceCurrent > avgPrice) {
+          //         $diffPrice.addClass("text-success");
+          //         $diffPricePercent.addClass("text-success").text("+" + priceDiffPercentage + "%");
+          //         $arrowChart.css("transform", "rotate(180deg)");
+          //         $arrowChart.css("color", "green");
+          //       } else if (priceCurrent < avgPrice) {
+          //         $diffPrice.addClass("text-danger");
+          //         $diffPricePercent.addClass("text-danger").text(priceDiffPercentage + "%");
+          //         $arrowChart.css("transform", "rotate(0deg)");
+          //         $arrowChart.css("color", "red");
+          //       }
 
-              //       $("#priceCurrent, #priceMarket").text("$" + priceCurrent);
-              //       $diffPrice.text(floatRounder(priceDiff));
-
-
-              //       // Save to DB
-              //       $.ajax({
-              //         url: "./connection.php",
-              //         type: "GET",
-              //         data: {
-              //           action: 'saveCMCData',
-              //           timestamp: cmctimestamp,
-              //           id: cmcid,
-              //           name: cmcname,
-              //           cmc_rank: cmccmc_rank,
-              //           price: cmcprice,
-              //           volume_24h: cmcvolume_24h,
-              //           volume_change_24h: cmcvolume_change_24h,
-              //           percent_change_1h: cmcpercent_change_1h,
-              //           percent_change_24h: cmcpercent_change_24h,
-              //           percent_change_7d: cmcpercent_change_7d,
-              //           percent_change_30d: cmcpercent_change_30d,
-              //           percent_change_60d: cmcpercent_change_60d,
-              //           percent_change_90d: cmcpercent_change_90d,
-              //           fully_diluted_market_cap: cmcfully_diluted_market_cap,
-              //           market_cap_dominance: cmcmarket_cap_dominance,
-              //           self_reported_market_cap: cmcself_reported_market_cap,
-              //           last_updated: cmclast_updated,
-              //         },
-              //         success: function (svResponse) {
-              //           console.log(svResponse)
-              //         }
-              //       });
-              //     },
-              //   });
-              // }
+          //       $("#priceCurrent, #priceMarket").text("$" + priceCurrent);
+          //       $diffPrice.text(floatRounder(priceDiff));
 
 
-            // })
-            // .catch(error => {
-            //   // Tangani kesalahan
-            //   console.error('There was a problem with the fetch operation:', error);
-            // });
+          //       // Save to DB
+          //       $.ajax({
+          //         url: "./connection.php",
+          //         type: "GET",
+          //         data: {
+          //           action: 'saveCMCData',
+          //           timestamp: cmctimestamp,
+          //           id: cmcid,
+          //           name: cmcname,
+          //           cmc_rank: cmccmc_rank,
+          //           price: cmcprice,
+          //           volume_24h: cmcvolume_24h,
+          //           volume_change_24h: cmcvolume_change_24h,
+          //           percent_change_1h: cmcpercent_change_1h,
+          //           percent_change_24h: cmcpercent_change_24h,
+          //           percent_change_7d: cmcpercent_change_7d,
+          //           percent_change_30d: cmcpercent_change_30d,
+          //           percent_change_60d: cmcpercent_change_60d,
+          //           percent_change_90d: cmcpercent_change_90d,
+          //           fully_diluted_market_cap: cmcfully_diluted_market_cap,
+          //           market_cap_dominance: cmcmarket_cap_dominance,
+          //           self_reported_market_cap: cmcself_reported_market_cap,
+          //           last_updated: cmclast_updated,
+          //         },
+          //         success: function (svResponse) {
+          //           console.log(svResponse)
+          //         }
+          //       });
+          //     },
+          //   });
+          // }
+
+
+          // })
+          // .catch(error => {
+          //   // Tangani kesalahan
+          //   console.error('There was a problem with the fetch operation:', error);
+          // });
 
         }
 
