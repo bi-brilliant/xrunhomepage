@@ -2273,13 +2273,23 @@ justify-content: center;
 	/* gap: 10px; */
 }
 
+.date-report-detail {
+	font-size: 13px;
+	color: #939394;
+}
+
+.date-report-detail p {
+	margin-bottom: 0;
+	font-family: poppinsRegular;
+}
+
 .report-title-subtitle p:nth-child(2)::before {
 	display: inline-block;
     width: 4px;
     height: 4px;
-    margin: 10px 10px 3px;
+    margin: 8px 6px 3px;
     border-radius: 10px;
-    background-color: #4c4c5a;
+    background-color: #939394;
     vertical-align: top;
     content: "";
 }
@@ -2325,7 +2335,7 @@ justify-content: center;
 .link-report,
 .link-report:focus {
     font-family: poppinsMedium;
-    font-size: 18px;
+    font-size: 19px !important;
     color: #a9a9a9;
     margin-right: 8px;
     padding-right: 8px;
@@ -2368,6 +2378,12 @@ justify-content: center;
 	border: none !important;
 }
 
+.parent-table-disclosure table {
+	border-top: 1px solid #2c2c2c !important;
+}
+
+
+
 .parent-table-disclosure.active {
 	display: block;
 }
@@ -2381,6 +2397,7 @@ justify-content: center;
 	padding-left: 10px;
 }
 
+
 .table-disclosure th,
 .table-token th,
 .table-mining th {
@@ -2393,10 +2410,11 @@ justify-content: center;
     background-color: #eeeeee;
 }
 
+
 .table-disclosure td,
 .table-token td,
 .table-mining td {
-	border-bottom: 1px solid #939393 !important;
+	border-bottom: 1px solid #d9d9d9 !important;
 	font-family: poppinsRegular;
 }
 
@@ -2420,6 +2438,37 @@ table.dataTable.table-mining tbody td,
 table.dataTable.table-disclosure tbody td {
 	padding: 16px 0;
 	text-align: center;
+}
+
+.table-disclosure tbody td {
+	padding: 12px 0;
+}
+
+.table-disclosure tbody p {
+	margin: 0 !important ;
+	text-align: left !important;
+}
+
+.title-report-detail {
+	font-size: 27px;
+	font-family: poppinsRegular;
+}
+
+.table-disclosure .bottom-table-news {
+	display: flex;
+	align-items: center;
+	margin-top: 4px;
+	gap: 8px;
+}
+
+.table-disclosure .title-table-news {
+	font-size: 18px;
+}
+
+.table-disclosure .bottom-table-news p{
+	font-size: 13px;
+	color: #aaa;
+	font-family: poppinsLight;
 }
 
 .dataTables_info {
@@ -2476,9 +2525,9 @@ table.dataTable.table-disclosure tbody td {
 }
 
 /* Partners disclosure */
-.wrapper-partners-disclosure {
+/* .wrapper-partners-disclosure {
 	margin-top: 105px;
-}
+} */
 
 .title-information-service {
 	font-family: poppinsBold;
@@ -3665,7 +3714,7 @@ hr {
 }
 
 .service-main-wrapper {
-	margin-top: -50px;
+	margin-top: 65px;
 }
 
 .disclosure-main-wrapper > .col-lg-12 {
@@ -6817,10 +6866,6 @@ section.dark-bg.section-common .section-title h2 span {
 	.req-form-wrapper {
 		padding-left: 0px;
 		padding-right: 0px;
-	}
-
-	.service-main-wrapper {
-		margin-top: -45px;
 	}
 
 	#contact {
