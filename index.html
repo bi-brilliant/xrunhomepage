@@ -617,6 +617,11 @@
             <span class="dis-close" id="closeAllocationModal">&times;</span>
             <div id="allocationContent">
               <!-- Konten yang akan dimuat dari AJAX akan ditampilkan di sini -->
+              <p class="f-subtitle text-center">Allocation Detail</p>
+              <p class="f-desc text-center">
+                Amount of XRUN users own (Including XRUN Wallet, including amounts purchased from 
+                cryptocurrency exchanges)
+              </p>
             </div>
           </div>
         </div>
@@ -624,10 +629,16 @@
         <!-- Modal Swap -->
         <div id="swapModal" class="dis-modal">
           <div class="dis-modal-content">
-              <span class="dis-close" id="closeSwapModal">&times;</span>
-              <div id="swapContent">
-                  <!-- Konten yang akan dimuat dari AJAX akan ditampilkan di sini -->
-              </div>
+            <span class="dis-close" id="closeSwapModal">&times;</span>
+            <div id="swapContent">
+              <!-- Konten yang akan dimuat dari AJAX akan ditampilkan di sini -->
+              <p class="f-subtitle text-center">XRUN Swap Detail</p>
+              <p class="f-desc text-center">
+                Amount of XRUN cryptocurrency mined in XRUN wallet that 
+                has not been exchanged for XRUN (“Catch”: XRUN acquired 
+                after completing a mission)
+              </p>
+            </div>
           </div>
         </div>
 
@@ -1551,57 +1562,57 @@
           var modal = document.getElementById(modalId);
           modal.style.display = "block";
 
-          if(modalId === "allocationModal"){
-            // Muat konten dengan AJAX
-            // $.ajax({
-            //   url: apiURL, // URL API Anda
-            //   type: 'GET',
-            //   success: function (response) {
-                // Isikan konten ke dalam modal
-                $('#' + contentId).html(`
-                  <p class="f-subtitle text-center">Allocation Detail</p>
-                  <div class="d-flex">
-                    <div class="d-block">
-                      <p class="f-desc mb-0 fw-semibold">XRUN Wallet&nbsp;</p>
-                      <p class="f-desc mb-0 fw-semibold">Purchase Amount&nbsp;</p>
-                    </div>
-                    <div class="d-block">
-                      <p class="f-desc mb-0">: 1,000,000</p>
-                      <p class="f-desc mb-0">: 2,000,000</p>
-                    </div>
-                  </div>
-                `);
-            //   },
-            //   error: function (error) {
-            //     console.error('Gagal memuat konten:', error);
-            //   }
-            // });
-          } else {
-            // Muat konten dengan AJAX
-            // $.ajax({
-            //   url: apiURL, // URL API Anda
-            //   type: 'GET',
-            //   success: function (response) {
-                // Isikan konten ke dalam modal
-                $('#' + contentId).html(`
-                  <p class="f-subtitle text-center">XRUN Swap Detail</p>
-                  <div class="d-flex">
-                    <div class="d-block">
-                      <p class="f-desc mb-0 fw-semibold">XRUN Wallet&nbsp;</p>
-                      <p class="f-desc mb-0 fw-semibold">Purchase Amount&nbsp;</p>
-                    </div>
-                    <div class="d-block">
-                      <p class="f-desc mb-0">: 1,000,000</p>
-                      <p class="f-desc mb-0">: 2,000,000</p>
-                    </div>
-                  </div>
-                `);
-            //   },
-            //   error: function (error) {
-            //     console.error('Gagal memuat konten:', error);
-            //   }
-            // });
-          }
+          // if(modalId === "allocationModal"){
+          //   // Muat konten dengan AJAX
+          //   // $.ajax({
+          //   //   url: apiURL, // URL API Anda
+          //   //   type: 'GET',
+          //   //   success: function (response) {
+          //       // Isikan konten ke dalam modal
+          //       $('#' + contentId).html(`
+          //         <p class="f-subtitle text-center">Allocation Detail</p>
+          //         <div class="d-flex">
+          //           <div class="d-block">
+          //             <p class="f-desc mb-0 fw-semibold">XRUN Wallet&nbsp;</p>
+          //             <p class="f-desc mb-0 fw-semibold">Purchase Amount&nbsp;</p>
+          //           </div>
+          //           <div class="d-block">
+          //             <p class="f-desc mb-0">: 1,000,000</p>
+          //             <p class="f-desc mb-0">: 2,000,000</p>
+          //           </div>
+          //         </div>
+          //       `);
+          //   //   },
+          //   //   error: function (error) {
+          //   //     console.error('Gagal memuat konten:', error);
+          //   //   }
+          //   // });
+          // } else {
+          //   // Muat konten dengan AJAX
+          //   // $.ajax({
+          //   //   url: apiURL, // URL API Anda
+          //   //   type: 'GET',
+          //   //   success: function (response) {
+          //       // Isikan konten ke dalam modal
+          //       $('#' + contentId).html(`
+          //         <p class="f-subtitle text-center">XRUN Swap Detail</p>
+          //         <div class="d-flex">
+          //           <div class="d-block">
+          //             <p class="f-desc mb-0 fw-semibold">XRUN Wallet&nbsp;</p>
+          //             <p class="f-desc mb-0 fw-semibold">Purchase Amount&nbsp;</p>
+          //           </div>
+          //           <div class="d-block">
+          //             <p class="f-desc mb-0">: 1,000,000</p>
+          //             <p class="f-desc mb-0">: 2,000,000</p>
+          //           </div>
+          //         </div>
+          //       `);
+          //   //   },
+          //   //   error: function (error) {
+          //   //     console.error('Gagal memuat konten:', error);
+          //   //   }
+          //   // });
+          // }
 
           
       }
