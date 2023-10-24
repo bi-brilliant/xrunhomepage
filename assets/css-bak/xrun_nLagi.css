@@ -6797,6 +6797,10 @@ section.dark-bg.section-common .section-title h2 span {
 	#economy .economy-img-box img {
 		height: 345px;
 	}
+
+	.card-intro-wrapper .full-card {
+		margin: 0 10px;
+	}
 }
 
 @media (max-width: 400px) {
