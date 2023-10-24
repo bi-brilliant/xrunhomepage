@@ -184,6 +184,12 @@ SQL;
           <li>
             <a class="page-scroll beforeNone" id="navContact" href="../#contact">Contact Us</a>
           </li>
+           <li>
+            <a class="page-scroll beforeNone mobile-nav" href="../clubx_homepage/assets/files/XRUN_whitepaperv2023.pdf" download id="navWhitepaper">Whitepaper</a>
+          </li>
+          <li>
+            <a class="page-scroll beforeNone mobile-nav" href="../clubx_homepage/assets/files/XRUN IR 2023 .pdf" download id="navIR">IR</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -192,7 +198,7 @@ SQL;
 
   <main>
     <?php if ($pageNotFound): ?>
-      <p class="page-not-found">Page not found</p>
+        <p class="page-not-found">Page not found</p>
     <?php else: ?>
 
       <section class="container">
@@ -265,7 +271,7 @@ SQL;
       <a href="javascript:;" onclick="$('html').animate({scrollTop : 0},500)"><i class="fas fa-chevron-up"></i></a>
     </div>
     <!-- <div class="scrollToTop scroll-visible"> -->
-    <div class="paper-container">
+    <div class="paper-container pc-wp-ir">
       <a href="../clubx_homepage/assets/files/XRUN_whitepaperv2023.pdf" download class="download-paper-wrapper">
         WP
       </a>
