@@ -1808,6 +1808,7 @@ footer div.container {
 	justify-content: center;
 	flex-wrap: wrap;
 	row-gap: 24px;
+	margin-top: 10px;
 }
 
 .economy-wrapper {
@@ -2291,7 +2292,7 @@ justify-content: center;
 	display: inline-block;
     width: 4px;
     height: 4px;
-    margin: 8px 6px 3px;
+    margin: 6px 6px 3px;
     border-radius: 10px;
     background-color: #939394;
     vertical-align: top;
@@ -2440,7 +2441,7 @@ justify-content: center;
 table.dataTable.table-token tbody td,
 table.dataTable.table-mining tbody td,
 table.dataTable.table-disclosure tbody td {
-	padding: 16px 0;
+	padding: 10px 0;
 	text-align: center;
 }
 
@@ -2931,13 +2932,14 @@ table.dataTable.table-disclosure tbody td {
 
 	.card-intro-wrapper {
 		margin-top: -10px !important;
+		padding-top: 10px;
 	}
 
 	.card-intro-wrapper .full-card {
-		margin: 30px 2.5% !important;
+		/* margin: 30px 2.5% !important; */
 		max-width: 100% !important;
-		width: 45%;
-		height: 500px !important;
+		/* width: 45%; */
+		/* height: 500px !important; */
 	}
 
 	.wallet-content {
@@ -3882,8 +3884,8 @@ hr {
 	background-color: white;
 	transition: 0.5s;
 	overflow: hidden;
-	margin: 10px 10px;
-	max-width: 265px;
+	/* margin: 10px 10px; */
+	/* max-width: 265px; */
 }
 
 .card-intro-wrapper .full-card:hover {
@@ -4513,11 +4515,11 @@ a.disabled {
 		padding-right: 10px;
 	}
 
-	ul.nav.navbar-nav li a {
+	/* ul.nav.navbar-nav li a {
 		color: #333;
 		font-size: 14px;
 		font-weight: 500;
-	}
+	} */
 
 	.banner1 .main-banner-video,
 	.banner2 .main-banner-video,
@@ -4536,8 +4538,8 @@ a.disabled {
 	}
 
 	.card-intro-wrapper .full-card {
-		margin: 10px 1%;
-		max-width: 215px;
+		/* margin: 10px 1%; */
+		/* max-width: 215px; */
 	}
 
 
@@ -4586,6 +4588,10 @@ a.disabled {
 		width: 3px;
 		left: 50%;
 		margin-left: -1px;
+	}
+
+	.card-intro-wrapper {
+		padding-right: 20px;
 	}
 }
 
@@ -5448,6 +5454,12 @@ a.disabled {
 	.en .container-fluid .main-banner-wrapper .container .main-banner-text h2 {
 		font-size: 2.5em;
 		font-weight: lighter;
+	}
+
+	.card-intro-wrapper {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 24px;
 	}
 }
 
@@ -7224,6 +7236,15 @@ section.dark-bg.section-common .section-title h2 span {
 		/* padding-bottom: 24px; */
 		margin-top: 24px;
 	}
+
+	.card-intro-wrapper {
+		grid-template-columns: repeat(4, 1fr);
+		padding-right: 32px;
+	}
+
+	.card-intro-wrapper .col-lg-3 {
+		width: auto;
+	}
 }
 
 @media (min-width: 1400px) {
@@ -7295,9 +7316,9 @@ section.dark-bg.section-common .section-title h2 span {
 		margin: 45% auto;
 	}
 
-	.card-intro-wrapper {
+	/* .card-intro-wrapper {
 		row-gap: 0px;
-	}
+	} */
 
 	.poster-containt-wrapper {
 		top: 58%;
