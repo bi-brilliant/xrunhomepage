@@ -3479,6 +3479,10 @@ table.dataTable.table-disclosure tbody td {
 	padding-bottom: 0px !important;
 }
 
+#introduction {
+	background-color: #ebebeb;
+}
+
 #introduction > div.container {
 	padding-bottom: 5px;
 }
@@ -3566,6 +3570,7 @@ table.dataTable.table-disclosure tbody td {
 
 	padding: 15em 0 !important;
 	position: relative;
+	z-index: 1;
 }
 
 .bx_type_xrun > video {
@@ -3826,7 +3831,8 @@ hr {
 	border-radius: 10px;
 	box-shadow: 5px 5px 10px rgba(88, 88, 88, 0.19);
 	padding: 0px;
-	background-color: #ebebeb;
+	/* background-color: #ebebeb; */
+	background-color: white;
 	transition: 0.5s;
 	overflow: hidden;
 	margin: 10px 10px;
