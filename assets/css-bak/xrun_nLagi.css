@@ -6656,7 +6656,7 @@ section.dark-bg.section-common .section-title h2 span {
 	}
 }
 
-@media(min-width: 992px) {
+@media(min-width: 992px ) and (max-width: 1200px) {
 	.dapp-information-wrap .dapp-information {
     min-height: 290px !important;
     padding: 10px 7px;
@@ -7186,6 +7186,10 @@ section.dark-bg.section-common .section-title h2 span {
 		/* height: 72vh; */
 	}
 
+	.btn-app-download {
+		margin-top: 560px !important;
+	}
+
 	.btn-app-download .app-download img {
 		height: 20px;
 	}
@@ -7239,6 +7243,10 @@ section.dark-bg.section-common .section-title h2 span {
 @media (min-width: 1400px) {
 	.container {
 		width: 1360px;
+	}
+
+	.btn-app-download  {
+		margin-top: 460px !important;
 	}
 
 	.btn-app-download .app-download {
