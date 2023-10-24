@@ -7284,6 +7284,16 @@ section.dark-bg.section-common .section-title h2 span {
 	}
 }
 
+@media (max-width: 1170px) and (min-width: 992px) {
+	.notice-custom-wrapper {
+		width: 925px;
+	}
+
+	.slider-wrapper .slider-card {
+		margin: 10px 20px;
+	}
+}
+
 @media (max-width: 1050px) {
 	.banner-xrunapp .poster-containt-wrapper {
 		position: absolute;
@@ -7738,8 +7748,8 @@ section.dark-bg.section-common .section-title h2 span {
 	}
 
 	.notice-custom-wrapper {
-		margin-left: -20px;
-		margin-right: -20px;
+		margin-left: -35px;
+		margin-right: -35px;
 	}
 
 	#dapp .dapp-phone .bx_phone {
