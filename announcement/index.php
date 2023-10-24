@@ -5,12 +5,12 @@ $existFiles = false;
 
 $announcementID = $_GET['news'];
 if (!isset($_GET['news'])) {
-  header('Location: ../');
+    header('Location: ../');
 } else {
-  $conn = new mysqli("database-80-xrun.cluster-ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
+    $conn = new mysqli("database-80-xrun.cluster-ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
 
-  // $conn = mysqli_connect("localhost", "root", "root", "xrun", 3306);
-  $sql = <<<SQL
+    // $conn = mysqli_connect("localhost", "root", "root", "xrun", 3306);
+    $sql = <<<SQL
 SELECT
     `publicannouncement`.`announcement` as `index`,
     `publicannouncement`.`title` as `title`,
@@ -29,52 +29,52 @@ WHERE
     AND `publicannouncement`.`announcement` =  $announcementID ORDER BY `publicannouncement`.`announcement`  
 SQL;
 
-  $result = $conn->query($sql);
+    $result = $conn->query($sql);
 
-  $response = [];
+    $response = [];
 
-  while ($data = mysqli_fetch_assoc($result)) {
-    $response[] = array(
-      "announcement" => $data["index"],
-      "title" => $data["title"],
-      "content" => $data["content"],
-      "regDate" => $data["reg_date"],
-      "writer" => $data["writer"],
-      "thumbnail" => base64_encode($data["thumbnail"]),
-    );
-  }
+    while ($data = mysqli_fetch_assoc($result)) {
+        $response[] = array(
+          "announcement" => $data["index"],
+          "title" => $data["title"],
+          "content" => $data["content"],
+          "regDate" => $data["reg_date"],
+          "writer" => $data["writer"],
+          "thumbnail" => base64_encode($data["thumbnail"]),
+        );
+    }
 
-  if (count($response) === 0) {
-    $pageNotFound = true;
-    // } else {
-    // if ($response[0]['file'] !== '') {
-    //   $files = [];
+    if (count($response) === 0) {
+        $pageNotFound = true;
+        // } else {
+        // if ($response[0]['file'] !== '') {
+        //   $files = [];
 
-    //   $numberFiles = $response[0]['file'];
-    //   $numberFilesArr = explode(',', $numberFiles);
+        //   $numberFiles = $response[0]['file'];
+        //   $numberFilesArr = explode(',', $numberFiles);
 
-    //   foreach ($numberFilesArr as $numberFile) {
-    //     $file = intval($numberFile);
-    //     $conn = new mysqli("database-80-xrun.cluster-ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
-    //     // $conn = mysqli_connect("localhost", "root", "root", "xrun", 3306);
+        //   foreach ($numberFilesArr as $numberFile) {
+        //     $file = intval($numberFile);
+        //     $conn = new mysqli("database-80-xrun.cluster-ctauiqqlg2bt.ap-southeast-1.rds.amazonaws.com", "xrundb", "xrundatA6a52!!", "xrun");
+        //     // $conn = mysqli_connect("localhost", "root", "root", "xrun", 3306);
 
 
-    //     $sql = <<<SQL
-    //       SELECT `attachments` as `file` FROM `Files` WHERE file = $file
-    //       SQL;
+        //     $sql = <<<SQL
+        //       SELECT `attachments` as `file` FROM `Files` WHERE file = $file
+        //       SQL;
 
-    //     $result = $conn->query($sql);
+        //     $result = $conn->query($sql);
 
-    //     while ($data = mysqli_fetch_assoc($result)) {
-    //       $files[] = array(
-    //         "file" => base64_encode($data["file"]),
-    //       );
-    //     }
-    //   }
+        //     while ($data = mysqli_fetch_assoc($result)) {
+        //       $files[] = array(
+        //         "file" => base64_encode($data["file"]),
+        //       );
+        //     }
+        //   }
 
-    //   $existFiles = true;
-    // }
-  }
+        //   $existFiles = true;
+        // }
+    }
 }
 
 ?>
@@ -185,7 +185,7 @@ SQL;
             <a class="page-scroll beforeNone" id="navContact" href="../#contact">Contact Us</a>
           </li>
            <li>
-            <a class="page-scroll beforeNone mobile-nav" href="../clubx_homepage/assets/files/XRUN_whitepaperv2023.pdf" download id="navWhitepaper">Whitepaper</a>
+            <a class="page-scroll beforeNone mobile-nav" href="../clubx_homepage/assets/files/WHITEPAPER V1.0.pdf" download id="navWhitepaper">Whitepaper</a>
           </li>
           <li>
             <a class="page-scroll beforeNone mobile-nav" href="../clubx_homepage/assets/files/XRUN IR 2023 .pdf" download id="navIR">IR</a>
@@ -223,9 +223,9 @@ SQL;
                 $url = '/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/';
 
 
-                $text = preg_replace($url, '<a href="$0" target="_blank" title="$0">$0</a>', $data['content']);
-                echo nl2br($text);
-                ?>
+            $text = preg_replace($url, '<a href="$0" target="_blank" title="$0">$0</a>', $data['content']);
+            echo nl2br($text);
+            ?>
               </p>
 
               <!-- <?php if ($existFiles): ?>
@@ -272,7 +272,7 @@ SQL;
     </div>
     <!-- <div class="scrollToTop scroll-visible"> -->
     <div class="paper-container pc-wp-ir">
-      <a href="../clubx_homepage/assets/files/XRUN_whitepaperv2023.pdf" download class="download-paper-wrapper">
+      <a href="../clubx_homepage/assets/files/WHITEPAPER V1.0.pdf" download class="download-paper-wrapper">
         WP
       </a>
       <a href="../clubx_homepage/assets/files/XRUN IR 2023.pdf" download class="download-paper-wrapper">
