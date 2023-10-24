@@ -7590,6 +7590,10 @@ section.dark-bg.section-common .section-title h2 span {
 		padding: 0px 25px;
 	}
 
+	.custom-container {
+		padding: 0px;
+	}
+
 	.partners-disclosure {
 		padding: 0 10px;
 	}
