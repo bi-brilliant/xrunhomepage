@@ -3758,6 +3758,49 @@ hr {
 }
 
 
+#btnAllocation,
+#btnSwap {
+	cursor: pointer;
+}
+
+#btnAllocation:hover,
+#btnSwap:hover {
+	background-color: #ebebeba1;
+    border-radius: 5px;
+    transition: .3s;
+}
+
+.dis-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.dis-modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 30% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.dis-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
 
 #disclosure .card-detail {
 	border-radius: 5px;
@@ -6612,6 +6655,10 @@ section.dark-bg.section-common .section-title h2 span {
 		margin-top: 1em;
 	}
 
+	.dis-modal-content {
+		margin: 70% auto !important;
+	}
+
 	.cd-card {
 		width: unset;
 	}
@@ -6642,6 +6689,10 @@ section.dark-bg.section-common .section-title h2 span {
 
 	.custom-container {
 		padding: 0px 0px;
+	}
+
+	.dis-modal-content {
+		margin: 80% auto !important;
 	}
 	
 
@@ -7209,6 +7260,10 @@ section.dark-bg.section-common .section-title h2 span {
 		transform: translate(-50%, -50%);
 	}
 
+	.dis-modal-content {
+		margin: 45% auto;
+	}
+
 	.card-intro-wrapper {
 		row-gap: 0px;
 	}
@@ -7281,6 +7336,10 @@ section.dark-bg.section-common .section-title h2 span {
 	.main-banner-video,
 	.poster-wrapper {
 		height: 80vh !important;
+	}
+
+	.dis-modal-content {
+		margin: 50% auto;
 	}
 
 	.poster-containt-wrapper {
@@ -7491,6 +7550,12 @@ section.dark-bg.section-common .section-title h2 span {
 	.main-banner-video,
 	.poster-wrapper {
 		height: 27vh !important;
+	}
+
+	.dis-modal-content {
+		width: unset;
+		margin: 85% 0px !important;
+		padding: 13px;
 	}
 	
 	section.section-common .section-title::after {
@@ -7788,9 +7853,13 @@ section.dark-bg.section-common .section-title h2 span {
 		height: 27vh !important;
 	}
 
+	.dis-modal-content {
+		margin: 90% 0px !important;
+	}
+
 	.price-current-desc p,
 	.cd-card > .d-block .f-desc {
-		font-size: .98em !important;
+		font-size: 1.03em !important;
 	}
 
 	.cd-card {
@@ -7903,6 +7972,10 @@ section.dark-bg.section-common .section-title h2 span {
 	.poster-title-wrapper > a > img {
 		max-width: 32vw;
 		margin-left: -30px;
+	}
+
+	.dis-modal-content {
+		margin: 120% 10px !important;
 	}
 }
 
