@@ -2278,6 +2278,10 @@ justify-content: center;
 	color: #939394;
 }
 
+.mobile-nav {
+	display: none !important;
+}
+
 .date-report-detail p {
 	margin-bottom: 0;
 	font-family: poppinsRegular;
@@ -6933,6 +6937,10 @@ section.dark-bg.section-common .section-title h2 span {
 @media (max-width: 475px) {
 	#introduction .bx_type_xrun img {
 		height: 3.5em !important;
+	}
+
+	.mobile-nav {
+		display: block  !important;
 	}
 }
 

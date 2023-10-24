@@ -58,8 +58,22 @@ h1 {
 	gap: 16px;
 }
 
+.mobile-nav {
+	display: none !important;
+}
+
 @media (min-width: 768px) {
 	.thumbnail-article {
 		height: 578px;
+	}
+}
+
+@media (max-width: 475px) {
+	.mobile-nav {
+		display: block  !important;
+	}
+
+	.pc-wp-ir {
+    display: none;
 	}
 }
