@@ -6656,6 +6656,14 @@ section.dark-bg.section-common .section-title h2 span {
 	}
 }
 
+@media(min-width: 992px) {
+	.dapp-information-wrap .dapp-information {
+    min-height: 290px !important;
+    padding: 10px 7px;
+    margin: 6px -10px !important;
+	}
+}
+
 @media (max-width: 768px) {
 	.btn-app-download {
 		margin-top: 65px !important;
@@ -7144,7 +7152,7 @@ section.dark-bg.section-common .section-title h2 span {
 	}
 	
 	.btn-app-download {
-		margin-top: 460px;
+		margin-top: 495px !important;
 	}
 
 	.partners-disclosure {
