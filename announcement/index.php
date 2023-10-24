@@ -275,7 +275,7 @@ SQL;
       <a href="../clubx_homepage/assets/files/XRUN_whitepaperv2023.pdf" download class="download-paper-wrapper">
         WP
       </a>
-      <a href="../clubx_homepage/assets/files/XRUN IR 2023.pdf" download class="download-paper-wrapper">
+      <a href="../clubx_homepage/assets/files/XRUN IR 2023 .pdf" download class="download-paper-wrapper">
         IR
       </a>
     </div>
