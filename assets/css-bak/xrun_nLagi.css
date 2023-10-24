@@ -2291,7 +2291,7 @@ justify-content: center;
 	display: inline-block;
     width: 4px;
     height: 4px;
-    margin: 8px 6px 3px;
+    margin: 6px 6px 3px;
     border-radius: 10px;
     background-color: #939394;
     vertical-align: top;
@@ -2440,7 +2440,7 @@ justify-content: center;
 table.dataTable.table-token tbody td,
 table.dataTable.table-mining tbody td,
 table.dataTable.table-disclosure tbody td {
-	padding: 16px 0;
+	padding: 10px 0;
 	text-align: center;
 }
 
