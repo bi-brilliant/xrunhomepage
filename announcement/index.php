@@ -206,19 +206,27 @@ SQL;
           <p class="f-title mb-0">
             <?= $data['title'] ?>
           </p>
-          <p class="date-article f-desc">
+          <!-- <p class="date-article f-desc">
             <?= $data['regDate'] ?>
-          </p>
+          </p> -->
           <!-- <p class="writer f-desc">Write by
             <span style="text-transform: capitalize;" class="f-desc">
               <?= $data['writer'] ?>
             </span>
           </p> -->
           
-          <div class="d-flex">
-            <p class="writer f-desc mb-0">Write by</p>
-            <p style="text-transform: capitalize;" class="f-desc mb-0">&nbsp;<?= $data['writer'] ?></p>
+          <!-- <div class="d-flex">
+            <p class="writer f-desc mb-0" style="color: #929294">Write by</p>
+            <p style="text-transform: capitalize; color: #929294" class="f-desc mb-0" >&nbsp;<?= $data['writer'] ?></p>
+          </div> -->
+
+          <div class="d-flex" style="margin-top: 10px">
+            <p class="writer f-desc mb-0" style="color: #929294">Write by</p>
+            <p style="text-transform: capitalize; color: #929294" class="f-desc mb-0" >&nbsp;<?= $data['writer'] ?></p>
           </div>
+          <p class="date-article f-desc mb-0">
+            <?= $data['regDate'] ?>
+          </p>
           
 
           <div class="content-article">

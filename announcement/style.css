@@ -17,10 +17,16 @@ h1 {
   font-family: "Poppins", sans-serif;
 }
 
-.date-article {
+/* .date-article {
   font-family: "Poppins", sans-serif;
   margin-top: 10px;
   margin-bottom: 0px;
+  color: #929294;
+} */
+.date-article {
+  font-family: "Poppins", sans-serif;
+  margin-top: 0px;
+  margin-bottom: 10px;
   color: #929294;
 }
 
