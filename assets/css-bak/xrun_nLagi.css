@@ -2387,6 +2387,10 @@ justify-content: center;
 	border-top: 1px solid #2c2c2c !important;
 }
 
+.parent-table-disclosure table.footer-table {
+    border-top: 2px solid #2c2c2c !important;
+}
+
 
 
 .parent-table-disclosure.active {
@@ -3669,6 +3673,10 @@ table.dataTable.table-disclosure tbody td {
 
 .mt-4 {
 	margin-top: 1em;
+}
+
+.cmt-5 {
+	margin-top: 100px !important;
 }
 
 .mb-0 {
