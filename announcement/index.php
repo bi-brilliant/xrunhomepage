@@ -203,22 +203,28 @@ SQL;
 
       <section class="container">
         <?php foreach ($response as $data): ?>
-          <h1>
+          <p class="f-title mb-0">
             <?= $data['title'] ?>
-          </h1>
-          <p class="date-article">
+          </p>
+          <p class="date-article f-desc">
             <?= $data['regDate'] ?>
           </p>
-          <p class="writer">Write by
-            <span style="text-transform: capitalize;">
+          <!-- <p class="writer f-desc">Write by
+            <span style="text-transform: capitalize;" class="f-desc">
               <?= $data['writer'] ?>
             </span>
-          </p>
+          </p> -->
+          
+          <div class="d-flex">
+            <p class="writer f-desc mb-0">Write by</p>
+            <p style="text-transform: capitalize;" class="f-desc mb-0">&nbsp;<?= $data['writer'] ?></p>
+          </div>
+          
 
           <div class="content-article">
             <img src="data:image/jpeg;base64,<?= $data['thumbnail'] ?>" alt="thumbnail" class="thumbnail-article">
             <div class="main-content-article">
-              <p>
+              <p class="mb-0 f-desc">
                 <?php
                 $url = '/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/';
 
@@ -237,6 +243,35 @@ SQL;
               <?php endif; ?> -->
 
             </div>
+          </div>
+
+
+          <!-- Table Here -->
+          <div class="cmt- parent-table-disclosure active" id="announcement-table">
+            <p class="f-subtitle">News</p>
+            <table class="table-disclosure w-100 footer-table">
+              <thead>
+                <tr style="display: none;">
+                  <th class="text-center fw-semibold">Report</th>
+                </tr>
+              </thead>
+              <tbody id="news-announcement">
+                <!-- <tr class="clickable-row-news">
+                  <td>
+                    <a href="announcement/index.php?news=${response['announcement']}" target="_blank" style="color: black;">
+                      <div>
+                        <p class="title-table-news">Table Test</p>
+                        <div class="bottom-table-news">
+                          <p>XRUN Dev</p>
+                          <p>|</p>
+                          <p>2023.25.10.</p>
+                        </div>
+                      </div>
+                    </a>
+                  </td>
+                </tr> -->
+              </tbody>
+            </table>
           </div>
         <?php endforeach; ?>
 
@@ -284,4 +319,65 @@ SQL;
 
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="../assets/scripts/bootstrap.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+  <script>
+    $(document).ready(function(){
+
+      // fn Init Datatable
+      function initDatatables() {
+        $('.table-disclosure').DataTable({
+          "dom": 'rtip',
+          ordering: false,
+          pageLength: 5,
+        });
+      }
+    
+
+      const newsAnnouncement = document.getElementById('news-announcement');
+
+
+      // Table XRUN News
+      function fn_announcement(typeNum) {
+        $.ajax({
+          url: '../controller/getNewsList.php',
+          type: 'GET',
+          data: { 
+            boardType: typeNum,
+            exceptID: <?= $announcementID ?>
+          },
+          success: function (response) {
+            response = $.parseJSON(response);
+            let tempAnnouncement = '';
+
+            response.forEach(response => {
+              const [tahun, bulan, tanggal] = response['regDate'].split(' ')[0].split('-');
+
+              
+              tempAnnouncement += `
+              <tr class="clickable-row-news">
+                <td>
+                  <a href="./index.php?news=${response['announcement']}" target="_blank" style="color: black;">
+                    <div>
+                    <p class="title-table-news">${response['title']}</p>
+                    <div class="bottom-table-news">
+                      <p>${response['writer']}</p>
+                      <p>|</p>
+                      <p>${tahun}.${bulan}.${tanggal}.</p>
+                    </div>
+                  </div>
+                  </a>
+                </td>
+              </tr>`
+            });
+
+            newsAnnouncement.innerHTML = tempAnnouncement;
+
+            initDatatables();
+          }
+        })
+      }
+
+      fn_announcement(9301);
+    });
+  </script>
 </body>
