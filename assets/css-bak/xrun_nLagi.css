@@ -2461,7 +2461,6 @@ table.dataTable.table-disclosure tbody td {
 .title-report-detail {
 	font-size: 27px;
 	font-family: poppinsRegular;
-	word-break: break-all;
 }
 
 .table-disclosure .bottom-table-news {
@@ -2689,9 +2688,6 @@ table.dataTable.table-disclosure tbody td {
 	cursor: pointer;
 	width: 32px;
 	height: 32px;
-	background-image: url('../../m/assets/images/m/close-circle-fill.png');
-	background-repeat: no-repeat;
-	background-size: cover;
 }
 
 .close-report-detail:hover {
@@ -6745,6 +6741,12 @@ section.dark-bg.section-common .section-title h2 span {
 	}
 }
 
+@media (max-width: 350px){
+	.wrapper-top-report-detail {
+		flex-direction: column-reverse;
+	}
+}
+
 @media (max-width: 370px){
 	#economy .economy-img-box img {
 		height: 250px;
@@ -7060,10 +7062,6 @@ section.dark-bg.section-common .section-title h2 span {
 
 	.desc-card-body > p.card-text {
 		padding-left: 5px;
-	}
-
-	.title-report-detail {
-		max-width: 260px;
 	}
 }
 
@@ -7953,12 +7951,6 @@ section.dark-bg.section-common .section-title h2 span {
 	.poster-title-wrapper > a > img {
 		max-width: 32vw;
 		margin-left: -30px;
-	}
-}
-
-@media (max-width: 320px) {
-	.wrapper-top-report-detail {
-		flex-direction: column-reverse;
 	}
 }
 

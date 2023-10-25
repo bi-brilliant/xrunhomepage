@@ -2207,8 +2207,9 @@
               response.forEach(response => {
                 const [tahun, bulan, tanggal] = response['regDate'].split(' ')[0].split('-');
 
+                // Kayak artikel
                 tempAnnouncement += `
-                <tr class="clickable-row-news">
+                <tr>
                   <td>
                     <a href="announcement/index.php?news=${response['announcement']}" target="_blank" style="color: black;">
                       <div>
@@ -2222,7 +2223,25 @@
                     </a>
                   </td>
                 </tr>`
+                
+                // Dengan link ke website lain
+                //  tempAnnouncement += `
+                //   <tr>
+                //     <td>
+                //       <a href="${response['link']}" target="_blank" style="color: black;">
+                //         <div>
+                //         <p class="title-table-news">${response['title']}</p>
+                //         <div class="bottom-table-news">
+                //           <p>${response['writer']}</p>
+                //           <p>|</p>
+                //           <p>${tahun}.${bulan}.${tanggal}.</p>
+                //         </div>
+                //       </div>
+                //       </a>
+                //     </td>
+                //   </tr>`
               });
+
 
               let tempTable = `<table class="table-disclosure w-100">
                 <thead>
@@ -2321,11 +2340,10 @@
                           <div>
                             <p class="title-report-detail">${data['title']}</p>
                             <div class="d-flex report-title-subtitle date-report-detail">
-                              <p>${data['market_listing']}</p>
-                              <p>${tahun}.${bulan}.${tanggal}</p>
+                              <p>${data['market_listing']} • ${tahun}.${bulan}.${tanggal}</p>
                             </div>
                           </div>
-                          <div class="close-report-detail close-report-detail-xrun-token"></div>
+                          <img src="m/assets/images/m/close-circle-fill.png" class="close-report-detail close-report-detail-xrun-token" />
                         </div>
                       </div>
           
@@ -2426,21 +2444,18 @@
                       const [tahun, bulan, tanggal] = data['datetime'].split(' ')[0].split('-');
 
                       xrunMiningTable.innerHTML = `
-                     <!-- Title Detail -->
                       <div class="p-relative" data-index=${data['mining']}>
                         <div class="wrapper-top-report-detail">
                           <div>
                             <p class="title-report-detail">${data['title']}</p>
                             <div class="d-flex report-title-subtitle date-report-detail">
-                              <p>${data['market_listing']}</p>
-                              <p>${tahun}.${bulan}.${tanggal}</p>
+                              <p>${data['market_listing']} • ${tahun}.${bulan}.${tanggal}</p>
                             </div>
                           </div>
-                          <div class="close-report-detail close-report-detail-mining"></div>
+                          <img src="m/assets/images/m/close-circle-fill.png" class="close-report-detail close-report-detail-mining" />
                         </div>
                       </div>
           
-                      <!-- Content Detail -->
                       <div class="wrapper-content">
                         <div>
                           ${images.map(image => {
