@@ -2128,9 +2128,15 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     <script>
       $(document).ready(function () {
-        const templateLoading = `<div class="wrapper-donut">
-            <div class="donut"></div >
-          </div>`
+        
+        function loadingGetData(elementHTML) {
+          const templateLoading = `<div class="wrapper-donut">
+              <div class="donut"></div >
+            </div>`
+          elementHTML.innerHTML = templateLoading;
+          elementHTML.setAttribute('style', 'overflow: visible;');
+        }
+
         function initDatatables() {
           $('.table-disclosure').DataTable({
             "dom": 'rtip',
@@ -2191,8 +2197,7 @@
             type: 'GET',
             data: { boardType: typeNum },
             beforeSend: function () {
-              announcementTable.innerHTML = templateLoading;
-              announcementTable.setAttribute('style', 'overflow: visible;');
+              loadingGetData(announcementTable);
             },
             success: function (response) {
               response = $.parseJSON(response);
@@ -2240,9 +2245,8 @@
 
         // Table XRUN Token
         const xrunTokenTable = document.getElementById('xruntoken-table');
-        const xrunTokenButton = document.querySelector('[data-target="xruntoken-table"]');
 
-        xrunTokenButton.addEventListener('click', function() {
+        function dataXrunToken() {
           const imagesContent = [];
 
           $.ajax({
@@ -2251,9 +2255,8 @@
             data: {
               action: 'getXrunToken'
             },
-            beforeSend: function() {
-              xrunTokenTable.innerHTML = templateLoading;
-              xrunTokenTable.setAttribute('style', 'overflow: visible;');
+            beforeSend: function () {
+              loadingGetData(xrunTokenTable);
             },
             success: function (response) {
               let tempToken = '';
@@ -2287,13 +2290,14 @@
               </tbody>
             </table>`
 
-            xrunTokenTable.innerHTML = tempTable;
-            xrunTokenTable.removeAttribute('style');
-            
+              xrunTokenTable.innerHTML = tempTable;
+              xrunTokenTable.removeAttribute('style');
+
               const tablesReportXRUNToken = document.querySelectorAll('.table-report-xrun-token');
               tablesReportXRUNToken.forEach(tableReportXRUNToken => {
                 tableReportXRUNToken.addEventListener('click', function () {
                   const id = this.dataset.index;
+                  loadingGetData(xrunTokenTable);
 
                   fetch(`./connection.php?action=detailXrunToken&xruntoken=${id}`).then(response => {
                     if (!response.ok) {
@@ -2302,6 +2306,7 @@
                     return response.json();
                   })
                     .then(result => {
+                      xrunTokenTable.removeAttribute('style');
                       const [{ data, images }] = result;
 
                       // Lakukan sesuatu dengan data yang diterima dari PHP
@@ -2310,11 +2315,16 @@
 
                       xrunTokenTable.innerHTML = `
                       <!-- Title Detail -->
-                      <div class="p-relative" data-index=${data['xruntoken']}>
-                        <p class="title-report-detail">${data['title']}</p>
-                        <div class="d-flex report-title-subtitle date-report-detail">
-                          <p>${data['market_listing']}</p>
-                          <p>${tahun}.${bulan}.${tanggal}</p>
+                      <div class="p-relative" data-index=${data['xrun_token']}>
+                        <div class="wrapper-top-report-detail">
+                          <div>
+                            <p class="title-report-detail">${data['title']}</p>
+                            <div class="d-flex report-title-subtitle date-report-detail">
+                              <p>${data['market_listing']}</p>
+                              <p>${tahun}.${bulan}.${tanggal}</p>
+                            </div>
+                          </div>
+                          <div class="close-report-detail close-report-detail-xrun-token"></div>
                         </div>
                       </div>
           
@@ -2323,7 +2333,7 @@
                         <div>
                           ${images.map(image => {
                         return `<img src="data:image/jpeg;base64,${image}" alt="thumbnail" class="thumbnail-article">`
-                      }).join('') }
+                      }).join('')}
                         </div>
                       </div>
                         `
@@ -2337,12 +2347,17 @@
               initTokenDatatables();
             }
           })
+        }
+
+        const xrunTokenButton = document.querySelector('[data-target="xruntoken-table"]');
+        xrunTokenButton.addEventListener('click', function() {
+          dataXrunToken();
         })
 
         // Table XRUN Mining
         const xrunMiningTable = document.getElementById('xrunmining-table');
-        const xrunMiningButton = document.querySelector('[data-target="xrunmining-table"]');
-        xrunMiningButton.addEventListener('click', function () {
+
+        function dataMining() {
           const imagesContent = [];
 
           $.ajax({
@@ -2351,12 +2366,10 @@
             data: {
               action: 'getMining'
             },
-            beforeSend:  function() {
-              xrunMiningTable.innerHTML = templateLoading;
-              xrunMiningTable.setAttribute('style', 'overflow: visible;');
+            beforeSend: function () {
+              loadingGetData(xrunMiningTable);
             },
             success: function (response) {
-
               let tempToken = '';
               const files = [];
               response.forEach(response => {
@@ -2395,7 +2408,8 @@
               tablesReportMining.forEach(tableReportMining => {
                 tableReportMining.addEventListener('click', function () {
                   const id = this.dataset.index;
-
+                  loadingGetData(xrunMiningTable);
+                  
                   fetch(`./connection.php?action=detailMining&mining=${id}`).then(response => {
                     if (!response.ok) {
                       throw new Error('Network response was not ok');
@@ -2403,6 +2417,7 @@
                     return response.json();
                   })
                     .then(result => {
+                      xrunMiningTable.removeAttribute('style');
                       const [{ data, images }] = result;
 
                       // Lakukan sesuatu dengan data yang diterima dari PHP
@@ -2412,10 +2427,15 @@
                       xrunMiningTable.innerHTML = `
                      <!-- Title Detail -->
                       <div class="p-relative" data-index=${data['mining']}>
-                        <p class="title-report-detail">${data['title']}</p>
-                        <div class="d-flex report-title-subtitle date-report-detail">
-                          <p>${data['market_listing']}</p>
-                          <p>${tahun}.${bulan}.${tanggal}</p>
+                        <div class="wrapper-top-report-detail">
+                          <div>
+                            <p class="title-report-detail">${data['title']}</p>
+                            <div class="d-flex report-title-subtitle date-report-detail">
+                              <p>${data['market_listing']}</p>
+                              <p>${tahun}.${bulan}.${tanggal}</p>
+                            </div>
+                          </div>
+                          <div class="close-report-detail close-report-detail-mining"></div>
                         </div>
                       </div>
           
@@ -2438,6 +2458,21 @@
               initMiningDatatables();
             }
           })
+        }
+        
+        const xrunMiningButton = document.querySelector('[data-target="xrunmining-table"]');
+        xrunMiningButton.addEventListener('click', function () {
+          dataMining();
+        })
+
+        window.addEventListener('click', function({target}) {
+          if (target.classList.contains('close-report-detail')) {
+            if(target.classList.contains('close-report-detail-xrun-token')) {
+              dataXrunToken();
+            }else if (target.classList.contains('close-report-detail-mining')) {
+              dataMining();
+            }
+          }
         })
 
         // Show hide table
