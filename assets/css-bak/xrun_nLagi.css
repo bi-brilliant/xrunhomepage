@@ -2469,6 +2469,7 @@ table.dataTable.table-disclosure tbody td {
 	align-items: center;
 	margin-top: 4px;
 	gap: 8px;
+	flex-wrap: wrap;
 }
 
 .table-disclosure .title-table-news {
@@ -2649,8 +2650,9 @@ table.dataTable.table-disclosure tbody td {
 }
 
 .wrapper-content img {
-	width: 100%;
+	/* width: 100%; */
 	object-fit: contain;
+	max-height: 1200px;
 }
 
 @keyframes donut-spin {
@@ -5305,7 +5307,7 @@ a.disabled {
 	}
 		
 	.wrapper-content > div {
-		width: 700px;
+		/* width: 700px; */
 	}
 }
 
