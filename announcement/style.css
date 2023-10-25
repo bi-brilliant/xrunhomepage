@@ -1,5 +1,5 @@
 main {
-  margin-top: 150px;
+  margin-top: 170px;
 }
 
 section {
@@ -33,7 +33,7 @@ h1 {
 }
 
 .content-article {
-  margin-top: 80px;
+  margin-top: 25px;
   margin-bottom: 80px;
 }
 
@@ -71,6 +71,12 @@ h1 {
 @media (min-width: 768px) {
   .thumbnail-article {
     max-height: 578px;
+  }
+}
+
+@media (max-width: 576px) {
+  main {
+    margin-top: 150px;
   }
 }
 
