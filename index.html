@@ -678,8 +678,8 @@
               <thead>
                 <tr style="display: none;">
                   <th class="text-center fw-semibold f-desc">Report</th>
-                  <th class="text-center fw-semibold f-desc">Market Listing</th>
-                  <th class="text-center fw-semibold f-desc">Date Field</th>
+                  <!-- <th class="text-center fw-semibold f-desc">Market Listing</th>
+                  <th class="text-center fw-semibold f-desc">Date Field</th> -->
                 </tr>
               </thead>
               <tbody id="xrun-token">
@@ -694,8 +694,8 @@
               <thead>
                 <tr style="display: none;">
                   <th class="text-center fw-semibold f-desc">Report</th>
-                  <th class="text-center fw-semibold f-desc">Market Listing</th>
-                  <th class="text-center fw-semibold f-desc">Date Field</th>
+                  <!-- <th class="text-center fw-semibold f-desc">Market Listing</th>
+                  <th class="text-center fw-semibold f-desc">Date Field</th> -->
                 </tr>
               </thead>
               <tbody id="xrun-mining">
@@ -2128,6 +2128,9 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     <script>
       $(document).ready(function () {
+        const templateLoading = `<div class="wrapper-donut">
+            <div class="donut"></div >
+          </div>`
         function initDatatables() {
           $('.table-disclosure').DataTable({
             "dom": 'rtip',
@@ -2156,7 +2159,6 @@
         // Sembunyikan semua tabel kecuali yang pertama saat halaman dimuat
         $(".parent-table-disclosure:not(:first)").hide();
 
-
         // Tambahkan event click pada setiap tautan
         $(".link-report").click(function (event) {
           event.preventDefault();
@@ -2180,19 +2182,18 @@
             $(".report-detail-wrapper").hide();
           }
         });
-
-
-
-        const newsAnnouncement = document.getElementById('news-announcement');
-        const tbXrunToken = document.getElementById('xrun-token');
-        const tbXrunMining = document.getElementById('xrun-mining');
-
+        
         // Table XRUN News
+        const announcementTable = document.getElementById('announcement-table');
         function fn_announcement(typeNum) {
           $.ajax({
             url: './controller/getNewsList.php',
             type: 'GET',
             data: { boardType: typeNum },
+            beforeSend: function () {
+              announcementTable.innerHTML = templateLoading;
+              announcementTable.setAttribute('style', 'overflow: visible;');
+            },
             success: function (response) {
               response = $.parseJSON(response);
               let tempAnnouncement = '';
@@ -2200,7 +2201,6 @@
               response.forEach(response => {
                 const [tahun, bulan, tanggal] = response['regDate'].split(' ')[0].split('-');
 
-                
                 tempAnnouncement += `
                 <tr class="clickable-row-news">
                   <td>
@@ -2218,225 +2218,30 @@
                 </tr>`
               });
 
-              newsAnnouncement.innerHTML = tempAnnouncement;
+              let tempTable = `<table class="table-disclosure w-100">
+                <thead>
+                  <tr style="display: none;">
+                    <th class="text-center fw-semibold f-desc">Date Field</th>
+                  </tr>
+                </thead>
+                <tbody id="mining">
+                  ${tempAnnouncement}
+                </tbody>
+              </table>`
+
+              announcementTable.innerHTML = tempTable;
 
               initDatatables();
-
-              // $(".clickable-row-news").click(function () {
-              //   const url = $(this).data("href");
-              //   window.open(url, '_blank');
-              // });
             }
           })
         }
-
-        // Table XRUN Mining
-        const xrunMiningTable = document.getElementById('xrunmining-table');
-        function fn_xrunmining() {
-          const imagesContent = [];
-
-          $.ajax({
-            url: './connection.php',
-            type: 'GET',
-            data: {
-              action: 'getMining'
-            },
-            success: function (response) {
-              let tempMining = '';
-              const files = [];
-              response.forEach(response => {
-                const [tahun, bulan, tanggal] = response['regDate'].split(' ')[0].split('-');
-
-                tempMining += `
-                <tr class="table-report-mining" data-index=${response['mining']}>
-                    <td>
-                      <div>
-                        <p class="title-table-news">${response['title']}</p>
-                        <div class="bottom-table-news">
-                          <p>${response['market_listing']}</p>
-                          <p>|</p>
-                          <p>${tahun}.${bulan}.${tanggal}.</p>
-                        </div>
-                      </div>
-                    </td>
-                </tr>`
-              });
-
-              tbXrunMining.innerHTML = tempMining;
-
-              const tablesReportMining = document.querySelectorAll('.table-report-mining');
-              tablesReportMining.forEach(tableReportMining => {
-                tableReportMining.addEventListener('click', function () {
-                  const id = this.dataset.index;
-
-                  fetch(`./connection.php?action=detailMining&mining=${id}`).then(response => {
-                    if (!response.ok) {
-                      throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                  })
-                    .then(result => {
-                      const [{ data, images }] = result;
-
-                      // Lakukan sesuatu dengan data yang diterima dari PHP
-                      //  Ini sementara, buat tau datanya udah dapet. Nanti tinggal implementasiin sesuai dengan data yang di klik
-                      const [tahun, bulan, tanggal] = data['datetime'].split(' ')[0].split('-');
-
-                      xrunMiningTable.innerHTML = `
-                     <!-- Title Detail -->
-                      <div class="p-relative" data-index=${data['mining']}>
-                        <p class="title-report-detail">${data['title']}</p>
-                        <div class="d-flex report-title-subtitle date-report-detail">
-                          <p>${data['market_listing']}</p>
-                          <p>${tahun}.${bulan}.${tanggal}</p>
-                        </div>
-                      </div>
-          
-                      <!-- Content Detail -->
-                      <div class="wrapper-content">
-                        <div>
-                          ${images.map(image => {
-                        return `<img src="data:image/jpeg;base64,${image}" alt="thumbnail" class="thumbnail-article">`
-                      }).join('')}
-                        </div>
-                      </div>
-                        `
-                    })
-                    .catch(error => {
-                      console.error('There was a problem with the fetch operation:', error);
-                    });
-                })
-              })
-            }
-          })
-        }
-
-
-        function eventClickMining(id) {
-          fetch(`./connection.php?action=detailMining&mining=${id}`).then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            return response.json();
-          })
-            .then(result => {
-              const [{ data, images }] = result;
-
-              // Lakukan sesuatu dengan data yang diterima dari PHP
-              //  Ini sementara, buat tau datanya udah dapet. Nanti tinggal implementasiin sesuai dengan data yang di klik
-              const [tahun, bulan, tanggal] = data['datetime'].split(' ')[0].split('-');
-
-              xrunMiningTable.innerHTML = `
-                     <!-- Title Detail -->
-                      <div class="p-relative" data-index=${data['mining']}>
-                        <p class="title-report-detail">${data['title']}</p>
-                        <div class="d-flex report-title-subtitle date-report-detail">
-                          <p>${data['market_listing']}</p>
-                          <p>${tahun}.${bulan}.${tanggal}</p>
-                        </div>
-                      </div>
-          
-                      <!-- Content Detail -->
-                      <div class="wrapper-content">
-                        <div>
-                          ${images.map(image => {
-                return `<img src="data:image/jpeg;base64,${image}" alt="thumbnail" class="thumbnail-article">`
-              }).join('')}
-                        </div>
-                      </div>
-                        `
-            })
-            .catch(error => {
-              console.error('There was a problem with the fetch operation:', error);
-            });
-        }
+        
+        fn_announcement(9301);
 
         // Table XRUN Token
         const xrunTokenTable = document.getElementById('xruntoken-table');
-        function fn_xruntoken() {
-          const imagesContent = [];
-
-          $.ajax({
-            url: './connection.php',
-            type: 'GET',
-            data: {
-              action: 'getXrunToken'
-            },
-            success: function (response) {
-              let tempToken = '';
-              const files = [];
-              response.forEach(response => {
-                const [tahun, bulan, tanggal] = response['regDate'].split(' ')[0].split('-');
-
-                tempToken += `
-                <tr class="table-report-xrun-token" data-index=${response['xruntoken']}>
-                    <td>
-                      <div>
-                        <p class="title-table-news">${response['title']}</p>
-                        <div class="bottom-table-news">
-                          <p>${response['market_listing']}</p>
-                          <p>|</p>
-                          <p>${tahun}.${bulan}.${tanggal}.</p>
-                        </div>
-                      </div>
-                    </td>
-                </tr>`
-              });
-
-              tbXrunToken.innerHTML = tempToken;
-
-              const tablesReportXRUNToken = document.querySelectorAll('.table-report-xrun-token');
-              tablesReportXRUNToken.forEach(tableReportXRUNToken => {
-                tableReportXRUNToken.addEventListener('click', function() {
-                  const id = this.dataset.index;
-
-                  fetch(`./connection.php?action=detailXrunToken&xruntoken=${id}`).then(response => {
-                    if (!response.ok) {
-                      throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                  })
-                    .then(result => {
-                      const [{ data, images }] = result;
-                      
-                      // Lakukan sesuatu dengan data yang diterima dari PHP
-                      //  Ini sementara, buat tau datanya udah dapet. Nanti tinggal implementasiin sesuai dengan data yang di klik
-                      const [tahun, bulan, tanggal] = data['datetime'].split(' ')[0].split('-');
-
-                      xrunTokenTable.innerHTML = `
-                      <!-- Title Detail -->
-                      <div class="p-relative" data-index=${data['xruntoken']}>
-                        <p class="title-report-detail">${data['title']}</p>
-                        <div class="d-flex report-title-subtitle date-report-detail">
-                          <p>${data['market_listing']}</p>
-                          <p>${tahun}.${bulan}.${tanggal}</p>
-                        </div>
-                      </div>
-          
-                      <!-- Content Detail -->
-                      <div class="wrapper-content">
-                        <div>
-                          ${images.map(image => {
-                            return `<img src="data:image/jpeg;base64,${image}" alt="thumbnail" class="thumbnail-article">`
-                          }).join('') }
-                        </div>
-                      </div>
-                        `
-                    })
-                    .catch(error => {
-                      console.error('There was a problem with the fetch operation:', error);
-                    });
-                })
-              })
-            }
-          })
-        }
-
-        fn_announcement(9301);
-        fn_xrunmining();
-        fn_xruntoken();
-
         const xrunTokenButton = document.querySelector('[data-target="xruntoken-table"]');
+
         xrunTokenButton.addEventListener('click', function() {
           const imagesContent = [];
 
@@ -2445,6 +2250,10 @@
             type: 'GET',
             data: {
               action: 'getXrunToken'
+            },
+            beforeSend: function() {
+              xrunTokenTable.innerHTML = templateLoading;
+              xrunTokenTable.setAttribute('style', 'overflow: visible;');
             },
             success: function (response) {
               let tempToken = '';
@@ -2479,6 +2288,7 @@
             </table>`
 
             xrunTokenTable.innerHTML = tempTable;
+            xrunTokenTable.removeAttribute('style');
             
               const tablesReportXRUNToken = document.querySelectorAll('.table-report-xrun-token');
               tablesReportXRUNToken.forEach(tableReportXRUNToken => {
@@ -2529,6 +2339,8 @@
           })
         })
 
+        // Table XRUN Mining
+        const xrunMiningTable = document.getElementById('xrunmining-table');
         const xrunMiningButton = document.querySelector('[data-target="xrunmining-table"]');
         xrunMiningButton.addEventListener('click', function () {
           const imagesContent = [];
@@ -2539,7 +2351,12 @@
             data: {
               action: 'getMining'
             },
+            beforeSend:  function() {
+              xrunMiningTable.innerHTML = templateLoading;
+              xrunMiningTable.setAttribute('style', 'overflow: visible;');
+            },
             success: function (response) {
+
               let tempToken = '';
               const files = [];
               response.forEach(response => {
@@ -2572,6 +2389,7 @@
             </table>`
 
               xrunMiningTable.innerHTML = tempTable;
+              xrunMiningTable.removeAttribute('style');
 
               const tablesReportMining = document.querySelectorAll('.table-report-mining');
               tablesReportMining.forEach(tableReportMining => {

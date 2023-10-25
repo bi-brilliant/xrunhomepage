@@ -2647,6 +2647,30 @@ table.dataTable.table-disclosure tbody td {
 	width: 100%;
 	object-fit: contain;
 }
+
+@keyframes donut-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.wrapper-donut {
+	display: flex;
+	justify-content: center;
+}
+
+.donut {
+    display: inline-block !important;
+    border: 4px solid rgba(0, 0, 0, 0.1) !important;
+    border-left-color: #65B4F9 !important;
+    border-radius: 50% !important;
+    width: 28px !important;
+    height: 28px !important;
+    animation: donut-spin 1.2s linear infinite !important;
+}
 /* End */
 
 
