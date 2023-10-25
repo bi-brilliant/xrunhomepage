@@ -47,6 +47,7 @@ if(isset($_GET["exceptID"])) {
         ORDER BY `publicannouncement`.`announcement` DESC
     SQL;
 } else {
+    // Kayak artikel
     $sql = <<<SQL
         SELECT
             `publicannouncement`.`announcement` as `announcement`,
@@ -60,6 +61,21 @@ if(isset($_GET["exceptID"])) {
             `publicannouncement`.`type` = $boardType AND `publicannouncement`.`status` = 9401
         ORDER BY `publicannouncement`.`announcement` DESC
     SQL;
+
+    // Dengan link ke website lain
+    // $sql = <<<SQL
+    //     SELECT
+    //         `publicannouncement2`.`announcement` as `announcement`,
+    //         `publicannouncement2`.`title` as `title`,
+    //         `publicannouncement2`.`link` as `link`,
+    //         `publicannouncement2`.`writer` as `writer`,
+    //         `publicannouncement2`.`datetime` as `reg_date`
+    //     FROM
+    //         xrun.`publicannouncement2`
+    //     WHERE
+    //         `publicannouncement2`.`type` = $boardType AND `publicannouncement2`.`status` = 9401
+    //     ORDER BY `publicannouncement2`.`announcement` DESC
+    // SQL;
 }
 
 
@@ -67,6 +83,7 @@ if(isset($_GET["exceptID"])) {
 $result = $conn->query($sql);
 $response = [];
 
+// Kayak artikel
 while ($data = mysqli_fetch_assoc($result)) {
     $response[] = array(
         "announcement" => $data["announcement"],
@@ -76,5 +93,16 @@ while ($data = mysqli_fetch_assoc($result)) {
         "writer" => $data["writer"],
     );
 }
+
+// Dengan link ke website lain
+    // while ($data = mysqli_fetch_assoc($result)) {
+    //     $response[] = array(
+    //         "announcement" => $data["announcement"],
+    //         "title" => $data["title"],
+    //         "link" => $data["link"],
+    //         "regDate" => $data["reg_date"],
+    //         "writer" => $data["writer"],
+    //     );
+    // }
 
 echo json_encode($response);
