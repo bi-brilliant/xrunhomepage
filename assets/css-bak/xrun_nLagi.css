@@ -2473,6 +2473,7 @@ table.dataTable.table-disclosure tbody td {
 
 .table-disclosure .title-table-news {
 	font-size: 18px;
+	text-wrap: balance;
 }
 
 .table-disclosure .bottom-table-news p{
