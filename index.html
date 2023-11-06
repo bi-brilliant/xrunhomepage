@@ -110,10 +110,12 @@
             <a class="page-scroll beforeNone" id="navContact" href="#contact">Contact Us</a>
           </li>
           <li>
-            <a class="page-scroll beforeNone mobile-nav" href="./clubx_homepage/assets/files/WHITEPAPER V1.0.pdf" download id="navWhitepaper">Whitepaper</a>
+            <a class="page-scroll beforeNone mobile-nav" href="./clubx_homepage/assets/files/WHITEPAPER V1.0.pdf"
+              download id="navWhitepaper">Whitepaper</a>
           </li>
           <li>
-            <a class="page-scroll beforeNone mobile-nav" href="./clubx_homepage/assets/files/XRUN IR 2023 .pdf" download id="navIR">IR</a>
+            <a class="page-scroll beforeNone mobile-nav" href="./clubx_homepage/assets/files/XRUN IR 2023 .pdf" download
+              id="navIR">IR</a>
           </li>
         </ul>
       </div>
@@ -538,7 +540,7 @@
               </span>
             </div>
           </div>
-          
+
 
           <!-- <div class="d-flex justify-content-between cd-card all-day-ratio tab-all-day-ratio">
             <div class="">
@@ -620,7 +622,7 @@
               <!-- Konten yang akan dimuat dari AJAX akan ditampilkan di sini -->
               <p class="f-subtitle text-center">Allocation Detail</p>
               <p class="f-desc text-center">
-                Amount of XRUN users own (Including XRUN Wallet, including amounts purchased from 
+                Amount of XRUN users own (Including XRUN Wallet, including amounts purchased from
                 cryptocurrency exchanges)
               </p>
             </div>
@@ -635,8 +637,8 @@
               <!-- Konten yang akan dimuat dari AJAX akan ditampilkan di sini -->
               <p class="f-subtitle text-center">XRUN Swap Detail</p>
               <p class="f-desc text-center">
-                Amount of XRUN cryptocurrency mined in XRUN wallet that 
-                has not been exchanged for XRUN (“Catch”: XRUN acquired 
+                Amount of XRUN cryptocurrency mined in XRUN wallet that
+                has not been exchanged for XRUN (“Catch”: XRUN acquired
                 after completing a mission)
               </p>
             </div>
@@ -1223,7 +1225,7 @@
           }
         }
 
-        $("#btnAllocation").click(function(){
+        $("#btnAllocation").click(function () {
           console.log("bgst");
         })
 
@@ -1559,87 +1561,87 @@
       // Disclosure Modal
       // Fungsi untuk membuka modal dan mengambil konten dengan AJAX
       function openModalAndLoadContent(modalId, contentId, apiURL) {
-          // Tampilkan modal
-          var modal = document.getElementById(modalId);
-          modal.style.display = "block";
+        // Tampilkan modal
+        var modal = document.getElementById(modalId);
+        modal.style.display = "block";
 
-          // if(modalId === "allocationModal"){
-          //   // Muat konten dengan AJAX
-          //   // $.ajax({
-          //   //   url: apiURL, // URL API Anda
-          //   //   type: 'GET',
-          //   //   success: function (response) {
-          //       // Isikan konten ke dalam modal
-          //       $('#' + contentId).html(`
-          //         <p class="f-subtitle text-center">Allocation Detail</p>
-          //         <div class="d-flex">
-          //           <div class="d-block">
-          //             <p class="f-desc mb-0 fw-semibold">XRUN Wallet&nbsp;</p>
-          //             <p class="f-desc mb-0 fw-semibold">Purchase Amount&nbsp;</p>
-          //           </div>
-          //           <div class="d-block">
-          //             <p class="f-desc mb-0">: 1,000,000</p>
-          //             <p class="f-desc mb-0">: 2,000,000</p>
-          //           </div>
-          //         </div>
-          //       `);
-          //   //   },
-          //   //   error: function (error) {
-          //   //     console.error('Gagal memuat konten:', error);
-          //   //   }
-          //   // });
-          // } else {
-          //   // Muat konten dengan AJAX
-          //   // $.ajax({
-          //   //   url: apiURL, // URL API Anda
-          //   //   type: 'GET',
-          //   //   success: function (response) {
-          //       // Isikan konten ke dalam modal
-          //       $('#' + contentId).html(`
-          //         <p class="f-subtitle text-center">XRUN Swap Detail</p>
-          //         <div class="d-flex">
-          //           <div class="d-block">
-          //             <p class="f-desc mb-0 fw-semibold">XRUN Wallet&nbsp;</p>
-          //             <p class="f-desc mb-0 fw-semibold">Purchase Amount&nbsp;</p>
-          //           </div>
-          //           <div class="d-block">
-          //             <p class="f-desc mb-0">: 1,000,000</p>
-          //             <p class="f-desc mb-0">: 2,000,000</p>
-          //           </div>
-          //         </div>
-          //       `);
-          //   //   },
-          //   //   error: function (error) {
-          //   //     console.error('Gagal memuat konten:', error);
-          //   //   }
-          //   // });
-          // }
+        // if(modalId === "allocationModal"){
+        //   // Muat konten dengan AJAX
+        //   // $.ajax({
+        //   //   url: apiURL, // URL API Anda
+        //   //   type: 'GET',
+        //   //   success: function (response) {
+        //       // Isikan konten ke dalam modal
+        //       $('#' + contentId).html(`
+        //         <p class="f-subtitle text-center">Allocation Detail</p>
+        //         <div class="d-flex">
+        //           <div class="d-block">
+        //             <p class="f-desc mb-0 fw-semibold">XRUN Wallet&nbsp;</p>
+        //             <p class="f-desc mb-0 fw-semibold">Purchase Amount&nbsp;</p>
+        //           </div>
+        //           <div class="d-block">
+        //             <p class="f-desc mb-0">: 1,000,000</p>
+        //             <p class="f-desc mb-0">: 2,000,000</p>
+        //           </div>
+        //         </div>
+        //       `);
+        //   //   },
+        //   //   error: function (error) {
+        //   //     console.error('Gagal memuat konten:', error);
+        //   //   }
+        //   // });
+        // } else {
+        //   // Muat konten dengan AJAX
+        //   // $.ajax({
+        //   //   url: apiURL, // URL API Anda
+        //   //   type: 'GET',
+        //   //   success: function (response) {
+        //       // Isikan konten ke dalam modal
+        //       $('#' + contentId).html(`
+        //         <p class="f-subtitle text-center">XRUN Swap Detail</p>
+        //         <div class="d-flex">
+        //           <div class="d-block">
+        //             <p class="f-desc mb-0 fw-semibold">XRUN Wallet&nbsp;</p>
+        //             <p class="f-desc mb-0 fw-semibold">Purchase Amount&nbsp;</p>
+        //           </div>
+        //           <div class="d-block">
+        //             <p class="f-desc mb-0">: 1,000,000</p>
+        //             <p class="f-desc mb-0">: 2,000,000</p>
+        //           </div>
+        //         </div>
+        //       `);
+        //   //   },
+        //   //   error: function (error) {
+        //   //     console.error('Gagal memuat konten:', error);
+        //   //   }
+        //   // });
+        // }
 
-          
+
       }
 
       // Tangani saat tombol Allocation diklik
       $('#btnAllocation').on('click', function () {
-          openModalAndLoadContent('allocationModal', 'allocationContent', '/api/allocation');
+        openModalAndLoadContent('allocationModal', 'allocationContent', '/api/allocation');
       });
 
       // Tangani saat tombol Swap diklik
       $('#btnSwap').on('click', function () {
-          openModalAndLoadContent('swapModal', 'swapContent', '/api/swap');
+        openModalAndLoadContent('swapModal', 'swapContent', '/api/swap');
       });
 
       // Tangani tombol close modal
       $('.dis-close').on('click', function () {
-          var modalId = $(this).closest('.dis-modal').attr('id');
-          var modal = document.getElementById(modalId);
-          modal.style.display = "none";
+        var modalId = $(this).closest('.dis-modal').attr('id');
+        var modal = document.getElementById(modalId);
+        modal.style.display = "none";
       });
 
       // Tangani klik di luar modal untuk menutup modal
-      window.onclick = function(event) {
-          if (event.target.className === 'dis-modal') {
-              event.target.style.display = 'none';
-          }
+      window.onclick = function (event) {
+        if (event.target.className === 'dis-modal') {
+          event.target.style.display = 'none';
+        }
       };
     </script>
 
@@ -2129,7 +2131,7 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     <script>
       $(document).ready(function () {
-        
+
         function loadingGetData(elementHTML) {
           const templateLoading = `<div class="wrapper-donut">
               <div class="donut"></div >
@@ -2189,7 +2191,7 @@
             $(".report-detail-wrapper").hide();
           }
         });
-        
+
         // Table XRUN News
         const announcementTable = document.getElementById('announcement-table');
         function fn_announcement(typeNum) {
@@ -2208,28 +2210,11 @@
                 const [tahun, bulan, tanggal] = response['regDate'].split(' ')[0].split('-');
 
                 // Kayak artikel
-                tempAnnouncement += `
-                <tr>
-                  <td>
-                    <a href="announcement/index.php?news=${response['announcement']}" target="_blank" style="color: black;">
-                      <div>
-                        <p class="title-table-news">${response['title']}</p>
-                        <div class="bottom-table-news">
-                          <p>${response['writer']}</p>
-                          <p>|</p>
-                          <p>${tahun}.${bulan}.${tanggal}.</p>
-                        </div>
-                      </div>
-                    </a>
-                  </td>
-                </tr>`
-
-                // Dengan link ke website lain
-                //  tempAnnouncement += `
-                //   <tr>
-                //     <td>
-                //       <a href="${response['link']}" target="_blank" style="color: black;">
-                //         <div>
+                // tempAnnouncement += `
+                // <tr>
+                //   <td>
+                //     <a href="announcement/index.php?news=${response['announcement']}" target="_blank" style="color: black;">
+                //       <div>
                 //         <p class="title-table-news">${response['title']}</p>
                 //         <div class="bottom-table-news">
                 //           <p>${response['writer']}</p>
@@ -2237,9 +2222,26 @@
                 //           <p>${tahun}.${bulan}.${tanggal}.</p>
                 //         </div>
                 //       </div>
-                //       </a>
-                //     </td>
-                //   </tr>`
+                //     </a>
+                //   </td>
+                // </tr>`
+
+                // Dengan link ke website lain
+                tempAnnouncement += `
+                  <tr>
+                    <td>
+                      <a href="${response['link']}" target="_blank" style="color: black;">
+                        <div>
+                        <p class="title-table-news">${response['title']}</p>
+                        <div class="bottom-table-news">
+                          <p>${response['writer']}</p>
+                          <p>|</p>
+                          <p>${tahun}.${bulan}.${tanggal}.</p>
+                        </div>
+                      </div>
+                      </a>
+                    </td>
+                  </tr>`
               });
 
 
@@ -2260,7 +2262,7 @@
             }
           })
         }
-        
+
         fn_announcement(9301);
 
         // Table XRUN Token
@@ -2369,7 +2371,7 @@
         }
 
         const xrunTokenButton = document.querySelector('[data-target="xruntoken-table"]');
-        xrunTokenButton.addEventListener('click', function() {
+        xrunTokenButton.addEventListener('click', function () {
           dataXrunToken();
         })
 
@@ -2428,7 +2430,7 @@
                 tableReportMining.addEventListener('click', function () {
                   const id = this.dataset.index;
                   loadingGetData(xrunMiningTable);
-                  
+
                   fetch(`./connection.php?action=detailMining&mining=${id}`).then(response => {
                     if (!response.ok) {
                       throw new Error('Network response was not ok');
@@ -2475,17 +2477,17 @@
             }
           })
         }
-        
+
         const xrunMiningButton = document.querySelector('[data-target="xrunmining-table"]');
         xrunMiningButton.addEventListener('click', function () {
           dataMining();
         })
 
-        window.addEventListener('click', function({target}) {
+        window.addEventListener('click', function ({ target }) {
           if (target.classList.contains('close-report-detail')) {
-            if(target.classList.contains('close-report-detail-xrun-token')) {
+            if (target.classList.contains('close-report-detail-xrun-token')) {
               dataXrunToken();
-            }else if (target.classList.contains('close-report-detail-mining')) {
+            } else if (target.classList.contains('close-report-detail-mining')) {
               dataMining();
             }
           }
