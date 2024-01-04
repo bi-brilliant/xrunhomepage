@@ -5512,6 +5512,10 @@ a.disabled {
 		grid-template-columns: repeat(2, 1fr);
 		gap: 24px;
 	}
+
+	#roadmap .col-md-offset-7.bx_type {
+		padding-right: 20px;
+	}
 }
 
 .en #summary .col-md-6 > div > div {
@@ -7252,6 +7256,10 @@ section.dark-bg.section-common .section-title h2 span {
 	.container {
 		width: 1120px;
 	}
+
+	#roadmap .col-md-offset-7.bx_type {
+		padding-right: 40px;
+	}
 	
 	header {
 		/* height: 72vh; */
@@ -7322,6 +7330,10 @@ section.dark-bg.section-common .section-title h2 span {
 
 	.btn-app-download .app-download {
 		padding: 12px 40px;
+	}
+
+	#roadmap .col-md-offset-7.bx_type {
+		padding-right: 60px;
 	}
 }
 
