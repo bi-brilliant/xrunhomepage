@@ -1,6 +1,7 @@
 require("dotenv").config();
 const PORT = process.env.PORT || 3001;
 const express = require("express");
+const cors = require("cors");
 const https = require("https");
 const dbPool = require("./config/db");
 
@@ -8,11 +9,11 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-// app.use("/", (req, res) => {
-//   res.json({
-//     message: "Success",
-//   });
-// });
+app.use(
+  cors({
+    origin: ["http://localhost:5501", "http://127.0.0.1:5501"],
+  })
+);
 
 // Router
 app.get("/cmcData", async (req, res) => {
