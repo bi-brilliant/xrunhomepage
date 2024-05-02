@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const https = require("https");
 const dbPool = require("./config/db");
+const { logger } = require("./logger");
 
 const app = express();
 
@@ -115,6 +116,7 @@ app.get("/cmcData", async (req, res) => {
                 last_updated,
               });
 
+              logger("cmcData has called: " + timestamp);
               console.log("cmcData has called: ", timestamp);
             })
             .catch((error) => {
