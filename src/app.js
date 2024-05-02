@@ -11,7 +11,11 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5501", "http://127.0.0.1:5501"],
+    origin: [
+      "http://localhost:5501",
+      "http://127.0.0.1:5501",
+      "http://3.1.27.93",
+    ],
   })
 );
 
@@ -110,6 +114,8 @@ app.get("/cmcData", async (req, res) => {
                 tvl,
                 last_updated,
               });
+
+              console.log("cmcData has called: ", timestamp);
             })
             .catch((error) => {
               console.error(
