@@ -1231,6 +1231,27 @@
 
     <script>
       $(document).ready(function () {
+        async function nodeCMC() {
+          try {
+            $.ajax({
+              // url: "http://localhost:3001/cmcData",
+              url: "http://3.1.27.93:3001/cmcData",
+              type: "GET",
+              success:  (jsonData) => {
+                console.log(jsonData)
+              },
+            });
+          } catch (error) {
+            console.error('Kesalahan saat mengambil data:', error);
+          }
+        }
+
+        // Panggil fungsi nodeCMC saat halaman dimuat
+        window.onload = nodeCMC;
+
+        // Set interval untuk memanggil nodeCMC setiap 5 menit
+        setInterval(nodeCMC, 300000); // 5 menit
+
         // Formatting Timestamp
         function formatTimestamp(timestamp) {
           const date = new Date(timestamp);
@@ -1268,9 +1289,6 @@
           }
         }
 
-        $("#btnAllocation").click(function () {
-          console.log("bgst");
-        })
 
         // Get CoinMarketCap
         function getCmcData() {
