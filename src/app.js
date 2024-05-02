@@ -21,8 +21,7 @@ app.use(
   })
 );
 
-// Router
-app.get("/cmcData", async (req, res) => {
+const callCMCData = async () => {
   try {
     const options = {
       hostname: "pro-api.coinmarketcap.com",
@@ -96,27 +95,6 @@ app.get("/cmcData", async (req, res) => {
           dbPool
             .execute(query)
             .then(() => {
-              // Berikan respons JSON setelah eksekusi query berhasil
-              res.json({
-                timestamp,
-                id,
-                name,
-                cmc_rank,
-                price,
-                volume_24h,
-                volume_change_24h,
-                percent_change_1h,
-                percent_change_24h,
-                percent_change_7d,
-                percent_change_30d,
-                percent_change_60d,
-                percent_change_90d,
-                market_cap_dominance,
-                fully_diluted_market_cap,
-                tvl,
-                last_updated,
-              });
-
               logger("cmcData has called: " + timestamp);
               console.log("cmcData has called: ", timestamp);
             })
@@ -125,31 +103,33 @@ app.get("/cmcData", async (req, res) => {
                 "Kesalahan dalam eksekusi query ke database:",
                 error
               );
-              res.status(500).json({
-                message: "Kesalahan dalam eksekusi query ke database",
-              });
             });
         } catch (error) {
           console.error("Kesalahan dalam memproses data:", error);
-          res.status(500).json({ message: "Kesalahan dalam memproses data" });
         }
       });
     });
 
     request.on("error", (error) => {
       console.error("Kesalahan dalam permintaan:", error);
-      res.status(500).json({
-        message: "Problem while connecting to CoinMarketCap",
-        serverMessage: err,
-      });
     });
 
     request.end();
   } catch (error) {
     console.error("Kesalahan dalam permintaan:", error);
-    res.status(500).json({ message: "Kesalahan dalam permintaan" });
   }
+};
+
+// Router
+app.get("/cmcData", async (req, res) => {
+  callCMCData();
+  res.json({
+    message: "CMC Data has called",
+  });
 });
+
+// Panggil fungsi cmcData setiap 5 menit
+setInterval(callCMCData, 5 * 60 * 1000);
 
 app.listen(PORT, () => {
   console.log("Server start on ", PORT);
